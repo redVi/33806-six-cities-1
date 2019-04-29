@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ирина Шефер](https://up.htmlacademy.ru/react/1/user/33806).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Махнёв](https://htmlacademy.ru/profile/id7392).
 
 ---
 
