@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlaceBookmark from '@/components/place-bookmark/place-bookmark.jsx';
 
 const PlaceInfo = (props) => {
-  const {name, type, price, rating, bookmark} = props;
+  const {name, type, price, rating, bookmark, titleHandler} = props;
 
   return (
     <div className="place-card__info">
@@ -20,7 +20,7 @@ const PlaceInfo = (props) => {
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
-      <h2 className="place-card__name">
+      <h2 className="place-card__name" onClick={titleHandler}>
         <a href="#">{name}</a>
       </h2>
       <p className="place-card__type">{type}</p>
@@ -34,6 +34,7 @@ PlaceInfo.propTypes = ({
   type: PropTypes.string,
   rating: PropTypes.string,
   bookmark: PropTypes.bool,
+  titleHandler: PropTypes.func,
 });
 
 export default PlaceInfo;
