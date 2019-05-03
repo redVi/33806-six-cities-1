@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardList from '@/components/cards-list/cards-list.jsx';
+import CardList from '@/components/places-list/places-list.jsx';
 
 describe(`CardList`, () => {
   it(`renders correctly with props`, () => {
