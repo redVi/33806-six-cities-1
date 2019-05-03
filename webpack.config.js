@@ -23,5 +23,10 @@ module.exports = {
       }
     ]
   },
-  devtool: `source-map`
+  devtool: `source-map`,
+  resolve: {
+    alias: {
+      '@': path.join(__dirname, `src`)
+    }
+  }
 };
