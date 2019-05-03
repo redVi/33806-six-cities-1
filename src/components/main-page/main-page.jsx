@@ -39,9 +39,7 @@ const MainPage = ({places}) =>
             */}
 
           </form>
-          <div className="cities__places-list places__list tabs__content">
-            <CardsList places={places} />
-          </div>
+          <CardsList places={places} />
         </section>
         <div className="cities__right-section">
           <section className="cities__map map"/>
