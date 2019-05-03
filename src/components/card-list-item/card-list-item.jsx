@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CardItem = (props) => {
+const CardListItem = (props) => {
   const {place} = props;
 
   const CardMark = () =>
@@ -58,7 +58,7 @@ const CardItem = (props) => {
   );
 };
 
-CardItem.propTypes = {
+CardListItem.propTypes = {
   place: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -70,4 +70,4 @@ CardItem.propTypes = {
   })
 };
 
-export default CardItem;
+export default CardListItem;
