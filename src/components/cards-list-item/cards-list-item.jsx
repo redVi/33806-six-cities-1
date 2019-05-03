@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CardListItem = (props) => {
+const CardsListItem = (props) => {
   const {place} = props;
 
   const CardMark = () =>
@@ -12,7 +12,12 @@ const CardListItem = (props) => {
   const PlaceImage = () =>
     <div className="cities__image-wrapper place-card__image-wrapper">
       <a href="#">
-        <img className="place-card__image" src={`img/${place.img}`} width="260" height="200" alt="Place image" />
+        <img
+          className="place-card__image"
+          src={`img/${place.img || `room.jpg`}`}
+          width="260"
+          height="200"
+          alt="Place image" />
       </a>
     </div>;
 
@@ -58,7 +63,7 @@ const CardListItem = (props) => {
   );
 };
 
-CardListItem.propTypes = {
+CardsListItem.propTypes = {
   place: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -70,4 +75,4 @@ CardListItem.propTypes = {
   })
 };
 
-export default CardListItem;
+export default CardsListItem;
