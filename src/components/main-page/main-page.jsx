@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CitiesList from '@/components/cities-list/cities-list.jsx';
-import CardsList from '@/components/cards-list/cards-list.jsx';
+import PlacesList from '@/components/places-list/places-list.jsx';
 
 const MainPage = ({places}) =>
   <main className="page__main page__main--index">
@@ -39,7 +39,7 @@ const MainPage = ({places}) =>
             */}
 
           </form>
-          <CardsList places={places} />
+          <PlacesList places={places} />
         </section>
         <div className="cities__right-section">
           <section className="cities__map map"/>
