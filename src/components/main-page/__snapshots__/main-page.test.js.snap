@@ -176,6 +176,7 @@ exports[`MainPage renders correctly with props 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -269,6 +270,7 @@ exports[`MainPage renders correctly with props 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"

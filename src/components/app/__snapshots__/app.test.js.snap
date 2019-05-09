@@ -271,6 +271,7 @@ exports[`App renders places correctly 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -364,6 +365,7 @@ exports[`App renders places correctly 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"

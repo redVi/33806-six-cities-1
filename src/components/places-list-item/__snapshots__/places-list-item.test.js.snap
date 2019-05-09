@@ -16,6 +16,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
   >
     <a
       href="#"
+      onClick={[Function]}
     >
       <img
         alt="Place image"
@@ -114,6 +115,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
   >
     <a
       href="#"
+      onClick={[Function]}
     >
       <img
         alt="Place image"
