@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import PlacesListItem from '@/components/places-list-item/places-list-item.jsx';
 
-const PlacesList = ({places}) =>
+const PlacesList = ({offers}) =>
   <div className="cities__places-list places__list tabs__content">
-    {places.map((place, index) => <PlacesListItem place={place} key={index} />)}
+    {offers.map((offer, index) => <PlacesListItem offer={offer} key={index} />)}
   </div>;
 
 PlacesList.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.object)
+  offers: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PlacesList;

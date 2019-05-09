@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceImage from "@/components/place-image/place-image";
+import PlaceImage from '@/components/place-image/place-image';
 
 describe(`PlaceImage`, () => {
   it(`renders correctly with props`, () => {

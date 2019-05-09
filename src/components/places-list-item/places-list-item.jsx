@@ -5,20 +5,20 @@ import PlaceMark from '@/components/place-mark/place-mark.jsx';
 import PlaceImage from '@/components/place-image/place-image.jsx';
 import PlaceInfo from '@/components/place-info/place-info.jsx';
 
-const PlacesListItem = ({place}) => {
-  const mark = place.premium ? <PlaceMark/> : null;
+const PlacesListItem = ({offer}) => {
+  const mark = offer.premium ? <PlaceMark/> : null;
 
   return (
     <article className="cities__place-card place-card">
       {mark}
-      <PlaceImage img={place.img} />
-      <PlaceInfo {...place} />
+      <PlaceImage img={offer.img} />
+      <PlaceInfo {...offer} />
     </article>
   );
 };
 
 PlacesListItem.propTypes = {
-  place: PropTypes.shape({
+  offer: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     type: PropTypes.string,
