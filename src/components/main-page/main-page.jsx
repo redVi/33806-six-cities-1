@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CitiesList from '@/components/cities-list/cities-list.jsx';
 import PlacesList from '@/components/places-list/places-list.jsx';
 
-const MainPage = ({places}) =>
+const MainPage = ({offers}) =>
   <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <CitiesList />
@@ -39,7 +39,7 @@ const MainPage = ({places}) =>
             */}
 
           </form>
-          <PlacesList places={places} />
+          <PlacesList offers={offers} />
         </section>
         <div className="cities__right-section">
           <section className="cities__map map"/>
@@ -50,7 +50,7 @@ const MainPage = ({places}) =>
 ;
 
 MainPage.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.object)
+  offers: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default MainPage;

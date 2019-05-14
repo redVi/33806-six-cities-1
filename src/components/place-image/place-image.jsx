@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlaceImage = (props) => {
-  const imageName = props.img || `room.jpg`;
+const PlaceImage = ({img, handleClick}) => {
+  const imageName = img || `room.jpg`;
+  const handleLinkClick = (event) => {
+    event.preventDefault();
+    handleClick();
+  };
 
   return (
     <div className="cities__image-wrapper place-card__image-wrapper">
-      <a href="#">
+      <a href="#" onClick={handleLinkClick}>
         <img
           className="place-card__image"
           src={`img/${imageName}`}
@@ -20,6 +24,7 @@ const PlaceImage = (props) => {
 
 PlaceImage.propTypes = {
   img: PropTypes.string,
+  handleClick: PropTypes.func
 };
 
 export default PlaceImage;
