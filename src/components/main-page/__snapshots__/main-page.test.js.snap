@@ -363,6 +363,7 @@ exports[`MainPage renders correctly with props 1`] = `
       >
         <section
           className="cities__map map"
+          id="map"
         />
       </div>
     </div>
@@ -544,6 +545,7 @@ exports[`MainPage renders correctly without props 1`] = `
       >
         <section
           className="cities__map map"
+          id="map"
         />
       </div>
     </div>
