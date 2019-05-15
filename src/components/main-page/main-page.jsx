@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import CitiesList from '@/components/cities-list/cities-list.jsx';
 import PlacesList from '@/components/places-list/places-list.jsx';
+import CityMap from '@/components/city-map/city-map.jsx';
 
 const MainPage = ({offers}) =>
   <main className="page__main page__main--index">
@@ -42,7 +43,7 @@ const MainPage = ({offers}) =>
           <PlacesList offers={offers} />
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map"/>
+          <CityMap offers={offers} />
         </div>
       </div>
     </div>

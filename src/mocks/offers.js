@@ -7,6 +7,7 @@ export const offers = [
     premium: true,
     rating: `93%`,
     img: `apartment-01.jpg`,
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     name: `Wood and stone place`,
@@ -16,6 +17,7 @@ export const offers = [
     premium: false,
     rating: `80%`,
     img: `room.jpg`,
+    coordinates: [52.369553943508, 4.85309666406198],
   },
   {
     name: `Canal View Prinsengracht`,
@@ -25,6 +27,7 @@ export const offers = [
     premium: false,
     rating: `70%`,
     img: `apartment-02.jpg`,
+    coordinates: [52.3909553943508, 4.929309666406198],
   },
   {
     name: `Nice, cozy, warm big bed apartment`,
@@ -34,5 +37,6 @@ export const offers = [
     premium: true,
     rating: `100%`,
     img: `apartment-03.jpg`,
+    coordinates: [52.3809553943508, 4.939309666406198],
   }
 ];
