@@ -3,6 +3,7 @@ import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 
 const zoom = 12;
+const city = [52.38333, 4.9];
 const icon = leaflet.icon({
   iconUrl: `img/pin.svg`,
   iconSize: [27, 39]
@@ -19,8 +20,6 @@ class CityMap extends PureComponent {
   }
 
   _initMap() {
-    const city = this.props.offers[0].coordinates;
-
     const map = leaflet.map(`map`, {
       center: city,
       zoom,
