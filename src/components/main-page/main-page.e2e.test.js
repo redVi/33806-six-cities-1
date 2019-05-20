@@ -1,11 +1,13 @@
 import React from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import PlacesList from '@/components/places-list/places-list.jsx';
+import MainPage from '@/components/main-page/main-page.jsx';
 
 configure({adapter: new Adapter()});
 
-describe(`PlacesList`, () => {
+const cities = [`Berlin`, `Amsterdam`, `Dusseldorf`];
+
+describe(`MainPage`, () => {
   it(`should receive correct data about selected card`, () => {
     const offers = [
       {
@@ -27,7 +29,13 @@ describe(`PlacesList`, () => {
         img: `room.jpg`,
       }
     ];
-    const wrapper = mount(<PlacesList offers={offers} />);
+    const wrapper = mount(
+        <MainPage
+          city={`Berlin`}
+          cities={cities}
+          offers={offers}
+          getCityOffers={jest.fn()} />
+    );
 
     wrapper.find(`.place-card__image-wrapper a`).at(0).simulate(`click`);
     expect(wrapper.state().activeOffer).toStrictEqual(offers[0]);

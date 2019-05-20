@@ -3,7 +3,6 @@ import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 
 const SETTINGS = {
-  center: [52.38333, 4.9],
   zoom: 12,
   zoomControl: false,
   marker: true,
@@ -26,14 +25,14 @@ class CityMap extends PureComponent {
   _initMap() {
     const map = leaflet.map(`map`, SETTINGS);
 
-    map.setView(SETTINGS.center, SETTINGS.zoom);
+    map.setView(this.props.center, SETTINGS.zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
       .addTo(map);
 
-    this.props.offers.forEach((offer) => {
-      leaflet.marker(offer.coordinates, {icon: SETTINGS.icon}).addTo(map);
+    this.props.coordinates.forEach((coordinate) => {
+      leaflet.marker(coordinate, {icon: SETTINGS.icon}).addTo(map);
     });
   }
 
@@ -45,7 +44,8 @@ class CityMap extends PureComponent {
 }
 
 CityMap.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired
+  coordinates: PropTypes.arrayOf(PropTypes.array),
+  center: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default CityMap;
