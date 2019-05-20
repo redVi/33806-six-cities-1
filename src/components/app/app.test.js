@@ -15,7 +15,14 @@ describe(`App`, () => {
     }
   ];
   it(`renders places correctly`, () => {
-    const tree = renderer.create(<App offers={offers} getCityOffers={jest.fn()} />).toJSON();
+    const tree = renderer.create(
+        <App
+          offers={offers}
+          cities={[`Paris`, `Cologne`, `Amsterdam`]}
+          city={`Amsterdam`}
+          changeCity={jest.fn()}
+          getCityOffers={jest.fn()} />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

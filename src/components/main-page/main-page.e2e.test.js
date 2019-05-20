@@ -34,7 +34,7 @@ describe(`MainPage`, () => {
           city={`Berlin`}
           cities={cities}
           offers={offers}
-          getCityOffers={jest.fn()} />
+          changeCity={jest.fn()} />
     );
 
     wrapper.find(`.place-card__image-wrapper a`).at(0).simulate(`click`);

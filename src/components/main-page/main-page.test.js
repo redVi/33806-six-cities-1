@@ -15,7 +15,9 @@ describe(`MainPage`, () => {
         <MainPage
           offers={offers}
           cities={cities}
-          getCityOffers={jest.fn()} />
+          city={`Berlin`}
+          handleSelectCity={jest.fn()}
+          changeCity={jest.fn(`Berlin`)} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

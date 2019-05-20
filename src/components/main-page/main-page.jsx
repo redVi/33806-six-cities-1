@@ -12,15 +12,6 @@ class MainPage extends PureComponent {
       activeOffer: {},
     };
     this._selectOffer = this._selectOffer.bind(this);
-    this._changeCity = this._changeCity.bind(this);
-  }
-
-  componentDidMount() {
-    this._changeCity(`Paris`);
-  }
-
-  _changeCity(city) {
-    this.props.changeCity(city);
   }
 
   _selectOffer(offer) {
