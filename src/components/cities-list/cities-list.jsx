@@ -1,41 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const CitiesList = () =>
-  <div className="cities tabs">
-    <section className="locations container">
-      <ul className="locations__list tabs__list">
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Paris</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Cologne</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Brussels</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item tabs__item--active">
-            <span>Amsterdam</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Hamburg</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Dusseldorf</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-  </div>;
+const CitiesList = (props) => {
+  const {cities, current, handleSelectCity} = props;
+
+  const _handleClick = (event, city) => {
+    event.preventDefault();
+    handleSelectCity(city);
+  };
+
+  return (
+    <div className="cities tabs">
+      <section className="locations container">
+        <ul className="locations__list tabs__list">
+          {cities.map((city) =>
+            <li className="locations__item" key={`${city}`}>
+              <a
+                className={`locations__item-link tabs__item ${city === current ? `tabs__item--active` : ``}`}
+                href="#"
+                onClick={(e) => _handleClick(e, city)}>
+                <span>{city}</span>
+              </a>
+            </li>
+          )}
+        </ul>
+      </section>
+    </div>
+  );
+};
+
+CitiesList.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string),
+  current: PropTypes.string,
+  handleSelectCity: PropTypes.func.isRequired
+};
 
 export default CitiesList;

@@ -4,7 +4,13 @@ import CitiesList from '@/components/cities-list/cities-list.jsx';
 
 describe(`CitiesList`, () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<CitiesList />).toJSON();
+    const tree = renderer.create(
+        <CitiesList
+          cities={[`Berlin`, `Amsterdam`, `Paris`]}
+          current={`Berlin`}
+          handleSelectCity={jest.fn()}
+        />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

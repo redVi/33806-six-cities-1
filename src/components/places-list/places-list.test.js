@@ -9,12 +9,12 @@ describe(`PlacesList`, () => {
       {name: `Nice, cozy, warm big bed apartment`, price: 180},
     ];
 
-    const tree = renderer.create(<PlacesList offers={offers} />).toJSON();
+    const tree = renderer.create(<PlacesList offers={offers} handleImageClick={jest.fn()} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it(`renders correctly without props`, () => {
-    const tree = renderer.create(<PlacesList offers={[]} />).toJSON();
+    const tree = renderer.create(<PlacesList offers={[]} handleImageClick={jest.fn()} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

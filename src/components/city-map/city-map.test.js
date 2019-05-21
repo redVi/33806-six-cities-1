@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CityMap from '@/components/city-map/city-map';
+import CityMap from '@/components/city-map/city-map.jsx';
 
 describe(`CityMap`, () => {
   it(`renders correctly`, () => {
