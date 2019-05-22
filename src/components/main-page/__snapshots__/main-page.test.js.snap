@@ -137,7 +137,7 @@ exports[`MainPage renders correctly 1`] = `
           className="cities__places-list places__list tabs__content"
         >
           <article
-            className="cities__place-card place-card"
+            className="cities__place-card  place-card"
           >
             <div
               className="cities__image-wrapper place-card__image-wrapper"
@@ -231,7 +231,7 @@ exports[`MainPage renders correctly 1`] = `
             </div>
           </article>
           <article
-            className="cities__place-card place-card"
+            className="cities__place-card  place-card"
           >
             <div
               className="cities__image-wrapper place-card__image-wrapper"

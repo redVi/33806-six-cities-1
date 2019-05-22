@@ -2,21 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesListItem from '@/components/places-list-item/places-list-item.jsx';
 
-const PlacesList = (props) =>
+const PlacesList = ({places, current, setActiveItem}) =>
   <div className="cities__places-list places__list tabs__content">
-    {props.offers
-      ? props.offers.map((offer, index) =>
+    {places
+      ? places.map((offer, index) =>
         <PlacesListItem
-          key={index}
+          key={`place-${index}`}
           offer={offer}
-          handleImageClick={() => props.handleImageClick(offer)} />)
+          current={current === index ? current : undefined}
+          handleImageClick={() => setActiveItem(index)} />)
       : null
     }
   </div>;
 
 PlacesList.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object),
-  handleImageClick: PropTypes.func
+  places: PropTypes.arrayOf(PropTypes.object),
+  current: PropTypes.number,
+  setActiveItem: PropTypes.func
 };
 
 export default PlacesList;

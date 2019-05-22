@@ -23,16 +23,18 @@ class CityMap extends PureComponent {
   }
 
   _initMap() {
+    const {center, coordinates} = this.props;
+
     const map = leaflet.map(`map`, SETTINGS);
 
-    map.setView(this.props.center, SETTINGS.zoom);
+    map.setView(center, SETTINGS.zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
       .addTo(map);
 
-    this.props.coordinates.forEach((coordinate) => {
-      leaflet.marker(coordinate, {icon: SETTINGS.icon}).addTo(map);
+    coordinates.forEach((location) => {
+      leaflet.marker(location, {icon: SETTINGS.icon}).addTo(map);
     });
   }
 

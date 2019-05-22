@@ -2,7 +2,7 @@
 
 exports[`PlacesListItem renders correctly with all props 1`] = `
 <article
-  className="cities__place-card place-card"
+  className="cities__place-card  place-card"
 >
   <div
     className="place-card__mark"
@@ -108,7 +108,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
 
 exports[`PlacesListItem renders correctly with only required props 1`] = `
 <article
-  className="cities__place-card place-card"
+  className="cities__place-card  place-card"
 >
   <div
     className="cities__image-wrapper place-card__image-wrapper"
