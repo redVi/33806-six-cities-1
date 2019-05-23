@@ -1,14 +1,16 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, compose} from 'redux';
 import {Provider} from 'react-redux';
 
 import App from '@/components/app/app.jsx';
 import {reducer} from '@/reducer';
 
+const hasReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && process.env.NODE_ENV !== `production`;
+
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(hasReduxDevTools ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f)
 );
 
 render(

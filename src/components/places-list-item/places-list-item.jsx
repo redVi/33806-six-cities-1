@@ -5,13 +5,14 @@ import PlaceMark from '@/components/place-mark/place-mark.jsx';
 import PlaceImage from '@/components/place-image/place-image.jsx';
 import PlaceInfo from '@/components/place-info/place-info.jsx';
 
-const PlacesListItem = ({offer, handleImageClick}) => {
+const PlacesListItem = ({offer, current, handleImageClick}) => {
   const mark = offer.premium ? <PlaceMark/> : null;
+  const activeClass = current >= 0 ? `cities__place-card--active` : ``;
 
   return (
-    <article className="cities__place-card place-card">
+    <article className={`cities__place-card ${activeClass} place-card`}>
       {mark}
-      <PlaceImage img={offer.img} handleClick={() => handleImageClick(offer)} />
+      <PlaceImage img={offer.img} handleClick={() => handleImageClick()} />
       <PlaceInfo {...offer} />
     </article>
   );
@@ -27,7 +28,8 @@ PlacesListItem.propTypes = {
     rating: PropTypes.string,
     img: PropTypes.string
   }),
-  handleImageClick: PropTypes.func
+  handleImageClick: PropTypes.func,
+  current: PropTypes.number
 };
 
 export default PlacesListItem;
