@@ -1,5 +1,8 @@
 import {getRandomNumber} from '@/helpers';
 
+const getCityFromOffers = (offers, cityName) =>
+  offers.filter((offer) => offer.city.name === cityName)[0].city;
+
 const initialState = {
   city: {},
   offers: [],
@@ -30,7 +33,7 @@ const reducer = (state = initialState, action) => {
       });
     case TYPE.CHANGE_CITY:
       return Object.assign({}, state, {
-        city: state.offers.filter((offer) => offer.city.name === action.payload)[0].city
+        city: getCityFromOffers(state.offers, action.payload)
       });
   }
 
