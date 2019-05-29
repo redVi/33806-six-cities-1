@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PlaceBookmark = (props) => {
-  const active = props.bookmark ? `place-card__bookmark-button--active` : ``;
+  const active = props.isFavorite ? `place-card__bookmark-button--active` : ``;
 
   return (
     <button className={`place-card__bookmark-button ${active} button`} type="button">
@@ -15,7 +15,7 @@ const PlaceBookmark = (props) => {
 };
 
 PlaceBookmark.propTypes = {
-  bookmark: PropTypes.bool,
+  isFavorite: PropTypes.bool,
 };
 
 export default PlaceBookmark;

@@ -17,24 +17,25 @@ class CityMap extends PureComponent {
     try {
       this._initMap();
     } catch (e) {
-      // if an error occurs `Map container not found`
-      // in fact for tests https://github.com/PaulLeCam/react-leaflet/issues/246
+      // if data isn't loaded
     }
   }
 
   _initMap() {
-    const {center, coordinates} = this.props;
-
     const map = leaflet.map(`map`, SETTINGS);
+    const {
+      location: {latitude, longitude, zoom},
+      coordinates
+    } = this.props;
 
-    map.setView(center, SETTINGS.zoom);
+    map.setView([latitude, longitude], zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
       .addTo(map);
 
-    coordinates.forEach((location) => {
-      leaflet.marker(location, {icon: SETTINGS.icon}).addTo(map);
+    coordinates.forEach((city) => {
+      leaflet.marker([city.latitude, city.longitude], {icon: SETTINGS.icon}).addTo(map);
     });
   }
 
@@ -46,8 +47,12 @@ class CityMap extends PureComponent {
 }
 
 CityMap.propTypes = {
-  coordinates: PropTypes.arrayOf(PropTypes.array),
-  center: PropTypes.arrayOf(PropTypes.number)
+  coordinates: PropTypes.arrayOf(PropTypes.object),
+  location: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number
+  })
 };
 
 export default CityMap;

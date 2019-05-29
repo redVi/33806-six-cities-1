@@ -25,8 +25,8 @@ const App = (props) => {
 
 const _mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   city: state.city,
-  cities: Array.from(new Set(state.offers.map((offer) => offer.city))).slice(0, 6),
-  offers: state.offers.filter((item) => item.city === state.city)
+  cities: Array.from(new Set(state.offers.map((offer) => offer.city.name))).slice(0, 6),
+  offers: state.offers.filter((item) => item.city.name === state.city.name)
 });
 
 const _mapDispatchToProps = (dispatch) => ({
@@ -36,7 +36,7 @@ const _mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = {
-  city: PropTypes.string,
+  city: PropTypes.object,
   cities: PropTypes.arrayOf(PropTypes.string),
   offers: PropTypes.arrayOf(PropTypes.object),
   changeCity: PropTypes.func

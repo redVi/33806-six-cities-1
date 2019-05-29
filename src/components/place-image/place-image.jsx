@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlaceImage = ({img, handleClick}) => {
-  const imageName = img || `room.jpg`;
+const PlaceImage = ({previewImage, handleClick}) => {
   const handleLinkClick = (event) => {
     event.preventDefault();
     handleClick();
@@ -13,7 +12,7 @@ const PlaceImage = ({img, handleClick}) => {
       <a href="#" onClick={handleLinkClick}>
         <img
           className="place-card__image"
-          src={`img/${imageName}`}
+          src={previewImage}
           width="260"
           height="200"
           alt="Place image" />
@@ -23,7 +22,7 @@ const PlaceImage = ({img, handleClick}) => {
 };
 
 PlaceImage.propTypes = {
-  img: PropTypes.string,
+  previewImage: PropTypes.string,
   handleClick: PropTypes.func
 };
 
