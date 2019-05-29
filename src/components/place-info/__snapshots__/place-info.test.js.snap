@@ -51,7 +51,7 @@ exports[`PlaceInfo renders correctly with only required props 1`] = `
       <span
         style={
           Object {
-            "width": undefined,
+            "width": "0%",
           }
         }
       />
@@ -128,7 +128,7 @@ exports[`PlaceInfo renders correctly with props 1`] = `
       <span
         style={
           Object {
-            "width": "93%",
+            "width": "82%",
           }
         }
       />

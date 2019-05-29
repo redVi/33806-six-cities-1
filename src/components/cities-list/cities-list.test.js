@@ -7,7 +7,7 @@ describe(`CitiesList`, () => {
     const tree = renderer.create(
         <CitiesList
           cities={[`Berlin`, `Amsterdam`, `Paris`]}
-          current={0}
+          current={`Berlin`}
           handleSelectCity={jest.fn()}
           setActiveItem={jest.fn()}
         />

@@ -4,7 +4,7 @@ import PlaceBookmark from '@/components/place-bookmark/place-bookmark.jsx';
 
 const PlaceInfo = (props) => {
   const {title, type, price, rating, isFavorite, titleHandler} = props;
-  const calculateRating = () => `${rating * 2 * 10}%`;
+  const calculateRating = () => `${rating ? rating * 2 * 10 : 0}%`;
 
   return (
     <div className="place-card__info">

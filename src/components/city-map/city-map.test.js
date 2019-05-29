@@ -5,7 +5,9 @@ import CityMap from '@/components/city-map/city-map.jsx';
 describe(`CityMap`, () => {
   it(`renders correctly`, () => {
     const tree = renderer.create(
-        <CityMap coordinates={[[52.3, 4.8], [52.3, 4.8]]} center={[52, 4]}/>
+        <CityMap
+          coordinates={[{latitude: 51.232402, longitude: 6.800314, zoom: 16}]}
+          location={{latitude: 51.225402, longitude: 6.776314, zoom: 13}} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

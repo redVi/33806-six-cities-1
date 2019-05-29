@@ -4,7 +4,7 @@ import PlaceBookmark from '@/components/place-bookmark/place-bookmark.jsx';
 
 describe(`PlaceBookmark`, () => {
   it(`renders correctly with props`, () => {
-    const tree = renderer.create(<PlaceBookmark bookmark={true} />).toJSON();
+    const tree = renderer.create(<PlaceBookmark isFavorite={true} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 

@@ -5,13 +5,13 @@ import {App} from '@/components/app/app.jsx';
 describe(`App`, () => {
   const offers = [
     {
-      name: `Wood and stone place`,
+      title: `Wood and stone place`,
       type: `Private room`,
       price: 80,
-      bookmark: true,
-      premium: false,
-      rating: `80%`,
-      img: `room.jpg`,
+      isFavorite: true,
+      isPremium: false,
+      rating: 4.2,
+      previewImage: `room.jpg`,
     }
   ];
   it(`renders places correctly`, () => {
@@ -19,7 +19,10 @@ describe(`App`, () => {
         <App
           offers={offers}
           cities={[`Paris`, `Cologne`, `Amsterdam`]}
-          city={`Amsterdam`}
+          city={{
+            name: `Amsterdam`,
+            location: {latitude: 51.225402, longitude: 6.776314, zoom: 13}
+          }}
           changeCity={jest.fn()}
           getCityOffers={jest.fn()} />
     ).toJSON();

@@ -11,7 +11,7 @@ describe(`PlaceInfo`, () => {
     const clickHandler = jest.fn();
     const wrapper = shallow(
         <PlaceInfo
-          name={`Nice, cozy, warm big bed apartment`}
+          title={`Nice, cozy, warm big bed apartment`}
           price={120}
           titleHandler={clickHandler}
         />

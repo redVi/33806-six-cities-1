@@ -5,8 +5,8 @@ import PlacesList from '@/components/places-list/places-list.jsx';
 describe(`PlacesList`, () => {
   it(`renders correctly with props`, () => {
     const offers = [
-      {name: `Canal View Prinsengracht`, price: 132},
-      {name: `Nice, cozy, warm big bed apartment`, price: 180},
+      {title: `Canal View Prinsengracht`, price: 132},
+      {title: `Nice, cozy, warm big bed apartment`, price: 180},
     ];
 
     const tree = renderer.create(<PlacesList places={offers} handleImageClick={jest.fn()} />).toJSON();
