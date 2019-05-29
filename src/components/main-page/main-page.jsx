@@ -72,7 +72,6 @@ MainPage.propTypes = {
   city: PropTypes.object,
   cities: PropTypes.arrayOf(PropTypes.string),
   offers: PropTypes.arrayOf(PropTypes.object),
-  getOffers: PropTypes.func,
   changeCity: PropTypes.func
 };
 

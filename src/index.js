@@ -6,7 +6,8 @@ import thunk from 'redux-thunk';
 
 import {configureAPI} from '@/api';
 import App from '@/components/app/app.jsx';
-import {reducer, Service} from '@/reducer';
+import {Service} from '@/reducer/data/data';
+import reducer from '@/reducer/index';
 
 const hasReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && process.env.NODE_ENV !== `production`;
 const api = configureAPI((...args) => store.dispatch(...args));

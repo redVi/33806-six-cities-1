@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {actionCreator} from '@/reducer';
+import {actionCreator} from '@/reducer/user/user';
 
 export const configureAPI = (dispatch) => {
   const api = axios.create({
@@ -10,6 +10,7 @@ export const configureAPI = (dispatch) => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
+    console.log(err);
     if (err.response.status === 401) {
       dispatch(actionCreator.checkAuthorization(true));
     }
