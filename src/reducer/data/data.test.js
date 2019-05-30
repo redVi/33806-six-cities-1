@@ -1,11 +1,11 @@
 import MockAdapter from 'axios-mock-adapter';
 import {configureAPI} from '@/api';
 import {Service} from '@/reducer/data/data';
-import {TYPE, actionCreator} from './data';
+import {TYPE, dataActionCreator} from './data';
 
 describe(`Data reducers`, () => {
   it(`should return the correct value when the city changes`, () => {
-    expect(actionCreator.changeCity(`Paris`)).toEqual({
+    expect(dataActionCreator.changeCity(`Paris`)).toEqual({
       type: TYPE.CHANGE_CITY,
       payload: `Paris`
     });

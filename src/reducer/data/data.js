@@ -1,4 +1,4 @@
-import {getRandomNumber} from '@/helpers';
+import {getRandomNumber, normalizeKeys} from '@/helpers';
 
 const getCityFromOffers = (offers, cityName) =>
   offers.filter((offer) => offer.city.name === cityName)[0].city;
@@ -13,7 +13,7 @@ const TYPE = {
   FETCH_OFFERS: `FETCH_OFFERS`,
 };
 
-const actionCreator = {
+const dataActionCreator = {
   changeCity: (city) => ({
     type: TYPE.CHANGE_CITY,
     payload: city
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
     case TYPE.FETCH_OFFERS:
       return Object.assign({}, state, {
         city: action.payload[getRandomNumber(1, action.payload.length)].city,
-        offers: action.payload,
+        offers: normalizeKeys(action.payload),
       });
     case TYPE.CHANGE_CITY:
       return Object.assign({}, state, {
@@ -43,13 +43,13 @@ const reducer = (state = initialState, action) => {
 const Service = {
   fetchOffers: (dispatch, _getState, api) =>
     api.get(`/hotels`).then((response) => {
-      dispatch(actionCreator.fetchOffers(response.data));
+      dispatch(dataActionCreator.fetchOffers(response.data));
     })
 };
 
 export {
   Service,
-  actionCreator,
+  dataActionCreator,
   TYPE,
   reducer
 };
