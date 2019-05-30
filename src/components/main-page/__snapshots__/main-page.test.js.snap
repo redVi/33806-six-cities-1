@@ -150,7 +150,6 @@ exports[`MainPage renders correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="img/room.jpg"
                   width="260"
                 />
               </a>
@@ -205,7 +204,7 @@ exports[`MainPage renders correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": undefined,
+                        "width": "64%",
                       }
                     }
                   />
@@ -244,7 +243,6 @@ exports[`MainPage renders correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="img/room.jpg"
                   width="260"
                 />
               </a>
@@ -299,7 +297,7 @@ exports[`MainPage renders correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": undefined,
+                        "width": "86%",
                       }
                     }
                   />

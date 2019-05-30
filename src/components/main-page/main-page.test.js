@@ -7,15 +7,18 @@ const cities = [`Berlin`, `Amsterdam`, `Dusseldorf`];
 describe(`MainPage`, () => {
   it(`renders correctly`, () => {
     const offers = [
-      {name: `Canal View Prinsengracht`, price: 132},
-      {name: `Nice, cozy, warm big bed apartment`, price: 180},
+      {title: `Canal View Prinsengracht`, price: 132, rating: 3.2, city: {name: `Berlin`}},
+      {title: `Nice, cozy, warm big bed apartment`, price: 180, rating: 4.3, city: {name: `Amsterdam`}},
     ];
 
     const tree = renderer.create(
         <MainPage
           offers={offers}
           cities={cities}
-          city={`Berlin`}
+          city={{
+            name: `Berlin`,
+            location: {latitude: 51.225402, longitude: 6.776314, zoom: 13}
+          }}
           handleSelectCity={jest.fn()}
           changeCity={jest.fn(`Berlin`)} />
     ).toJSON();

@@ -4,7 +4,7 @@ import PlaceImage from '@/components/place-image/place-image';
 
 describe(`PlaceImage`, () => {
   it(`renders correctly with props`, () => {
-    const tree = renderer.create(<PlaceImage img={`apartment.jpg`}/>).toJSON();
+    const tree = renderer.create(<PlaceImage previewImage={`apartment.jpg`}/>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 

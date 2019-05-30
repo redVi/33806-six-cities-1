@@ -12,7 +12,7 @@ exports[`PlaceImage renders correctly with props 1`] = `
       alt="Place image"
       className="place-card__image"
       height="200"
-      src="img/apartment.jpg"
+      src="apartment.jpg"
       width="260"
     />
   </a>
@@ -31,7 +31,6 @@ exports[`PlaceImage renders correctly without props 1`] = `
       alt="Place image"
       className="place-card__image"
       height="200"
-      src="img/room.jpg"
       width="260"
     />
   </a>

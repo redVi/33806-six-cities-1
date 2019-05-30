@@ -6,20 +6,20 @@ import PlacesList from '@/components/places-list/places-list.jsx';
 import CityMap from '@/components/city-map/city-map.jsx';
 import withActiveItem from '@/hocs/with-active-item/with-active-item.jsx';
 
-const WrappedCitiesList = withActiveItem(CitiesList, 0);
 const WrappedPlacesList = withActiveItem(PlacesList);
 
 const MainPage = (props) => {
   const {offers, cities, city, changeCity} = props;
-  const placesHeading = `${offers.length} ${offers.length > 1 ? `places` : `place`} to stay in ${city}`;
-  const coordinates = offers.map((offer) => offer.coordinates);
+  const placesHeading = `${offers.length} ${offers.length > 1 ? `places` : `place`} to stay in ${city.name}`;
+  const coordinates = offers.map((offer) => offer.location);
 
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
 
-      <WrappedCitiesList
+      <CitiesList
         cities={cities}
+        current={city.name}
         handleSelectCity={changeCity} />
 
       <div className="cities__places-wrapper">
@@ -30,7 +30,7 @@ const MainPage = (props) => {
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex="0">
-              Popular
+                Popular
                 <svg className="places__sorting-arrow" width="7" height="4">
                   <use xlinkHref="#icon-arrow-select"/>
                 </svg>
@@ -59,8 +59,8 @@ const MainPage = (props) => {
           <div className="cities__right-section">
             <CityMap
               coordinates={coordinates}
-              center={coordinates[0]}
-              key={coordinates} />
+              location={city.location}
+              key={`map-${city.name}`} />
           </div>
         </div>
       </div>
@@ -69,10 +69,9 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  city: PropTypes.string,
+  city: PropTypes.object,
   cities: PropTypes.arrayOf(PropTypes.string),
   offers: PropTypes.arrayOf(PropTypes.object),
-  getOffers: PropTypes.func,
   changeCity: PropTypes.func
 };
 
