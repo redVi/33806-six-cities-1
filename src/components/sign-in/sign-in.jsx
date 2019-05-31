@@ -85,7 +85,7 @@ const _mapDispatchToProps = (dispatch) => ({
   logIn: (form) => {
     configureAPI(dispatch)
       .post(`/login`, form).then((response) => {
-        dispatch(userActionCreator.getUser(response.data));
+        dispatch(userActionCreator.logIn(response.data));
         dispatch(userActionCreator.changeAuthorization(false));
       });
   }

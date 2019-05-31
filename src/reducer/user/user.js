@@ -7,18 +7,18 @@ const initialState = {
 
 const TYPE = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
-  GET_USER: `GET_USER`,
-  REMOVE_USER: `REMOVE_USER`
+  LOGIN: `LOGIN`,
+  LOGOUT: `LOGOUT`
 };
 
 const userActionCreator = {
+  logIn: (user) => ({
+    type: TYPE.LOGIN,
+    payload: user
+  }),
   changeAuthorization: (isAuthRequired) => ({
     type: TYPE.REQUIRED_AUTHORIZATION,
     payload: isAuthRequired
-  }),
-  getUser: (user) => ({
-    type: TYPE.GET_USER,
-    payload: user
   })
 };
 
@@ -28,11 +28,11 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isAuthorizationRequired: action.payload
       });
-    case TYPE.GET_USER:
+    case TYPE.LOGIN:
       return Object.assign({}, state, {
         user: normalizeKeys(action.payload)
       });
-    case TYPE.REMOVE_USER:
+    case TYPE.LOGOUT:
       return Object.assign({}, state, {
         user: {},
       });

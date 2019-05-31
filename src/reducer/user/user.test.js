@@ -9,8 +9,8 @@ describe(`User's reducers`, () => {
   });
 
   it(`should return correct user data`, () => {
-    expect(userActionCreator.getUser({login: `Oliver`})).toEqual({
-      type: TYPE.GET_USER,
+    expect(userActionCreator.logIn({login: `Oliver`})).toEqual({
+      type: TYPE.LOGIN,
       payload: {login: `Oliver`}
     });
   });
