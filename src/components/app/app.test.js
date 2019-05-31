@@ -17,6 +17,8 @@ describe(`App`, () => {
   it(`renders places correctly`, () => {
     const tree = renderer.create(
         <App
+          isAuthorizationRequired={false}
+          user={{}}
           offers={offers}
           cities={[`Paris`, `Cologne`, `Amsterdam`]}
           city={{

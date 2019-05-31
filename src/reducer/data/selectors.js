@@ -1,6 +1,5 @@
 import {createSelector} from 'reselect';
 import NameSpace from '@/reducer/namespaces';
-import {normalizeKeys} from '@/helpers';
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -10,10 +9,7 @@ export const getCity = (state) => state[NAME_SPACE].city;
 
 export const getSelectedOffers = createSelector(
     [getOffers, getCity],
-    (offers, city) =>
-      offers
-        .map((offer) => normalizeKeys(offer))
-        .filter((offer) => offer.city.name === city.name)
+    (offers, city) => offers.filter((offer) => offer.city.name === city.name)
 );
 
 export const getCities = createSelector(
