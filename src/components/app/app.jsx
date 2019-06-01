@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Route, Switch, Redirect} from 'react-router-dom';
 
 import {dataActionCreator} from '@/reducer/data/data';
-import {userActionCreator} from '@/reducer/user/user';
 import {getCities, getCity, getSelectedOffers} from '@/reducer/data/selectors';
 import {checkAuthorization, getUserData} from '@/reducer/user/selectors';
 
 import SvgSprite from '@/components/svg-sprite/svg-sprite.jsx';
 import MainHeader from '@/components/main-header/main-header.jsx';
 import MainPage from '@/components/main-page/main-page.jsx';
-import SignIn from '@/components/sign-in/sign-in.jsx';
+import Login from '@/components/login/login.jsx';
+import Favorites from '@/components/favorites/favorites.jsx';
+import withGuardRoute from '@/hocs/with-guard-route/with-guard-route.jsx';
 
 const App = (props) => {
   const {
@@ -19,23 +21,24 @@ const App = (props) => {
     cities,
     offers,
     isAuthorizationRequired,
-    changeCity,
-    signIn
+    changeCity
   } = props;
 
-  const Main = <MainPage cities={cities} offers={offers} city={city} changeCity={changeCity} />;
-  const SignInPage = <SignIn />;
   const pageClassName = isAuthorizationRequired ? `login` : `main`;
-  const CurrentPage = isAuthorizationRequired ? SignInPage : Main;
+  const Header = () => <MainHeader isAuthorizationRequired={isAuthorizationRequired} user={user} />;
+  const Home = () => <MainPage cities={cities} offers={offers} city={city} changeCity={changeCity} header={<Header />}/>;
 
   return (
     <div className={`page page--gray page--${pageClassName}`}>
       <SvgSprite />
-      <MainHeader
-        isAuthorizationRequired={isAuthorizationRequired}
-        handleSignInClick={() => signIn()}
-        user={user} />
-      {CurrentPage}
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/favorites" render={() =>
+          withGuardRoute(Favorites, isAuthorizationRequired)} />
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 };
@@ -52,9 +55,6 @@ const _mapDispatchToProps = (dispatch) => ({
   changeCity: (city) => {
     dispatch(dataActionCreator.changeCity(city));
   },
-  signIn: () => {
-    dispatch(userActionCreator.changeAuthorization(true));
-  }
 });
 
 App.propTypes = {

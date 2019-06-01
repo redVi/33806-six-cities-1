@@ -4,12 +4,13 @@ import {connect} from 'react-redux';
 import {configureAPI} from '@/api';
 import {userActionCreator} from '@/reducer/user/user';
 
-class SignIn extends PureComponent {
+class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       email: ``,
-      password: ``
+      password: ``,
+      isFormWasSubmit: false,
     };
     this._changeText = this._changeText.bind(this);
     this._sendLogInForm = this._sendLogInForm.bind(this);
@@ -20,8 +21,9 @@ class SignIn extends PureComponent {
   }
 
   _sendLogInForm(e) {
+    const {email, password} = this.state;
     e.preventDefault();
-    this.props.logIn(this.state);
+    this.props.logIn({email, password});
   }
 
   render() {
@@ -81,20 +83,20 @@ class SignIn extends PureComponent {
   }
 }
 
-const _mapDispatchToProps = (dispatch) => ({
+const _mapDispatchToProps = (dispatch, ownProps) => ({
   logIn: (form) => {
-    configureAPI(dispatch)
-      .post(`/login`, form).then((response) => {
-        dispatch(userActionCreator.logIn(response.data));
-        dispatch(userActionCreator.changeAuthorization(false));
-      });
+    configureAPI().post(`/login`, form).then((response) => {
+      dispatch(userActionCreator.logIn(response.data));
+      dispatch(userActionCreator.changeAuthorization(false));
+      ownProps.history.push(`/`);
+    });
   }
 });
 
-SignIn.propTypes = {
+Login.propTypes = {
   logIn: PropTypes.func,
 };
 
-export {SignIn};
+export {Login};
 
-export default connect(null, _mapDispatchToProps)(SignIn);
+export default connect(null, _mapDispatchToProps)(Login);

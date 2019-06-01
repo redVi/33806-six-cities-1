@@ -58,6 +58,8 @@ exports[`App renders places correctly 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -79,7 +81,7 @@ exports[`App renders places correctly 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/login"
                 onClick={[Function]}
               >
                 <div
@@ -317,7 +319,8 @@ exports[`App renders places correctly 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/1"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>

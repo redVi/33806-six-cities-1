@@ -15,6 +15,8 @@ exports[`MainHeader renders correctly when user logged in 1`] = `
       >
         <a
           className="header__logo-link header__logo-link--active"
+          href="/"
+          onClick={[Function]}
         >
           <img
             alt="6 cities logo"
@@ -36,7 +38,7 @@ exports[`MainHeader renders correctly when user logged in 1`] = `
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="#"
+              href="/login"
               onClick={[Function]}
             >
               <div
@@ -72,6 +74,8 @@ exports[`MainHeader renders correctly when user not logged in 1`] = `
       >
         <a
           className="header__logo-link header__logo-link--active"
+          href="/"
+          onClick={[Function]}
         >
           <img
             alt="6 cities logo"
@@ -93,7 +97,7 @@ exports[`MainHeader renders correctly when user not logged in 1`] = `
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="#"
+              href="/login"
               onClick={[Function]}
             >
               <div

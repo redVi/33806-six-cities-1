@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {SignIn} from '@/components/sign-in/sign-in';
+import Favorites from '@/components/favorites/favorites.jsx';
 
-describe(`SignIn`, () => {
+describe(`Favorites`, () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<SignIn />).toJSON();
+    const tree = renderer.create(<Favorites />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
