@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {BASE_URL} from '@/api';
+import {BASE_URL} from '@/api/config';
 
 const MainHeader = (props) => {
   const {isAuthorizationRequired, user} = props;

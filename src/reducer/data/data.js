@@ -40,15 +40,7 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-const Service = {
-  fetchOffers: (dispatch, _getState, api) =>
-    api.get(`/hotels`).then((response) => {
-      dispatch(dataActionCreator.fetchOffers(response.data));
-    })
-};
-
 export {
-  Service,
   dataActionCreator,
   TYPE,
   reducer

@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {configureAPI} from '@/api';
 import {userActionCreator} from '@/reducer/user/user';
+import Auth from '@/api/auth';
 
 class Login extends PureComponent {
   constructor(props) {
@@ -85,7 +85,7 @@ class Login extends PureComponent {
 
 const _mapDispatchToProps = (dispatch, ownProps) => ({
   logIn: (form) => {
-    configureAPI().post(`/login`, form).then((response) => {
+    Auth.post(form).then((response) => {
       dispatch(userActionCreator.logIn(response.data));
       dispatch(userActionCreator.changeAuthorization(false));
       ownProps.history.push(`/`);
