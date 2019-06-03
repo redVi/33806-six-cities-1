@@ -87,7 +87,8 @@ exports[`PlacesList renders correctly with props 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/1"
+          onClick={[Function]}
         >
           Canal View Prinsengracht
         </a>
@@ -180,7 +181,8 @@ exports[`PlacesList renders correctly with props 1`] = `
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/2"
+          onClick={[Function]}
         >
           Nice, cozy, warm big bed apartment
         </a>

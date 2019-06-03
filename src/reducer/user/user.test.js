@@ -1,7 +1,7 @@
 import {userActionCreator, TYPE} from './user';
 
 describe(`User's reducers`, () => {
-  it(`should correct check the authtorization`, () => {
+  it(`should correct check the authorization`, () => {
     expect(userActionCreator.changeAuthorization(true)).toEqual({
       type: TYPE.REQUIRED_AUTHORIZATION,
       payload: true

@@ -10,7 +10,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, `public`),
     compress: false,
-    port: 1337
+    port: 1337,
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -24,6 +25,7 @@ module.exports = {
     ]
   },
   devtool: `source-map`,
+  stats: `errors-only`,
   resolve: {
     alias: {
       '@': path.join(__dirname, `src`)

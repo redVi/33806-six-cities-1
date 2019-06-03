@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderLink renders correctly when user is logged in 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="/favorites"
+  onClick={[Function]}
+>
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+    style={
+      Object {
+        "backgroundImage": "url(\\"https://pirates.com/uploads/avatar.jpg\\")",
+      }
+    }
+  />
+  <span
+    className="header__user-name user__name"
+  >
+    jack-sparrow@pirates.com
+  </span>
+</a>
+`;
+
+exports[`HeaderLink renders correctly when user isn't logged in 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="/login"
+  onClick={[Function]}
+>
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+  />
+  <span
+    className="header__login"
+  >
+    Sign In
+  </span>
+</a>
+`;

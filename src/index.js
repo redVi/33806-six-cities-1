@@ -1,30 +1,27 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 
-import {configureAPI} from '@/api';
+import reducer from '@/reducer';
 import App from '@/components/app/app.jsx';
-import {Service} from '@/reducer/data/data';
-import reducer from '@/reducer/index';
 
 const hasReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && process.env.NODE_ENV !== `production`;
-const api = configureAPI((...args) => store.dispatch(...args));
-
 const store = createStore(
     reducer,
     compose(
-        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(thunk),
         hasReduxDevTools ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
     )
 );
 
-store.dispatch(Service.fetchOffers);
-
 render(
     <Provider store={store}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>,
     document.getElementById(`root`)
 );

@@ -92,7 +92,8 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
       className="place-card__name"
     >
       <a
-        href="#"
+        href="/1"
+        onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
       </a>
@@ -190,7 +191,8 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
       className="place-card__name"
     >
       <a
-        href="#"
+        href="/2"
+        onClick={[Function]}
       >
         Wood and stone place
       </a>

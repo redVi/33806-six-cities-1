@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import PlaceBookmark from '@/components/place-bookmark/place-bookmark.jsx';
 
 const PlaceInfo = (props) => {
-  const {title, type, price, rating, isFavorite, titleHandler} = props;
-  const calculateRating = () => `${rating ? rating * 2 * 10 : 0}%`;
+  const {id, title, type, price, rating, isFavorite, titleHandler} = props;
+  const calculatedRating = `${rating ? rating * 2 * 10 : 0}%`;
 
   return (
     <div className="place-card__info">
@@ -17,12 +18,12 @@ const PlaceInfo = (props) => {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{width: calculateRating()}}/>
+          <span style={{width: calculatedRating}}/>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
       <h2 className="place-card__name" onClick={titleHandler}>
-        <a href="#">{title}</a>
+        <Link to={`${id}`}>{title}</Link>
       </h2>
       <p className="place-card__type">{type}</p>
     </div>
@@ -30,6 +31,7 @@ const PlaceInfo = (props) => {
 };
 
 PlaceInfo.propTypes = ({
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   type: PropTypes.string,

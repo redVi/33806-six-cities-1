@@ -219,7 +219,8 @@ exports[`MainPage renders correctly 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/1"
+                  onClick={[Function]}
                 >
                   Canal View Prinsengracht
                 </a>
@@ -312,7 +313,8 @@ exports[`MainPage renders correctly 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/2"
+                  onClick={[Function]}
                 >
                   Nice, cozy, warm big bed apartment
                 </a>
