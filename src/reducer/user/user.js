@@ -16,6 +16,9 @@ const userActionCreator = {
     type: TYPE.LOGIN,
     payload: user
   }),
+  logOut: () => ({
+    type: TYPE.LOGOUT
+  }),
   changeAuthorization: (isAuthRequired) => ({
     type: TYPE.REQUIRED_AUTHORIZATION,
     payload: isAuthRequired
@@ -30,11 +33,13 @@ const reducer = (state = initialState, action) => {
       });
     case TYPE.LOGIN:
       return Object.assign({}, state, {
-        user: normalizeKeys(action.payload)
+        user: normalizeKeys(action.payload),
+        isAuthorizationRequired: false
       });
     case TYPE.LOGOUT:
       return Object.assign({}, state, {
         user: {},
+        isAuthorizationRequired: true
       });
   }
 

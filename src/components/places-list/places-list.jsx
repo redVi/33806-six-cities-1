@@ -7,7 +7,7 @@ const PlacesList = ({places, current, setActiveItem}) =>
     {places
       ? places.map((offer, index) =>
         <PlacesListItem
-          key={`place-${index}`}
+          key={`place-${offer.id}`}
           offer={offer}
           current={current === index ? current : undefined}
           handleImageClick={() => setActiveItem(index)} />)

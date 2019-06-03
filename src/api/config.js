@@ -9,14 +9,7 @@ const api = axios.create({
 });
 
 const onSuccess = (response) => response;
-
-const onFail = (err) => {
-  if (err.status === 403) {
-    history.push(`/login`);
-  }
-
-  return Promise.reject(err);
-};
+const onFail = (err) => Promise.reject(err);
 
 api.interceptors.response.use(onSuccess, onFail);
 

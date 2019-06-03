@@ -2,12 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {BASE_URL} from '@/api/config';
+import HeaderLink from '@/components/header-link/header-link.jsx';
 
 const MainHeader = (props) => {
-  const {isAuthorizationRequired, user} = props;
-  const userNameClass = isAuthorizationRequired ? `login` : `user-name user__name`;
-
-  const userBgImage = isAuthorizationRequired ? {} : {backgroundImage: `url(${BASE_URL}${user.avatarUrl})`};
+  const {user} = props;
+  const isNotEmpty = Object.keys(user).length;
+  const userBgImage = user.avatarUrl ? {backgroundImage: `url(${BASE_URL}${user.avatarUrl})`} : {};
+  const headerLink = isNotEmpty
+    ? <HeaderLink
+      text={user.email}
+      link="/favorites"
+      bg={userBgImage}
+      linkClass="user-name user__name" />
+    : <HeaderLink text="Sign in" link="/login" />;
 
   return (
     <header className="header">
@@ -25,17 +32,7 @@ const MainHeader = (props) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link
-                  to="/login"
-                  className="header__nav-link header__nav-link--profile"
-                >
-                  <div
-                    style={user.avatarUrl ? userBgImage : {}}
-                    className="header__avatar-wrapper user__avatar-wrapper" />
-                  <span className={`header__${userNameClass}`}>
-                    {user.email ? user.email : `Sign in`}
-                  </span>
-                </Link>
+                {headerLink}
               </li>
             </ul>
           </nav>
@@ -46,7 +43,6 @@ const MainHeader = (props) => {
 };
 
 MainHeader.propTypes = {
-  isAuthorizationRequired: PropTypes.bool.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
     email: PropTypes.string,

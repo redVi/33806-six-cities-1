@@ -20,7 +20,7 @@ describe(`App`, () => {
     const tree = renderer.create(
         <Router>
           <App
-            isAuthorizationRequired={false}
+            isAuthorizationRequired={true}
             user={{}}
             offers={offers}
             cities={[`Paris`, `Cologne`, `Amsterdam`]}
@@ -29,7 +29,7 @@ describe(`App`, () => {
               location: {latitude: 51.225402, longitude: 6.776314, zoom: 13}
             }}
             changeCity={jest.fn()}
-            fetchHotels={jest.fn()} />
+            fetchOffers={jest.fn()} />
         </Router>
     ).toJSON();
     expect(tree).toMatchSnapshot();

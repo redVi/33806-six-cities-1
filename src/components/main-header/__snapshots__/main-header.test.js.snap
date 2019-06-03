@@ -38,7 +38,7 @@ exports[`MainHeader renders correctly when user logged in 1`] = `
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="/login"
+              href="/favorites"
               onClick={[Function]}
             >
               <div
@@ -102,7 +102,6 @@ exports[`MainHeader renders correctly when user not logged in 1`] = `
             >
               <div
                 className="header__avatar-wrapper user__avatar-wrapper"
-                style={Object {}}
               />
               <span
                 className="header__login"

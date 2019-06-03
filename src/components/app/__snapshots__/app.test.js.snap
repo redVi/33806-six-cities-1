@@ -86,10 +86,9 @@ exports[`App renders places correctly 1`] = `
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
-                  style={Object {}}
                 />
                 <span
-                  className="header__user-name user__name"
+                  className="header__login"
                 >
                   Sign in
                 </span>

@@ -83,11 +83,10 @@ class Login extends PureComponent {
   }
 }
 
-const _mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   logIn: (form) => {
     Auth.post(form).then((response) => {
       dispatch(userActionCreator.logIn(response.data));
-      dispatch(userActionCreator.changeAuthorization(false));
       ownProps.history.push(`/`);
     });
   }
@@ -99,4 +98,4 @@ Login.propTypes = {
 
 export {Login};
 
-export default connect(null, _mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

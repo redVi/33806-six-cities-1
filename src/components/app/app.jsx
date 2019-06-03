@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {dataActionCreator} from '@/reducer/data/data';
 import {getCities, getCity, getSelectedOffers} from '@/reducer/data/selectors';
-import {checkAuthorization, getUserData} from '@/reducer/user/selectors';
+import {getUserData} from '@/reducer/user/selectors';
+import Auth from '@/api/auth';
 import Hotels from '@/api/hotels';
 
 import SvgSprite from '@/components/svg-sprite/svg-sprite.jsx';
@@ -13,10 +14,17 @@ import MainPage from '@/components/main-page/main-page.jsx';
 import Login from '@/components/login/login.jsx';
 import Favorites from '@/components/favorites/favorites.jsx';
 import withGuardRoute from '@/hocs/with-guard-route/with-guard-route.jsx';
+import {userActionCreator} from '@/reducer/user/user';
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.fetchHotels();
+    Auth.get().then((response) => {
+      this.props.logIn(response.data);
+    }).catch(() => {
+      this.props.logOut();
+    });
+
+    this.props.fetchOffers();
   }
 
   render() {
@@ -25,23 +33,24 @@ class App extends React.Component {
       city,
       cities,
       offers,
-      isAuthorizationRequired,
       changeCity
     } = this.props;
 
-    const pageClassName = isAuthorizationRequired ? `login` : `main`;
-    const Header = () => <MainHeader isAuthorizationRequired={isAuthorizationRequired} user={user} />;
-    const Home = () => <MainPage cities={cities} offers={offers} city={city} changeCity={changeCity} header={<Header />}/>;
+    const HomePage = () =>
+      <MainPage
+        cities={cities}
+        offers={offers}
+        city={city}
+        changeCity={changeCity} />;
 
     return (
-      <div className={`page page--gray page--${pageClassName}`}>
+      <div className="page page--gray page--main">
         <SvgSprite />
-        <Header />
+        <MainHeader user={user} />
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={HomePage} />
           <Route path="/login" component={Login} />
-          <Route path="/favorites" render={() =>
-            withGuardRoute(Favorites, isAuthorizationRequired)} />
+          <Route path="/favorites" component={withGuardRoute(Favorites)} />
           <Redirect to="/" />
         </Switch>
       </div>
@@ -49,19 +58,24 @@ class App extends React.Component {
   }
 }
 
-const _mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   user: getUserData(state),
   city: getCity(state),
   cities: getCities(state),
   offers: getSelectedOffers(state),
-  isAuthorizationRequired: checkAuthorization(state)
 });
 
-const _mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
+  logIn: (user) => {
+    dispatch(userActionCreator.logIn(user));
+  },
+  logOut: () => {
+    dispatch(userActionCreator.logOut());
+  },
   changeCity: (city) => {
     dispatch(dataActionCreator.changeCity(city));
   },
-  fetchHotels: () => {
+  fetchOffers: () => {
     Hotels.get().then((response) => {
       dispatch(dataActionCreator.fetchOffers(response.data));
     });
@@ -73,11 +87,12 @@ App.propTypes = {
   city: PropTypes.object,
   cities: PropTypes.arrayOf(PropTypes.string),
   offers: PropTypes.arrayOf(PropTypes.object),
-  isAuthorizationRequired: PropTypes.bool.isRequired,
+  logIn: PropTypes.func,
+  logOut: PropTypes.func,
   changeCity: PropTypes.func,
-  fetchHotels: PropTypes.func
+  fetchOffers: PropTypes.func
 };
 
 export {App};
 
-export default connect(_mapStateToProps, _mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
