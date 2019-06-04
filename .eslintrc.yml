@@ -5,6 +5,7 @@ env:
   jest: true
   node: true
 
+parser: '@typescript-eslint/parser'
 extends: ['htmlacademy/es6', 'plugin:react/recommended']
 
 parserOptions:
@@ -13,7 +14,7 @@ parserOptions:
   ecmaVersion: 9
   sourceType: module
 
-plugins: ['react']
+plugins: ['react', '@typescript-eslint']
 
 settings:
   react:
