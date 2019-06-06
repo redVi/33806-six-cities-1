@@ -1,10 +1,10 @@
 import api from '@/api/config';
 
-const URL = `/hotels`;
+const URL = `/favorite`;
 
-const Favorite = {
+const Favorites = {
   get: () => api.get(URL),
   post: (hotelId: number, status: number) => api.post(`${URL}/${hotelId}/${status}`)
 };
 
-export default Favorite;
+export default Favorites;

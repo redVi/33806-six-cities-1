@@ -1,10 +1,12 @@
 import {normalizeKeys} from '@/helpers';
+import {offer} from "@/types";
 
 enum TYPE {
   REQUIRED_AUTHORIZATION = 'REQUIRED_AUTHORIZATION',
+  FETCH_FAVORITES = 'FETCH_FAVORITES',
   LOGIN = 'LOGIN',
   LOGOUT = 'LOGOUT'
-};
+}
 
 interface ActionType {
   type: TYPE,
@@ -12,8 +14,9 @@ interface ActionType {
 }
 
 const initialState = {
-  isAuthorizationRequired: false,
+  isLoggedIn: undefined,
   user: {},
+  favorites: []
 };
 
 const userActionCreator = {
@@ -24,28 +27,40 @@ const userActionCreator = {
   logOut: () => ({
     type: TYPE.LOGOUT
   }),
-  changeAuthorization: (isAuthRequired: boolean) => ({
+  changeAuthorization: (isLoggedIn: boolean) => ({
     type: TYPE.REQUIRED_AUTHORIZATION,
-    payload: isAuthRequired
+    payload: isLoggedIn
+  }),
+  fetchFavorites: (favorites: offer[]) => ({
+    type: TYPE.FETCH_FAVORITES,
+    payload: favorites
   })
 };
 
 const reducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case TYPE.REQUIRED_AUTHORIZATION:
-      return Object.assign({}, state, {
-        isAuthorizationRequired: action.payload
-      });
+      return {
+        ...state,
+        isLoggedIn: action.payload
+      };
+    case TYPE.FETCH_FAVORITES:
+      return {
+        ...state,
+        favorites: normalizeKeys(action.payload)
+      };
     case TYPE.LOGIN:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         user: normalizeKeys(action.payload),
-        isAuthorizationRequired: false
-      });
+        isLoggedIn: true
+      };
     case TYPE.LOGOUT:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         user: {},
-        isAuthorizationRequired: true
-      });
+        isLoggedIn: false
+      };
   }
 
   return state;

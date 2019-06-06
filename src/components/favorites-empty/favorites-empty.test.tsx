@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Favorites from '@/components/favorites/favorites';
+import FavoritesEmpty from '@/components/favorites-empty/favorites-empty';
 
 describe(`Favorites`, () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Favorites />).toJSON();
+    const tree = renderer.create(<FavoritesEmpty />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -5,21 +5,24 @@ import {connect} from 'react-redux';
 import {checkAuthorization} from '@/reducer/user/selectors';
 
 interface Props {
-  isAuthorizationRequired: boolean
+  isLoggedIn: boolean
 }
 
-const withGuardRoute = function (WrappedComponent) {
+const withGuardRoute = function (WrappedComponent, accessTo) {
   return function withProps(props: Props) {
-    if (props.isAuthorizationRequired) {
-      return <Redirect to="/login" />;
-    }
+    const {isLoggedIn} = props;
 
-    return <WrappedComponent {...props} />;
+    switch (true) {
+      case isLoggedIn === undefined: return null;
+      case isLoggedIn === false && accessTo === 'user': return <Redirect to="/login" />;
+      case isLoggedIn === true && accessTo === 'anonymous': return <Redirect to="/" />;
+      default: return <WrappedComponent {...props} />;
+    }
   }
 };
 
 const mapStateToProps = (state: object) => ({
-  isAuthorizationRequired: checkAuthorization(state)
+  isLoggedIn: checkAuthorization(state)
 });
 
 const composedComponentWrapper = compose(

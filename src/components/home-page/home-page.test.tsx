@@ -1,11 +1,11 @@
 import React from 'react';
 import {MemoryRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import MainPage from '@/components/main-page/main-page';
+import {HomePage} from '@/components/home-page/home-page';
 
 const cities = [`Berlin`, `Amsterdam`, `Dusseldorf`];
 
-describe(`MainPage`, () => {
+describe(`HomePage`, () => {
   it(`renders correctly`, () => {
     const offers = [
       {id: 1, title: `Canal View Prinsengracht`, price: 132, rating: 3.2, city: {name: `Berlin`}},
@@ -14,7 +14,7 @@ describe(`MainPage`, () => {
 
     const tree = renderer.create(
         <Router>
-          <MainPage
+          <HomePage
             offers={offers}
             cities={cities}
             city={{
