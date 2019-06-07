@@ -5,7 +5,7 @@ import PlacesListItem from '@/components/places-list-item/places-list-item';
 interface Props {
   places: offer[],
   current?: number,
-  setActiveItem: (index: number) => void
+  setActiveItem: (index: object) => void
 }
 
 const PlacesList = (props) => {
@@ -19,7 +19,7 @@ const PlacesList = (props) => {
             key={`place-${offer.id}`}
             offer={offer}
             current={current === index ? current : undefined}
-            handleImageClick={() => setActiveItem(index)} />)
+            handleImageClick={() => setActiveItem(offer)} />)
         : null
       }
     </div>

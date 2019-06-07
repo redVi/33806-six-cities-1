@@ -8,9 +8,9 @@ describe(`withActiveItem`, () => {
   it(`should correct change 'current' value`, () => {
     const wrapper = shallow(<MockComponentWrapped />);
 
-    expect(wrapper.props().current).toEqual(undefined);
+    expect(wrapper.props().activeItem).toEqual(undefined);
 
     wrapper.props().setActiveItem(2);
-    expect(wrapper.props().current).toEqual(2);
+    expect(wrapper.props().activeItem).toEqual(2);
   });
 });

@@ -2,33 +2,31 @@ import React, {PureComponent, ComponentType} from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  current: number | undefined
+  activeItem: any
 }
 
 interface InjectedProps {
-  current?: number,
-  setActiveItem: (current: number) => void,
-  key?: string
+  setActiveItem: (current) => void
 }
 
-function withActiveItem <T extends InjectedProps>(WrappedComponent: ComponentType<T>, index?: number) {
+function withActiveItem <T extends InjectedProps>(WrappedComponent: ComponentType<T>) {
   return class WithActiveItem extends PureComponent<Subtract<T, InjectedProps>, State> {
     constructor(props) {
       super(props);
-      this.state = {current: index};
-      this.setActiveItem = this.setActiveItem.bind(this);
+      this.state = {activeItem: undefined};
+      this._setActiveItem = this._setActiveItem.bind(this);
     }
 
-    private setActiveItem(current: number) {
-      this.setState({current});
+    private _setActiveItem(item) {
+      this.setState({activeItem: item});
     }
 
     render() {
       return (
         <WrappedComponent
           {...this.props as T}
-          current={this.state.current}
-          setActiveItem={this.setActiveItem} />
+          activeItem={this.state.activeItem}
+          setActiveItem={this._setActiveItem} />
       );
     }
   };

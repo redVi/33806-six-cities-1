@@ -1,6 +1,8 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import leaflet from 'leaflet';
 import {location} from '@/types';
+
+let map = null;
 
 const SETTINGS = {
   zoom: 12,
@@ -12,13 +14,19 @@ const SETTINGS = {
   })
 };
 
+const ACTIVE_ICON = leaflet.icon({
+  iconUrl: `/img/pin-active.svg`,
+  iconSize: [27, 39]
+});
+
 interface Props {
   location,
-  coordinates: location[]
+  coordinates: location[],
+  hasSelectedItem?: boolean
 }
 
-class CityMap extends PureComponent<Props> {
-  componentDidMount() {
+class CityMap extends Component<Props> {
+  componentDidMount(): void {
     try {
       this._initMap();
     } catch (e) {
@@ -26,13 +34,26 @@ class CityMap extends PureComponent<Props> {
     }
   }
 
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
+    if (this.props.location && this.props.location.latitude !== prevProps.location.latitude) {
+      map.remove();
+      this._initMap();
+    }
+  }
+
+  componentWillUnmount(): void {
+    map.remove();
+  }
+
   _initMap() {
-    const map = leaflet.map(`map`, SETTINGS);
     const {
       location: {latitude, longitude, zoom},
       coordinates
     } = this.props;
 
+    const center = [latitude, longitude];
+
+    map = leaflet.map(`map`, {...SETTINGS, center});
     map.setView([latitude, longitude], zoom);
 
     leaflet
@@ -42,6 +63,10 @@ class CityMap extends PureComponent<Props> {
     coordinates.forEach((city) => {
       leaflet.marker([city.latitude, city.longitude], {icon: SETTINGS.icon}).addTo(map);
     });
+
+    if (this.props.hasSelectedItem) {
+      leaflet.marker([latitude, longitude], {icon: ACTIVE_ICON}).addTo(map);
+    }
   }
 
   render() {

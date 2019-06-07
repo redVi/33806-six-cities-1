@@ -5,8 +5,10 @@ import {getCities, getCity, getSelectedOffers} from '@/reducer/data/selectors';
 
 import {offer, city} from '@/types';
 import CitiesList from '@/components/cities-list/cities-list';
-import OffersEmpty from "@/components/offers-empty/offers-empty";
-import Offers from "@/components/offers/offers";
+import OffersEmpty from '@/components/offers-empty/offers-empty';
+import Offers from '@/components/offers/offers';
+import withSorting from '@/hocs/with-sorting/with-sorting';
+import withActiveItem from '@/hocs/with-active-item/with-active-item';
 
 interface Props {
   offers: offer[],
@@ -17,8 +19,11 @@ interface Props {
 
 const HomePage  = (props) => {
   const {offers, cities, city, changeCity}: Props = props;
-  const hasOffers = offers.length;
-  const content = hasOffers ? <Offers offers={offers} city={city} /> : <OffersEmpty />;
+
+  const hasOffers = offers && offers.length;
+  const Places = withActiveItem(withSorting(Offers, offers));
+  const content = hasOffers ? <Places city={city} /> : <OffersEmpty />;
+
   const mainClass = hasOffers
     ? 'page page--gray page--main'
     : 'page__main page__main--index page__main--index-empty';

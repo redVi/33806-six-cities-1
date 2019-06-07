@@ -90,10 +90,12 @@ exports[`HomePage renders correctly 1`] = `
             <span
               className="places__sorting-caption"
             >
-              Sort by
+              Sort by 
             </span>
             <span
               className="places__sorting-type"
+              onClick={[Function]}
+              tabIndex={0}
             >
               Popular
               <svg
@@ -107,28 +109,32 @@ exports[`HomePage renders correctly 1`] = `
               </svg>
             </span>
             <ul
-              className="places__options places__options--custom places__options--opened"
+              className="places__options places__options--custom "
             >
               <li
                 className="places__option places__option--active"
+                onClick={[Function]}
                 tabIndex={0}
               >
                 Popular
               </li>
               <li
-                className="places__option"
+                className="places__option "
+                onClick={[Function]}
                 tabIndex={1}
               >
                 Price: low to high
               </li>
               <li
-                className="places__option"
+                className="places__option "
+                onClick={[Function]}
                 tabIndex={2}
               >
                 Price: high to low
               </li>
               <li
-                className="places__option"
+                className="places__option "
+                onClick={[Function]}
                 tabIndex={3}
               >
                 Top rated first
@@ -221,7 +227,7 @@ exports[`HomePage renders correctly 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="/1"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Canal View Prinsengracht
@@ -315,7 +321,7 @@ exports[`HomePage renders correctly 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="/2"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment

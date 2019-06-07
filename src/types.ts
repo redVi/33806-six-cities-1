@@ -22,8 +22,15 @@ type city = {
   location: location
 };
 
+type filterOption = {
+  text: string,
+  value: string,
+  field?: string
+}
+
 export {
   location,
   offer,
-  city
+  city,
+  filterOption
 }
