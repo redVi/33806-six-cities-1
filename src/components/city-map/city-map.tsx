@@ -20,9 +20,11 @@ const ACTIVE_ICON = leaflet.icon({
 });
 
 interface Props {
-  location,
+  location: location,
   coordinates: location[],
-  hasSelectedItem?: boolean
+  hasSelectedItem?: boolean,
+  canZoomChange?: boolean,
+  className?: string
 }
 
 class CityMap extends Component<Props> {
@@ -48,13 +50,14 @@ class CityMap extends Component<Props> {
   _initMap() {
     const {
       location: {latitude, longitude, zoom},
-      coordinates
+      coordinates,
+      canZoomChange
     } = this.props;
 
     const center = [latitude, longitude];
 
     map = leaflet.map(`map`, {...SETTINGS, center});
-    map.setView([latitude, longitude], zoom);
+    map.setView([latitude, longitude], canZoomChange ? zoom : SETTINGS.zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
@@ -70,8 +73,9 @@ class CityMap extends Component<Props> {
   }
 
   render() {
+    const className = this.props.className || `cities__map map`;
     return (
-      <section className="cities__map map" id="map" />
+      <section className={className} id="map" />
     );
   }
 }

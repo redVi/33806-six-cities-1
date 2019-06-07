@@ -5,14 +5,16 @@ import PlacesListItem from '@/components/places-list-item/places-list-item';
 interface Props {
   places: offer[],
   current?: number,
-  setActiveItem: (index: object) => void
+  setActiveItem?: (index: object) => void,
+  className?: string
 }
 
 const PlacesList = (props) => {
   const {places, current, setActiveItem}: Props = props;
+  const className = props.className || 'cities__places-list';
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={`${className} places__list tabs__content`}>
       {places
         ? places.map((offer, index) =>
           <PlacesListItem

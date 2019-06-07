@@ -11,7 +11,7 @@ interface Props {
 }
 
 const MainHeader = ({user}: Props) => {
-  const isNotEmpty = Object.keys(user).length;
+  const isNotEmpty = user && Object.keys(user).length;
   const userBgImage = isNotEmpty ? {backgroundImage: `url(${BASE_URL}${user.avatarUrl})`} : {};
   const headerLink = isNotEmpty
     ? <HeaderLink

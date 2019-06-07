@@ -7,6 +7,7 @@ const NAME_SPACE = NameSpace.DATA;
 export const getOffers = (state: object) => state[NAME_SPACE].offers;
 export const getFavorites = (state: object) => state[NAME_SPACE].favorites;
 export const getCity = (state: object) => state[NAME_SPACE].city;
+export const getComments = (state: object) => state[NAME_SPACE].comments;
 
 export const getSelectedOffers = createSelector(
     [getOffers, getCity],

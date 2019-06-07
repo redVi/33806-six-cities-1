@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 const onSuccess = (response) => response;
-const onFail = (err) => Promise.reject(err);
+const onFail = (error) => Promise.reject(error);
 
 api.interceptors.response.use(onSuccess, onFail);
 

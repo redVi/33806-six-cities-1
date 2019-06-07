@@ -4,6 +4,7 @@ import {offer} from '@/types';
 enum TYPE {
   CHANGE_CITY = 'CHANGE_CITY',
   FETCH_OFFERS = 'FETCH_OFFERS',
+  FETCH_COMMENTS = 'FETCH_COMMENTS'
 }
 
 interface ActionType {
@@ -16,7 +17,8 @@ const getCityFromOffers = (offers, cityName) => offers.filter((o) => o.city.name
 
 const initialState = {
   city: {},
-  offers: []
+  offers: [],
+  comments: []
 };
 
 const dataActionCreator = {
@@ -27,6 +29,10 @@ const dataActionCreator = {
   fetchOffers: (offers: offer[]) => ({
     type: TYPE.FETCH_OFFERS,
     payload: offers
+  }),
+  fetchComments: (comments) => ({
+    type: TYPE.FETCH_COMMENTS,
+    payload: comments
   })
 };
 
@@ -43,6 +49,11 @@ const reducer = (state = initialState, action: ActionType) => {
         ...state,
         city: getCityFromOffers(state.offers, action.payload)
       };
+    case TYPE.FETCH_COMMENTS:
+      return {
+        ...state,
+        comments: normalizeKeys(action.payload)
+      }
   }
 
   return state;
