@@ -36,7 +36,7 @@ class CityMap extends Component<Props> {
     }
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
+  componentDidUpdate(prevProps: Readonly<Props>): void {
     if (this.props.location && this.props.location.latitude !== prevProps.location.latitude) {
       map.remove();
       this._initMap();

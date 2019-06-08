@@ -1,6 +1,6 @@
 import React from 'react';
 import {offer} from '@/types';
-import PlaceMark from '@/components/place-mark/place-mark';
+import Mark from '@/components/mark/mark';
 import PlaceImage from '@/components/place-image/place-image';
 import PlaceInfo from '@/components/place-info/place-info';
 
@@ -14,7 +14,7 @@ interface Props {
 const PlacesListItem = (props) => {
   const className = props.className || 'cities__place-card';
   const {offer, current, handleImageClick}: Props = props;
-  const mark = offer.isPremium ? <PlaceMark/> : null;
+  const mark = offer.isPremium ? <Mark/> : null;
   const activeClass = current >= 0 ? `${className}--active` : ``;
 
   return (

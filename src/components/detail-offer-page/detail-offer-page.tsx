@@ -1,14 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getComments, getOffers, getSelectedOffers} from '@/reducer/data/selectors';
-import PlaceMark from '@/components/place-mark/place-mark';
-import PlaceBookmark from '@/components/place-bookmark/place-bookmark';
-import CityMap from '@/components/city-map/city-map';
-import {location} from '@/types';
 
+import {location} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
-import PlacesList from "@/components/places-list/places-list";
+import {checkAuthorization} from '@/reducer/user/selectors';
+import {getComments, getOffers, getSelectedOffers} from '@/reducer/data/selectors';
+import Mark from '@/components/mark/mark';
+import PlaceBookmark from '@/components/place-bookmark/place-bookmark';
+import CityMap from '@/components/city-map/city-map';
+import PlacesList from '@/components/places-list/places-list';
+import PreviewForm from "@/components/preview-form/preview-form";
 
 enum APARTMENT {
   apartment = 'Apartment',
@@ -46,7 +48,8 @@ interface Props {
   offer: offerType,
   offers: offerType[],
   comments,
-  getComments: () => object[]
+  getComments: () => object[],
+  isLoggedIn: boolean
 }
 
 class DetailOfferPage extends React.PureComponent<Props> {
@@ -54,14 +57,14 @@ class DetailOfferPage extends React.PureComponent<Props> {
     this.props.getComments();
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
+  componentDidUpdate(prevProps: Readonly<Props>): void {
     if (this.props.id !== prevProps.id) {
       this.props.getComments();
     }
   }
 
   render() {
-    const {offer, offers, comments} = this.props;
+    const {offer, offers, comments, isLoggedIn} = this.props;
 
     if (!offer) return null;
     const calculatedRating: string = `${offer.rating ? offer.rating * 2 * 10 : 0}%`;
@@ -84,7 +87,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
             <div className="property__container container">
               <div className="property__wrapper">
 
-                {offer.isPremium ? <PlaceMark className="property__mark" /> : null}
+                {offer.isPremium ? <Mark className="property__mark" /> : null}
 
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
@@ -187,6 +190,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
                       </li>
                     ))}
                   </ul>
+                  {isLoggedIn ? <PreviewForm /> : null}
                 </section>
               </div>
             </div>
@@ -214,7 +218,8 @@ const mapStateToProps = (state: object, ownProps) => {
     id: ownProps.match.params.id,
     offers: getSelectedOffers(state).filter((item) => item.id !== ownProps.match.params.id).slice(0, 3),
     offer: getOffers(state).filter((item) => item.id == ownProps.match.params.id)[0],
-    comments: getComments(state)
+    comments: getComments(state),
+    isLoggedIn: checkAuthorization(state)
   });
 };
 

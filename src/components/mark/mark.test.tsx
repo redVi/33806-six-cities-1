@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceMark from '@/components/place-mark/place-mark';
+import Mark from '@/components/mark/mark';
 
-describe(`PlaceMark`, () => {
+describe(`Mark`, () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<PlaceMark />).toJSON();
+    const tree = renderer.create(<Mark />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

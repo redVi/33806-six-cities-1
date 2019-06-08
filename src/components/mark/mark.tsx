@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlaceMark = (props) => {
+const Mark = (props) => {
   return (
     <div className={props.className || 'place-card__mark'}>
       <span>Premium</span>
@@ -8,4 +8,4 @@ const PlaceMark = (props) => {
   )
 };
 
-export default PlaceMark;
+export default Mark;

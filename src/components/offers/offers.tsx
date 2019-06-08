@@ -33,8 +33,7 @@ const Offers = (props) => {
           coordinates={coordinates}
           hasSelectedItem={hasActiveItem}
           canZoomChange={true}
-          location={hasActiveItem ? activeItem.location : city.location}
-          key={`map-${city.name}`} />
+          location={hasActiveItem ? activeItem.location : city.location} />
       </div>
     </div>
   );
