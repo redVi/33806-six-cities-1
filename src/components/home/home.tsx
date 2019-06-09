@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {dataActionCreator} from '@/reducer/data/data';
-import {getCities, getCity, getSelectedOffers} from '@/reducer/data/selectors';
+import {getCities, getCity, getCityOffers} from '@/reducer/data/selectors';
 
 import {offerType, cityType} from '@/types';
 import CitiesList from '@/components/cities-list/cities-list';
@@ -49,7 +49,7 @@ const Home  = (props) => {
 const mapStateToProps = (state: object) => ({
   city: getCity(state),
   cities: getCities(state),
-  offers: getSelectedOffers(state),
+  offers: getCityOffers(state),
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({

@@ -38,7 +38,7 @@ class CityMap extends Component<Props> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>): void {
-    const {location} = this.props;
+    const {location, hasSelectedItem, canZoomChange} = this.props;
 
     if (!map || prevProps.location.latitude === location.latitude) {
       return;
@@ -48,12 +48,12 @@ class CityMap extends Component<Props> {
       map.removeLayer(marker);
     }
 
-    if (this.props.hasSelectedItem) {
+    if (hasSelectedItem) {
       marker = leaflet.marker([location.latitude, location.longitude], {icon: ACTIVE_ICON});
       marker.addTo(map);
     }
 
-    if (this.props.canZoomChange) {
+    if (canZoomChange) {
       map.flyTo([location.latitude, location.longitude], this.props.location.zoom);
     }
   }

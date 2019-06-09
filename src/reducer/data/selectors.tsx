@@ -8,17 +8,18 @@ export const getOffers = (state: object) => state[NAME_SPACE].offers;
 export const getCity = (state: object) => state[NAME_SPACE].city;
 export const getComments = (state: object) => state[NAME_SPACE].comments;
 
-export const getOffer = (state: object, id: string) =>
+export const getOfferById = (state: object, id: string) =>
   state[NAME_SPACE].offers.filter((it) => it.id === parseInt(id))[0];
 
 export const getSimilarOffers = (state: object, id: string) => {
-  const offer = getOffer(state, id);
-  return state[NAME_SPACE].offers
+  const offer = getOfferById(state, id);
+
+  return getOffers(state)
     .filter((it) => it.city.name === offer.city.name)
     .filter((it) => it.id !== parseInt(id));
 };
 
-export const getSelectedOffers = createSelector(
+export const getCityOffers = createSelector(
     [getOffers, getCity],
     (offers, city) => offers.filter((o: offerType) => o.city.name === city.name)
 );

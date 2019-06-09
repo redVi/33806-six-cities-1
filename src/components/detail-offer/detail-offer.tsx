@@ -5,7 +5,7 @@ import {offerType, locationType} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
-import {getComments, getOffer, getOffers, getSelectedOffers, getSimilarOffers} from '@/reducer/data/selectors';
+import {getComments, getOfferById, getSimilarOffers} from '@/reducer/data/selectors';
 import Mark from '@/components/mark/mark';
 import Bookmark from '@/components/bookmark/bookmark';
 import CityMap from '@/components/city-map/city-map';
@@ -203,7 +203,7 @@ const mapStateToProps = (state: object, ownProps) => {
 
   return Object.assign({}, ownProps, {
     id: id,
-    offer: getOffer(state, id),
+    offer: getOfferById(state, id),
     offers: getSimilarOffers(state, id).slice(0, 3),
     comments: getComments(state),
     isLoggedIn: checkAuthorization(state)
