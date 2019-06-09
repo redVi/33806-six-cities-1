@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PlaceBookmark renders correctly with props 1`] = `
+exports[`Bookmark renders correctly with props 1`] = `
 <button
   className="place-card__bookmark-button place-card__bookmark-button--active button"
   type="button"
@@ -22,7 +22,7 @@ exports[`PlaceBookmark renders correctly with props 1`] = `
 </button>
 `;
 
-exports[`PlaceBookmark renders correctly without props 1`] = `
+exports[`Bookmark renders correctly without props 1`] = `
 <button
   className="place-card__bookmark-button  button"
   type="button"

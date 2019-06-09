@@ -10,7 +10,7 @@ interface Props {
   }
 }
 
-const MainHeader = ({user}: Props) => {
+const Header = ({user}: Props) => {
   const isNotEmpty = user && Object.keys(user).length;
   const userBgImage = isNotEmpty ? {backgroundImage: `url(${BASE_URL}${user.avatarUrl})`} : {};
   const headerLink = isNotEmpty
@@ -47,4 +47,4 @@ const MainHeader = ({user}: Props) => {
   );
 };
 
-export default MainHeader;
+export default Header;

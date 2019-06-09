@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomePage renders correctly 1`] = `
+exports[`Home renders correctly 1`] = `
 <div
   className="page page--gray page--main"
 >
@@ -185,6 +185,7 @@ exports[`HomePage renders correctly 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button  button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -279,6 +280,7 @@ exports[`HomePage renders correctly 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button  button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg

@@ -1,13 +1,13 @@
 import React from 'react';
 import {MemoryRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import MainHeader from '@/components/main-header/main-header';
+import Header from '@/components/header/header';
 
-describe(`MainHeader`, () => {
+describe(`Header`, () => {
   it(`renders correctly when user not logged in`, () => {
     const tree = renderer.create(
         <Router>
-          <MainHeader user={{}} />
+          <Header user={{}} />
         </Router>
     ).toJSON();
     expect(tree).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe(`MainHeader`, () => {
   it(`renders correctly when user logged in`, () => {
     const tree = renderer.create(
         <Router>
-          <MainHeader user={{
+          <Header user={{
             email: `Oliver.conner@gmail.com`,
             avatarUrl: `/jack-avatar.webp`
           }} />

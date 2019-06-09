@@ -2,7 +2,7 @@ import React, {PureComponent, ComponentType} from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  activeItem: any
+  activeItem: object | number | string
 }
 
 interface InjectedProps {

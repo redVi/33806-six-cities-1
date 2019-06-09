@@ -1,5 +1,5 @@
 import {normalizeKeys} from '@/helpers';
-import {offer} from "@/types";
+import {offerType} from "@/types";
 
 enum TYPE {
   REQUIRED_AUTHORIZATION = 'REQUIRED_AUTHORIZATION',
@@ -31,7 +31,7 @@ const userActionCreator = {
     type: TYPE.REQUIRED_AUTHORIZATION,
     payload: isLoggedIn
   }),
-  fetchFavorites: (favorites: offer[]) => ({
+  fetchFavorites: (favorites: offerType[]) => ({
     type: TYPE.FETCH_FAVORITES,
     payload: favorites
   })

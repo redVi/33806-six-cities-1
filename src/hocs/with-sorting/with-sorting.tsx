@@ -3,12 +3,12 @@ import {Subtract} from 'utility-types';
 import {sortByField} from '@/helpers';
 
 interface State {
-  list: any,
+  list: any[],
   filter: string
 }
 
 interface InjectedProps {
-  items: any,
+  items: object | string | number,
   setActiveItem: (current: number) => void
 }
 

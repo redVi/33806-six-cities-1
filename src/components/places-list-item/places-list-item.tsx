@@ -1,11 +1,11 @@
 import React from 'react';
-import {offer} from '@/types';
+import {offerType} from '@/types';
 import Mark from '@/components/mark/mark';
 import PlaceImage from '@/components/place-image/place-image';
 import PlaceInfo from '@/components/place-info/place-info';
 
 interface Props {
-  offer: offer,
+  offer: offerType,
   handleImageClick: () => void,
   current?: number,
   className?: string

@@ -12,7 +12,7 @@ interface State {
   password: string
 }
 
-class LoginPage extends PureComponent<Props, State> {
+class Login extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {email: ``, password: ``};
@@ -99,5 +99,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-export {LoginPage};
-export default connect(null, mapDispatchToProps)(LoginPage);
+export {Login};
+export default connect(null, mapDispatchToProps)(Login);

@@ -8,7 +8,7 @@ import {getUserData} from '@/reducer/user/selectors';
 import {userActionCreator} from '@/reducer/user/user';
 import {dataActionCreator} from '@/reducer/data/data';
 import SvgSprite from '@/components/svg-sprite/svg-sprite';
-import MainHeader from '@/components/main-header/main-header';
+import Header from '@/components/header/header';
 
 interface Props {
   user: object
@@ -32,7 +32,7 @@ class App extends React.Component<Props> {
     return (
       <>
         <SvgSprite />
-        <MainHeader user={this.props.user} />
+        <Header user={this.props.user} />
       </>
     );
   }

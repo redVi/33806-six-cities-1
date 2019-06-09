@@ -24,6 +24,7 @@ exports[`PlaceInfo renders correctly with only required props 1`] = `
     </div>
     <button
       className="place-card__bookmark-button  button"
+      onClick={[Function]}
       type="button"
     >
       <svg
@@ -102,6 +103,7 @@ exports[`PlaceInfo renders correctly with props 1`] = `
     </div>
     <button
       className="place-card__bookmark-button place-card__bookmark-button--active button"
+      onClick={[Function]}
       type="button"
     >
       <svg

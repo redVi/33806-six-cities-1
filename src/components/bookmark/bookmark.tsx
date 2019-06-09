@@ -1,6 +1,8 @@
 import React from 'react';
+import withFavoriteAction from '@/hocs/with-favorite-action/with-favorite-action';
 
 interface Props {
+  id?: number,
   width?: string,
   height?: string,
   className?: string,
@@ -8,7 +10,7 @@ interface Props {
   handleClick?: () => void
 }
 
-const PlaceBookmark = (props: Props) => {
+const Bookmark = (props: Props) => {
   const rootClass = props.className || 'place-card';
   const active = props.isFavorite ? `${rootClass}__bookmark-button--active` : ``;
 
@@ -25,4 +27,5 @@ const PlaceBookmark = (props: Props) => {
   );
 };
 
-export default PlaceBookmark;
+export {Bookmark};
+export default withFavoriteAction(Bookmark);

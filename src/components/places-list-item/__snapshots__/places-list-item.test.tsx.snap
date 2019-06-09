@@ -50,6 +50,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
       </div>
       <button
         className="place-card__bookmark-button  button"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -149,6 +150,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
       </div>
       <button
         className="place-card__bookmark-button  button"
+        onClick={[Function]}
         type="button"
       >
         <svg

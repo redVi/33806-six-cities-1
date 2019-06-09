@@ -1,36 +1,42 @@
-type location = {
+type locationType = {
   latitude: number,
   longitude: number,
   zoom: number
 }
 
-type offer = {
+type offerType = {
   id: number,
+  description: string,
   title: string,
-  price: number,
-  type: string,
-  isFavorite: boolean,
-  isPremium: boolean,
   rating: number,
+  price: number,
+  isPremium?: number,
+  isFavorite: boolean,
   previewImage: string,
-  location: location,
-  city: city
+  type: string,
+  bedrooms: number,
+  maxAdults: number,
+  images: string[],
+  goods: string[],
+  host?: hostType,
+  location: locationType,
+  city: cityType
 }
 
-type city = {
+type cityType = {
   name: string,
-  location: location
+  location: locationType
 };
 
-type filterOption = {
-  text: string,
-  value: string,
-  field?: string
+type hostType = {
+  name: string,
+  avatarUrl: string,
+  isPro: boolean
 }
 
 export {
-  location,
-  offer,
-  city,
-  filterOption
+  locationType,
+  cityType,
+  offerType,
+  hostType
 }

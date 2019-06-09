@@ -1,5 +1,5 @@
 import React from 'react';
-import {location} from '@/types';
+import {locationType} from '@/types';
 import {filterOptions} from '@/constants';
 
 import PlacesList from '@/components/places-list/places-list';
@@ -9,7 +9,7 @@ import PlacesForm from '@/components/places-form/places-form';
 const Offers = (props) => {
   const {items, city, handleChangeOffersFilter, setActiveItem, activeItem} = props;
   const placesHeading: string = `${items.length} ${items.length > 1 ? `places` : `place`} to stay in ${city.name}`;
-  const coordinates: location[] = items.map((offer) => offer.location);
+  const coordinates: locationType[] = items.map((offer) => offer.location);
   const hasActiveItem = activeItem && activeItem.location;
 
   return (

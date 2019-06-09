@@ -1,46 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {location} from '@/types';
+import {offerType, locationType} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
 import {getComments, getOffers, getSelectedOffers} from '@/reducer/data/selectors';
 import Mark from '@/components/mark/mark';
-import PlaceBookmark from '@/components/place-bookmark/place-bookmark';
+import Bookmark from '@/components/bookmark/bookmark';
 import CityMap from '@/components/city-map/city-map';
 import PlacesList from '@/components/places-list/places-list';
-import PreviewForm from "@/components/preview-form/preview-form";
+import PreviewForm from '@/components/preview-form/preview-form';
 
 enum APARTMENT {
   apartment = 'Apartment',
   room = 'Private Room',
   house = 'House',
   hotel = 'Hotel'
-}
-
-type hostType = {
-  name: string,
-  avatarUrl: string,
-  isPro: boolean
-}
-
-type offerType = {
-  rating: number,
-  images: string[],
-  isPremium?: number,
-  title: string,
-  description: string,
-  type: string,
-  bedrooms: number,
-  maxAdults: number,
-  price: number,
-  goods: string[],
-  host: hostType,
-  location: location,
-  city: {
-    location: location
-  }
 }
 
 interface Props {
@@ -52,7 +28,7 @@ interface Props {
   isLoggedIn: boolean
 }
 
-class DetailOfferPage extends React.PureComponent<Props> {
+class DetailOffer extends React.PureComponent<Props> {
   componentDidMount(): void {
     this.props.getComments();
   }
@@ -68,7 +44,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
 
     if (!offer) return null;
     const calculatedRating: string = `${offer.rating ? offer.rating * 2 * 10 : 0}%`;
-    const coordinates: location[] = offers.map((offer) => offer.location);
+    const coordinates: locationType[] = offers.map((offer) => offer.location);
 
     return (
       <div className="page">
@@ -78,7 +54,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
               <div className="property__gallery">
                 {offer.images.slice(0, 6).map((image, index) => (
                   <div className="property__image-wrapper" key={`image-${index}`}>
-                    <img className="property__image" src={image} alt="Photo studio" />
+                    <img className="property__image" src={image} alt="Photo studio"/>
                   </div>
                 ))}
               </div>
@@ -87,7 +63,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
             <div className="property__container container">
               <div className="property__wrapper">
 
-                {offer.isPremium ? <Mark className="property__mark" /> : null}
+                {offer.isPremium ? <Mark className="property__mark"/> : null}
 
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
@@ -95,11 +71,14 @@ class DetailOfferPage extends React.PureComponent<Props> {
                   </h1>
                 </div>
 
-                <PlaceBookmark className="property" width="31" height="33" />
+                <Bookmark
+                  id={offer.id}
+                  isFavorite={offer.isFavorite}
+                  className="property" width="31" height="33"/>
 
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{width: calculatedRating}} />
+                    <span style={{width: calculatedRating}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="property__rating-value rating__value">{offer.rating}</span>
@@ -136,11 +115,12 @@ class DetailOfferPage extends React.PureComponent<Props> {
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
-                    <div className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
+                    <div
+                      className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
                       <img
                         className="property__avatar user__avatar"
                         src={offer.host.avatarUrl} width="74" height="74"
-                        alt="Host avatar" />
+                        alt="Host avatar"/>
                     </div>
                     <span className="property__user-name">{offer.host.name}</span>
                     {offer.host.isPro ? <span className="property__user-status">Pro</span> : null}
@@ -168,7 +148,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
                             <img
                               className="reviews__avatar user__avatar"
                               src={`${comment.user.avatarUrl}.jpg`} width="54" height="54"
-                              alt="Reviews avatar" />
+                              alt="Reviews avatar"/>
                           </div>
                           <span className="reviews__user-name">{comment.user.name}</span>
                         </div>
@@ -176,7 +156,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
                         <div className="reviews__info">
                           <div className="reviews__rating rating">
                             <div className="reviews__stars rating__stars">
-                              <span style={{width: comment.rating}} />
+                              <span style={{width: comment.rating}}/>
                               <span className="visually-hidden">Rating</span>
                             </div>
                           </div>
@@ -190,7 +170,7 @@ class DetailOfferPage extends React.PureComponent<Props> {
                       </li>
                     ))}
                   </ul>
-                  {isLoggedIn ? <PreviewForm /> : null}
+                  {isLoggedIn ? <PreviewForm/> : null}
                 </section>
               </div>
             </div>
@@ -199,12 +179,12 @@ class DetailOfferPage extends React.PureComponent<Props> {
               location={offer.location}
               coordinates={coordinates}
               hasSelectedItem={true}
-              className="property__map" />
+              className="property__map"/>
           </section>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <PlacesList places={offers} className="near-places__list" />
+              <PlacesList places={offers} className="near-places__list"/>
             </section>
           </div>
         </main>
@@ -227,9 +207,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getComments: () => {
     Comments.get(ownProps.match.params.id).then((response) => {
       dispatch(dataActionCreator.fetchComments(response.data));
-    }).catch((error) => console.log(error));
+    });
   }
 });
 
-export {DetailOfferPage};
-export default connect(mapStateToProps, mapDispatchToProps)(DetailOfferPage);
+export {DetailOffer};
+export default connect(mapStateToProps, mapDispatchToProps)(DetailOffer);

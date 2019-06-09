@@ -1,15 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceBookmark from '@/components/place-bookmark/place-bookmark';
+import {Bookmark} from '@/components/bookmark/bookmark';
 
-describe(`PlaceBookmark`, () => {
+describe(`Bookmark`, () => {
   it(`renders correctly with props`, () => {
-    const tree = renderer.create(<PlaceBookmark isFavorite={true} />).toJSON();
+    const tree = renderer.create(<Bookmark isFavorite={true} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it(`renders correctly without props`, () => {
-    const tree = renderer.create(<PlaceBookmark />).toJSON();
+    const tree = renderer.create(<Bookmark />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

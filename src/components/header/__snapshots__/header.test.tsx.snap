@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainHeader renders correctly when user logged in 1`] = `
+exports[`Header renders correctly when user logged in 1`] = `
 <header
   className="header"
 >
@@ -63,7 +63,7 @@ exports[`MainHeader renders correctly when user logged in 1`] = `
 </header>
 `;
 
-exports[`MainHeader renders correctly when user not logged in 1`] = `
+exports[`Header renders correctly when user not logged in 1`] = `
 <header
   className="header"
 >

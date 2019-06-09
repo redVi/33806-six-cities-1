@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {offer} from '@/types';
-import PlaceBookmark from '@/components/place-bookmark/place-bookmark';
+import {offerType} from '@/types';
+import Bookmark from '@/components/bookmark/bookmark';
 
 const PlaceInfo = (props) => {
-  const {id, title, type, price, rating, isFavorite}: offer = props;
+  const {id, title, type, price, rating, isFavorite}: offerType = props;
   const calculatedRating: string = `${rating ? rating * 2 * 10 : 0}%`;
 
   return (
@@ -14,7 +14,9 @@ const PlaceInfo = (props) => {
           <b className="place-card__price-value">&euro;{price}</b>
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
-        <PlaceBookmark isFavorite={isFavorite} />
+
+        <Bookmark isFavorite={isFavorite} id={id} />
+
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
@@ -22,9 +24,11 @@ const PlaceInfo = (props) => {
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
+
       <h2 className="place-card__name">
         <Link to={`/offer/${id}`}>{title}</Link>
       </h2>
+
       <p className="place-card__type">{type}</p>
     </div>
   );

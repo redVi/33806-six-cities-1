@@ -26,7 +26,7 @@ const mapStateToProps = (state: object) => ({
 });
 
 const composedComponentWrapper = compose(
-    connect(mapStateToProps, null),
+    connect(mapStateToProps),
     withGuardRoute
 );
 

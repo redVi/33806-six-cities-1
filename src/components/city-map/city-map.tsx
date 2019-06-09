@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import leaflet from 'leaflet';
-import {location} from '@/types';
+import {locationType} from '@/types';
 
 let map = null;
 
@@ -20,8 +20,8 @@ const ACTIVE_ICON = leaflet.icon({
 });
 
 interface Props {
-  location: location,
-  coordinates: location[],
+  location: locationType,
+  coordinates: locationType[],
   hasSelectedItem?: boolean,
   canZoomChange?: boolean,
   className?: string
