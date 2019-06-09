@@ -22,7 +22,6 @@ exports[`SignIn renders correctly 1`] = `
           action="#"
           className="login__form form"
           method="post"
-          onSubmit={[Function]}
         >
           <div
             className="login__input-wrapper form__input-wrapper"
@@ -34,12 +33,11 @@ exports[`SignIn renders correctly 1`] = `
             </label>
             <input
               className="login__input form__input"
+              defaultValue={null}
               name="email"
-              onChange={[Function]}
               placeholder="Email"
               required={true}
               type="email"
-              value=""
             />
           </div>
           <div
@@ -52,17 +50,15 @@ exports[`SignIn renders correctly 1`] = `
             </label>
             <input
               className="login__input form__input"
+              defaultValue={null}
               name="password"
-              onChange={[Function]}
               placeholder="Password"
               required={true}
               type="password"
-              value=""
             />
           </div>
           <button
             className="login__submit form__submit button"
-            disabled={true}
             type="submit"
           >
             Sign in

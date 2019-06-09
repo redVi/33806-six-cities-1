@@ -7,6 +7,7 @@ import Favorites from '@/components/favorites/favorites';
 import Login from '@/components/login/login';
 import DetailOffer from '@/components/detail-offer/detail-offer';
 import withGuardRoute from '@/hocs/with-guard-route/with-guard-route';
+import withFormData from '@/hocs/with-form-data/with-form-data';
 
 
 export default (
@@ -14,7 +15,7 @@ export default (
     <Route path="/" component={App} />
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/login" component={withGuardRoute(Login, `anonymous`)} />
+      <Route path="/login" component={withFormData(withGuardRoute(Login, `anonymous`))} />
       <Route path="/favorites" component={withGuardRoute(Favorites, `user`)} />
       <Route path="/offer/:id" component={DetailOffer} />
     </Switch>

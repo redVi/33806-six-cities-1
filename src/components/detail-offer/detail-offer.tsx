@@ -11,6 +11,9 @@ import Bookmark from '@/components/bookmark/bookmark';
 import CityMap from '@/components/city-map/city-map';
 import PlacesList from '@/components/places-list/places-list';
 import PreviewForm from '@/components/preview-form/preview-form';
+import withFormData from '@/hocs/with-form-data/with-form-data';
+
+const Form = withFormData(PreviewForm);
 
 enum APARTMENT {
   apartment = 'Apartment',
@@ -25,7 +28,8 @@ interface Props {
   offers: offerType[],
   comments,
   getComments: () => object[],
-  isLoggedIn: boolean
+  isLoggedIn: boolean,
+  setActiveItem?: () => void
 }
 
 class DetailOffer extends React.PureComponent<Props> {
@@ -147,7 +151,7 @@ class DetailOffer extends React.PureComponent<Props> {
                           <div className="reviews__avatar-wrapper user__avatar-wrapper">
                             <img
                               className="reviews__avatar user__avatar"
-                              src={`${comment.user.avatarUrl}.jpg`} width="54" height="54"
+                              src={comment.user.avatarUrl} width="54" height="54"
                               alt="Reviews avatar"/>
                           </div>
                           <span className="reviews__user-name">{comment.user.name}</span>
@@ -170,7 +174,7 @@ class DetailOffer extends React.PureComponent<Props> {
                       </li>
                     ))}
                   </ul>
-                  {isLoggedIn ? <PreviewForm/> : null}
+                  {isLoggedIn ? <Form id={offer.id} /> : null}
                 </section>
               </div>
             </div>

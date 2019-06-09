@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import leaflet from 'leaflet';
 import {locationType} from '@/types';
-
-let map = null;
 
 const SETTINGS = {
   zoom: 12,
@@ -13,6 +11,9 @@ const SETTINGS = {
     iconSize: [27, 39]
   })
 };
+
+let map = null;
+let marker = null;
 
 const ACTIVE_ICON = leaflet.icon({
   iconUrl: `/img/pin-active.svg`,
@@ -27,7 +28,7 @@ interface Props {
   className?: string
 }
 
-class CityMap extends Component<Props> {
+class CityMap extends PureComponent<Props> {
   componentDidMount(): void {
     try {
       this._initMap();
@@ -37,13 +38,24 @@ class CityMap extends Component<Props> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>): void {
-    if (this.props.location && this.props.location.latitude !== prevProps.location.latitude) {
-      map.remove();
-      this._initMap();
+    marker ? map.removeLayer(marker) : '';
+    // if (this.props.location && this.props.location.latitude !== prevProps.location.latitude) {
+    //   marker ? map.removeLayer(marker) : '';
+    // }
+
+    if (this.props.hasSelectedItem) {
+      marker = leaflet.marker([this.props.location.latitude, this.props.location.longitude], {icon: ACTIVE_ICON});
+      marker.addTo(map);
+      map.options.minZoom = this.props.location.zoom;
+    }
+
+    if (this.props.canZoomChange && map) {
+      map.flyTo([this.props.location.latitude, this.props.location.longitude], this.props.location.zoom);
     }
   }
 
   componentWillUnmount(): void {
+    console.log('unmount');
     map.remove();
   }
 
@@ -57,7 +69,7 @@ class CityMap extends Component<Props> {
     const center = [latitude, longitude];
 
     map = leaflet.map(`map`, {...SETTINGS, center});
-    map.setView([latitude, longitude], canZoomChange ? zoom : SETTINGS.zoom);
+    map.setView([latitude, longitude], SETTINGS.zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
@@ -66,10 +78,6 @@ class CityMap extends Component<Props> {
     coordinates.forEach((city) => {
       leaflet.marker([city.latitude, city.longitude], {icon: SETTINGS.icon}).addTo(map);
     });
-
-    if (this.props.hasSelectedItem) {
-      leaflet.marker([latitude, longitude], {icon: ACTIVE_ICON}).addTo(map);
-    }
   }
 
   render() {

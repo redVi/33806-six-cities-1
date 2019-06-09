@@ -4,7 +4,7 @@ import {Login} from '@/components/login/login';
 
 describe(`SignIn`, () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Login logIn={jest.fn()}/>).toJSON();
+    const tree = renderer.create(<Login isFormReady={false} logIn={jest.fn()}/>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

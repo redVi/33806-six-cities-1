@@ -21,7 +21,7 @@ const PlacesList = (props) => {
             key={`place-${offer.id}`}
             offer={offer}
             current={current === index ? current : undefined}
-            handleImageClick={() => setActiveItem(offer)} />)
+            handleImageClick={() => setActiveItem ? setActiveItem(offer) : undefined} />)
         : null
       }
     </div>
