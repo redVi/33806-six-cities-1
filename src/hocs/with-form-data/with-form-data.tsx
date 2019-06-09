@@ -9,19 +9,18 @@ function withFormData (WrappedComponent) {
   return class WithSorting extends PureComponent<any, State> {
     constructor(props) {
       super(props);
-      this.state = {
-        form: {},
-        isFormReady: false,
-      };
+      this.state = {form: {}, isFormReady: false};
       this._getData = this._getData.bind(this);
     }
 
     private _getData(e) {
       e.preventDefault();
-      const userData = new FormData(e.target);
+
+      const formData = new FormData(e.target);
       const newForm = {};
 
-      for (let pair of userData.entries()) {
+      for (let pair of formData.entries()) {
+        if (!pair[1]) return;
         newForm[pair[0]] = pair[1];
       }
 
@@ -34,8 +33,7 @@ function withFormData (WrappedComponent) {
           {...this.props}
           form={this.state.form}
           isFormReady={this.state.isFormReady}
-          handleFormFill={this._getData}
-        />
+          handleFormFill={this._getData} />
       );
     }
   };

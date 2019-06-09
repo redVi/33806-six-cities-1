@@ -1,5 +1,4 @@
 import React from 'react';
-import {locationType} from '@/types';
 import {filterOptions} from '@/constants';
 
 import PlacesList from '@/components/places-list/places-list';

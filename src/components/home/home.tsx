@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {offerType, cityType} from '@/types';
 import {dataActionCreator} from '@/reducer/data/data';
 import {getCities, getCity, getCityOffers} from '@/reducer/data/selectors';
 
-import {offerType, cityType} from '@/types';
 import CitiesList from '@/components/cities-list/cities-list';
 import OffersEmpty from '@/components/offers-empty/offers-empty';
 import Offers from '@/components/offers/offers';

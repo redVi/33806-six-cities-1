@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {offerType, locationType} from '@/types';
+import {offerType} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';

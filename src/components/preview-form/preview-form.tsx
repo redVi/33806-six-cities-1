@@ -1,15 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
+import {stars} from '@/constants';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
-
-const stars = [
-  {value: 5, title: 'perfect'},
-  {value: 4, title: 'good'},
-  {value: 3, title: 'not bad'},
-  {value: 2, title: 'badly'},
-  {value: 1, title: 'terribly'},
-];
 
 const PreviewForm = (props) => {
   if (props.isFormReady) {
@@ -19,6 +13,7 @@ const PreviewForm = (props) => {
   return (
     <form className="reviews__form form" method="post" onSubmit={props.handleFormFill}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
+
       <div className="reviews__rating-form form__rating">
         {stars.map((star) => (
           <React.Fragment key={star.title}>
@@ -27,6 +22,7 @@ const PreviewForm = (props) => {
               name="rating"
               value={star.value}
               id={`${star.value}-stars`}
+              required={true}
               type="radio" />
 
             <label
@@ -47,6 +43,7 @@ const PreviewForm = (props) => {
         id="comment"
         name="comment"
         defaultValue={null}
+        required={true}
         placeholder="Tell how was your stay, what you like and what can be improved" />
 
       <div className="reviews__button-wrapper">

@@ -1,6 +1,6 @@
 import React from 'react';
-import {commentType} from '@/types';
 
+import {commentType} from '@/types';
 import PreviewForm from '@/components/preview-form/preview-form';
 import withFormData from '@/hocs/with-form-data/with-form-data';
 import ReviewItem from '@/components/review-item/review-item';
@@ -30,6 +30,7 @@ const Reviews = (props: Props) => {
           <ReviewItem comment={comment} key={`comment-${comment.id}`} />
         )}
       </ul>
+
       {isLoggedIn ? <Form id={id} /> : null}
     </section>
   );
