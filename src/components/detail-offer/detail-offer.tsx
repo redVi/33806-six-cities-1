@@ -6,15 +6,15 @@ import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
 import {getComments, getOfferById, getSimilarOffers} from '@/reducer/data/selectors';
+
 import Mark from '@/components/mark/mark';
 import Bookmark from '@/components/bookmark/bookmark';
 import CityMap from '@/components/city-map/city-map';
 import PlacesList from '@/components/places-list/places-list';
-import PreviewForm from '@/components/preview-form/preview-form';
-import withFormData from '@/hocs/with-form-data/with-form-data';
-import Rating from "@/components/rating/rating";
-
-const Form = withFormData(PreviewForm);
+import Rating from '@/components/rating/rating';
+import Reviews from '@/components/reviews/reviews';
+import Host from '@/components/host/host';
+import Inside from "@/components/inside/inside";
 
 enum APARTMENT {
   apartment = 'Apartment',
@@ -48,8 +48,6 @@ class DetailOffer extends React.PureComponent<Props> {
     const {offer, offers, comments, isLoggedIn} = this.props;
 
     if (!offer) return null;
-
-    const coordinates: locationType[] = offers.map((offer) => offer.location);
 
     return (
       <div className="page">
@@ -104,82 +102,26 @@ class DetailOffer extends React.PureComponent<Props> {
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
 
-                <div className="property__inside">
-                  <h2 className="property__inside-title">What&apos;s inside</h2>
-                  <ul className="property__inside-list">
-                    {offer.goods.map((good, idx) => (
-                      <li className="property__inside-item" key={`good-${idx}`}>
-                        {good}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <Inside items={offer.goods} title="What&apos;s inside" />
 
-                <div className="property__host">
-                  <h2 className="property__host-title">Meet the host</h2>
-                  <div className="property__host-user user">
-                    <div
-                      className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
-                      <img
-                        className="property__avatar user__avatar"
-                        src={offer.host.avatarUrl} width="74" height="74"
-                        alt="Host avatar"/>
-                    </div>
-                    <span className="property__user-name">{offer.host.name}</span>
-                    {offer.host.isPro ? <span className="property__user-status">Pro</span> : null}
-                  </div>
-                  <div className="property__description">
-                    <p className="property__text">
-                      {offer.description}
-                    </p>
-                  </div>
-                </div>
+                <Host host={offer.host} />
 
-                <section className="property__reviews reviews">
-                  <h2 className="reviews__title">
-                    Reviews &middot;
-                    <span className="reviews__amount">
-                      {comments && comments.length ? comments.length : 0}
-                    </span>
-                  </h2>
+                <Reviews
+                  id={offer.id}
+                  isLoggedIn={isLoggedIn}
+                  comments={comments} />
 
-                  <ul className="reviews__list">
-                    {comments.map((comment) => (
-                      <li className="reviews__item" key={`comment-${comment.id}`}>
-                        <div className="reviews__user user">
-                          <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                            <img
-                              className="reviews__avatar user__avatar"
-                              src={comment.user.avatarUrl} width="54" height="54"
-                              alt="Reviews avatar"/>
-                          </div>
-                          <span className="reviews__user-name">{comment.user.name}</span>
-                        </div>
-
-                        <div className="reviews__info">
-                          <Rating rating={comment.rating} className="reviews" />
-
-                          <p className="reviews__text">
-                            {comment.comment}
-                          </p>
-                          <time className="reviews__time" dateTime={comment.date}>
-                            {new Date(comment.date).toLocaleDateString()}
-                          </time>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                  {isLoggedIn ? <Form id={offer.id} /> : null}
-                </section>
               </div>
             </div>
 
-            {coordinates.length ? <CityMap
+            <CityMap
               location={offer.location}
-              coordinates={coordinates}
+              items={offers.concat(offer)}
               hasSelectedItem={true}
-              className="property__map"/> : null}
+              className="property__map" />
+
           </section>
+
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>

@@ -31,12 +31,25 @@ type cityType = {
 type hostType = {
   name: string,
   avatarUrl: string,
-  isPro: boolean
+  isPro: boolean,
+  description: string
+}
+
+type commentType = {
+  id: number,
+  rating: number,
+  comment: string,
+  date: any,
+  user: {
+    name: string,
+    avatarUrl: string
+  }
 }
 
 export {
   locationType,
   cityType,
   offerType,
-  hostType
+  hostType,
+  commentType
 }

@@ -22,7 +22,7 @@ const ACTIVE_ICON = leaflet.icon({
 
 interface Props {
   location: locationType,
-  coordinates: locationType[],
+  items: { location: locationType }[],
   hasSelectedItem?: boolean,
   canZoomChange?: boolean,
   className?: string
@@ -65,8 +65,10 @@ class CityMap extends Component<Props> {
   _initMap() {
     const {
       location: {latitude, longitude},
-      coordinates
+      items
     } = this.props;
+
+    const coordinates: locationType[] = items.map((item) => item.location);
 
     map = leaflet.map(`map`, SETTINGS).setView([latitude, longitude], SETTINGS.zoom);
     leaflet

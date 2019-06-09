@@ -9,7 +9,6 @@ import PlacesForm from '@/components/places-form/places-form';
 const Offers = (props) => {
   const {items, city, handleChangeOffersFilter, setActiveItem, activeItem} = props;
   const placesHeading: string = `${items.length} ${items.length > 1 ? `places` : `place`} to stay in ${city.name}`;
-  const coordinates: locationType[] = items.map((offer) => offer.location);
   const hasActiveItem = activeItem && activeItem.location;
 
   return (
@@ -30,7 +29,7 @@ const Offers = (props) => {
 
       <div className="cities__right-section">
         <CityMap
-          coordinates={coordinates}
+          items={items}
           hasSelectedItem={hasActiveItem}
           canZoomChange={true}
           location={hasActiveItem ? activeItem.location : city.location} />
