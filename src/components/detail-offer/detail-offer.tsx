@@ -12,6 +12,7 @@ import CityMap from '@/components/city-map/city-map';
 import PlacesList from '@/components/places-list/places-list';
 import PreviewForm from '@/components/preview-form/preview-form';
 import withFormData from '@/hocs/with-form-data/with-form-data';
+import Rating from "@/components/rating/rating";
 
 const Form = withFormData(PreviewForm);
 
@@ -48,7 +49,6 @@ class DetailOffer extends React.PureComponent<Props> {
 
     if (!offer) return null;
 
-    const calculatedRating: string = `${offer.rating ? offer.rating * 2 * 10 : 0}%`;
     const coordinates: locationType[] = offers.map((offer) => offer.location);
 
     return (
@@ -79,15 +79,13 @@ class DetailOffer extends React.PureComponent<Props> {
                 <Bookmark
                   id={offer.id}
                   isFavorite={offer.isFavorite}
-                  className="property" width="31" height="33"/>
+                  className="property" width="31" height="33" />
 
-                <div className="property__rating rating">
-                  <div className="property__stars rating__stars">
-                    <span style={{width: calculatedRating}}/>
-                    <span className="visually-hidden">Rating</span>
-                  </div>
-                  <span className="property__rating-value rating__value">{offer.rating}</span>
-                </div>
+                <Rating className="property" rating={offer.rating}>
+                  <span className="property__rating-value rating__value">
+                    {offer.rating}
+                  </span>
+                </Rating>
 
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
@@ -159,12 +157,8 @@ class DetailOffer extends React.PureComponent<Props> {
                         </div>
 
                         <div className="reviews__info">
-                          <div className="reviews__rating rating">
-                            <div className="reviews__stars rating__stars">
-                              <span style={{width: comment.rating}}/>
-                              <span className="visually-hidden">Rating</span>
-                            </div>
-                          </div>
+                          <Rating rating={comment.rating} className="reviews" />
+
                           <p className="reviews__text">
                             {comment.comment}
                           </p>

@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {offerType} from '@/types';
 import Bookmark from '@/components/bookmark/bookmark';
+import Rating from '@/components/rating/rating';
 
 const PlaceInfo = (props) => {
   const {id, title, type, price, rating, isFavorite}: offerType = props;
-  const calculatedRating: string = `${rating ? rating * 2 * 10 : 0}%`;
 
   return (
     <div className="place-card__info">
@@ -16,14 +16,9 @@ const PlaceInfo = (props) => {
         </div>
 
         <Bookmark isFavorite={isFavorite} id={id} />
+      </div>
 
-      </div>
-      <div className="place-card__rating rating">
-        <div className="place-card__stars rating__stars">
-          <span style={{width: calculatedRating}}/>
-          <span className="visually-hidden">Rating</span>
-        </div>
-      </div>
+      <Rating className="place-card" rating={rating} />
 
       <h2 className="place-card__name">
         <Link to={`/offer/${id}`}>{title}</Link>
