@@ -15,7 +15,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="#"
+      href=""
       onClick={[Function]}
     >
       <img
@@ -116,7 +116,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="#"
+      href=""
       onClick={[Function]}
     >
       <img

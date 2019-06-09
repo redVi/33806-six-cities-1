@@ -5,7 +5,7 @@ import {offerType, locationType} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
-import {getComments, getOffers, getSelectedOffers} from '@/reducer/data/selectors';
+import {getComments, getOffer, getOffers, getSelectedOffers, getSimilarOffers} from '@/reducer/data/selectors';
 import Mark from '@/components/mark/mark';
 import Bookmark from '@/components/bookmark/bookmark';
 import CityMap from '@/components/city-map/city-map';
@@ -47,6 +47,7 @@ class DetailOffer extends React.PureComponent<Props> {
     const {offer, offers, comments, isLoggedIn} = this.props;
 
     if (!offer) return null;
+
     const calculatedRating: string = `${offer.rating ? offer.rating * 2 * 10 : 0}%`;
     const coordinates: locationType[] = offers.map((offer) => offer.location);
 
@@ -179,11 +180,11 @@ class DetailOffer extends React.PureComponent<Props> {
               </div>
             </div>
 
-            <CityMap
+            {coordinates.length ? <CityMap
               location={offer.location}
               coordinates={coordinates}
               hasSelectedItem={true}
-              className="property__map"/>
+              className="property__map"/> : null}
           </section>
           <div className="container">
             <section className="near-places places">
@@ -198,10 +199,12 @@ class DetailOffer extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = (state: object, ownProps) => {
+  const id = ownProps.match.params.id;
+
   return Object.assign({}, ownProps, {
-    id: ownProps.match.params.id,
-    offers: getSelectedOffers(state).filter((item) => item.id !== ownProps.match.params.id).slice(0, 3),
-    offer: getOffers(state).filter((item) => item.id == ownProps.match.params.id)[0],
+    id: id,
+    offer: getOffer(state, id),
+    offers: getSimilarOffers(state, id).slice(0, 3),
     comments: getComments(state),
     isLoggedIn: checkAuthorization(state)
   });

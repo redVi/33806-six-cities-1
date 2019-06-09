@@ -21,7 +21,7 @@ function withFormData (WrappedComponent) {
       const userData = new FormData(e.target);
       const newForm = {};
 
-      for(let pair of userData.entries()) {
+      for (let pair of userData.entries()) {
         newForm[pair[0]] = pair[1];
       }
 

@@ -71,14 +71,13 @@ exports[`SignIn renders correctly 1`] = `
         <div
           className="locations__item"
         >
-          <a
+          <div
             className="locations__item-link"
-            href="#"
           >
             <span>
               Amsterdam
             </span>
-          </a>
+          </div>
         </div>
       </section>
     </div>

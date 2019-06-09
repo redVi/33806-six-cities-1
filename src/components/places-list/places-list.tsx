@@ -5,6 +5,7 @@ import PlacesListItem from '@/components/places-list-item/places-list-item';
 interface Props {
   places: offerType[],
   current?: number,
+  handleImageClick?: (any) => void,
   setActiveItem?: (index: object) => void,
   className?: string
 }

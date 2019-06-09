@@ -151,7 +151,7 @@ exports[`Home renders correctly 1`] = `
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href=""
                   onClick={[Function]}
                 >
                   <img
@@ -246,7 +246,7 @@ exports[`Home renders correctly 1`] = `
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href=""
                   onClick={[Function]}
                 >
                   <img
