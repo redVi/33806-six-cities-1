@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React, {FormEvent} from 'react';
 import {connect} from 'react-redux';
 
 import {STARS} from '@/constants';

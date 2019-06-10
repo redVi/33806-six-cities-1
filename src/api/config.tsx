@@ -8,9 +8,4 @@ const api = axios.create({
   withCredentials: true
 });
 
-const onSuccess = (response) => response;
-const onFail = (error) => Promise.reject(error);
-
-api.interceptors.response.use(onSuccess, onFail);
-
 export default api;

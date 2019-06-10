@@ -54,7 +54,9 @@ const mapDispatchToProps = (dispatch: Function) => ({
   fetchOffers: () => {
     Hotels.get().then((response) => {
       dispatch(dataActionCreator.fetchOffers(response.data));
-    });
+    }).catch(() => {
+      dispatch(userActionCreator.logOut())
+    })
   }
 });
 
