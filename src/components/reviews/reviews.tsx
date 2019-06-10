@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {CommentType} from '@/types';
-import PreviewForm from '@/components/preview-form/preview-form';
+import PreviewForm from '@/components/review-form/review-form';
 import withFormData from '@/hocs/with-form-data/with-form-data';
 import ReviewItem from '@/components/review-item/review-item';
 

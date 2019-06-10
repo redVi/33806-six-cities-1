@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Price renders correctly 1`] = `
+<div
+  className="place-card__price"
+>
+  <b
+    className="place-card__price-value"
+  >
+    €
+    128
+  </b>
+  <span
+    className="place-card__price-text"
+  >
+    /night
+  </span>
+</div>
+`;

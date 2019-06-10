@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import api from '@/api/config';
 
+import api from '@/api/config';
 import App from '@/components/app/app';
 import Home from '@/components/home/home';
 import Favorites from '@/components/favorites/favorites';

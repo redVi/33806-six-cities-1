@@ -20,7 +20,6 @@ function withFormData (WrappedComponent) {
       const newForm = {};
 
       for (let pair of formData.entries()) {
-        if (!pair[1]) return;
         newForm[pair[0]] = pair[1];
       }
 
