@@ -25,8 +25,8 @@ enum APARTMENT {
 
 interface Props {
   id: number,
-  offer: offerType,
-  offers: offerType[],
+  offer,
+  offers,
   comments,
   getComments: () => object[],
   isLoggedIn: boolean,

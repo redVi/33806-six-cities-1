@@ -7,7 +7,7 @@ import FavoritesEmpty from '@/components/favorites-empty/favorites-empty';
 import FavoritesList from '@/components/favorites-list/favorites-list';
 import Footer from '@/components/footer/footer';
 
-const sortFavList = (list) => {
+const sortFavList = (list: offerType[]) => {
   const HEADERS = {};
 
   // get city names as HEADER'S keys
@@ -35,7 +35,7 @@ const Favorites = (props: Props) => {
   const pageClass: string = hasFavorites ? `` : `page--favorites-empty`;
   const mainClass: string = hasFavorites ? `` : `page__main--favorites-empty`;
   const sectionClass: string = hasFavorites ? `` : `favorites--empty`;
-  const items = sortFavList(props.favorites);
+  const items: any = sortFavList(props.favorites);
 
   return (
     <div className={`page ${pageClass}`}>

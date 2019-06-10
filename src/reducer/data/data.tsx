@@ -14,9 +14,10 @@ interface ActionType {
 }
 
 const getRandomCity = (offers: offerType[]) => offers.length ? offers[getRandomNumber(1, offers.length)].city : {};
-const getCityFromOffers = (offers, cityName) => offers.filter((o) => o.city.name === cityName)[0].city;
+const getCityFromOffers = (offers: offerType[], cityName: string) =>
+  offers.filter((o) => o.city.name === cityName)[0].city;
 
-const updateOffer = (offers, current) => {
+const updateOffer = (offers: offerType[], current: offerType) => {
   const offerIndex = offers.findIndex((it) => it.id === current.id);
 
   if (offerIndex !== -1) {
@@ -45,7 +46,7 @@ const dataActionCreator = {
     type: TYPE.FETCH_COMMENTS,
     payload: comments
   }),
-  updateOffer: (offer) => ({
+  updateOffer: (offer: offerType) => ({
     type: TYPE.UPDATE_OFFER,
     payload: offer
   })

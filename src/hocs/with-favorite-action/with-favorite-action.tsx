@@ -18,9 +18,7 @@ interface Props {
 function withFavoriteAction (WrappedComponent) {
   return function withProps(props: Props) {
     const {id, changeFavorite, isFavorite, isLoggedIn} = props;
-    const onFavoriteClick = () => !isLoggedIn
-      ? props.history.push('/login')
-      : changeFavorite(id, isFavorite ? 0 : 1);
+    const onFavoriteClick = () => !isLoggedIn ? props.history.push('/login') : changeFavorite(id, isFavorite ? 0 : 1);
 
     return (
       <WrappedComponent
@@ -30,12 +28,12 @@ function withFavoriteAction (WrappedComponent) {
   };
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: object) => ({
   isLoggedIn: checkAuthorization(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  changeFavorite: (id, flag) => {
+const mapDispatchToProps = (dispatch: Function) => ({
+  changeFavorite: (id: number, flag: number) => {
     Favorites.post(id, flag).then((response) => {
       dispatch(dataActionCreator.updateOffer(response.data))
     });
