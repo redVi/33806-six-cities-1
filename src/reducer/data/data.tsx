@@ -1,5 +1,5 @@
 import {getRandomNumber, normalizeKeys} from '@/helpers';
-import {offerType} from '@/types';
+import {OfferType} from '@/types';
 
 enum TYPE {
   CHANGE_CITY = 'CHANGE_CITY',
@@ -13,11 +13,11 @@ interface ActionType {
   payload: any
 }
 
-const getRandomCity = (offers: offerType[]) => offers.length ? offers[getRandomNumber(1, offers.length)].city : {};
-const getCityFromOffers = (offers: offerType[], cityName: string) =>
+const getRandomCity = (offers: OfferType[]) => offers.length ? offers[getRandomNumber(1, offers.length)].city : {};
+const getCityFromOffers = (offers: OfferType[], cityName: string) =>
   offers.filter((o) => o.city.name === cityName)[0].city;
 
-const updateOffer = (offers: offerType[], current: offerType) => {
+const updateOffer = (offers: OfferType[], current: OfferType) => {
   const offerIndex = offers.findIndex((it) => it.id === current.id);
 
   if (offerIndex !== -1) {
@@ -38,7 +38,7 @@ const dataActionCreator = {
     type: TYPE.CHANGE_CITY,
     payload: city
   }),
-  fetchOffers: (offers: offerType[]) => ({
+  fetchOffers: (offers: OfferType[]) => ({
     type: TYPE.FETCH_OFFERS,
     payload: offers
   }),
@@ -46,7 +46,7 @@ const dataActionCreator = {
     type: TYPE.FETCH_COMMENTS,
     payload: comments
   }),
-  updateOffer: (offer: offerType) => ({
+  updateOffer: (offer: OfferType) => ({
     type: TYPE.UPDATE_OFFER,
     payload: offer
   })

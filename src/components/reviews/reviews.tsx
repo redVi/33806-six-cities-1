@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {commentType} from '@/types';
+import {CommentType} from '@/types';
 import PreviewForm from '@/components/preview-form/preview-form';
 import withFormData from '@/hocs/with-form-data/with-form-data';
 import ReviewItem from '@/components/review-item/review-item';
@@ -9,7 +9,7 @@ const Form = withFormData(PreviewForm);
 
 interface Props {
   id: number,
-  comments: commentType[],
+  comments: CommentType[],
   isLoggedIn: boolean,
   maxCount?: number
 }

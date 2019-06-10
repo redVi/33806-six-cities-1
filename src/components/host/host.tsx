@@ -1,8 +1,8 @@
 import React from 'react';
-import {hostType} from '@/types';
+import {HostType} from '@/types';
 
 interface Props {
-  host: hostType
+  host: HostType
 }
 
 const Host = (props: Props) => {

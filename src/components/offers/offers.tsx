@@ -1,14 +1,14 @@
 import React from 'react';
-import {filterOptions} from '@/constants';
+import {FILTER_OPTIONS} from '@/constants';
 
 import PlacesList from '@/components/places-list/places-list';
 import CityMap from '@/components/city-map/city-map';
 import PlacesForm from '@/components/places-form/places-form';
-import { offerType, cityType } from '@/types';
+import {OfferType, CityType} from '@/types';
 
 interface Props {
-  items: offerType[],
-  city: cityType,
+  items: OfferType[],
+  city: CityType,
   activeItem,
   handleChangeOffersFilter: () => void
   setActiveItem: () => void
@@ -26,7 +26,7 @@ const Offers = (props: Props) => {
         <b className="places__found">{placesHeading}</b>
 
         <PlacesForm
-          filterOptions={filterOptions}
+          filterOptions={FILTER_OPTIONS}
           handleChangeOffersFilter={handleChangeOffersFilter} />
 
         <PlacesList

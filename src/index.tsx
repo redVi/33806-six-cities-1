@@ -13,7 +13,7 @@ const store = createStore(
     reducer,
     compose(
         applyMiddleware(thunk),
-        hasReduxDevTools ? composeEnhancers() : (f) => f
+        hasReduxDevTools ? composeEnhancers() : (f: void) => f
     )
 );
 

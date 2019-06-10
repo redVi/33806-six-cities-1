@@ -1,9 +1,9 @@
 import React from 'react';
-import {offerType} from '@/types';
+import {OfferType} from '@/types';
 import PlacesListItem from '@/components/places-list-item/places-list-item';
 
 interface Props {
-  places: offerType[],
+  places: OfferType[],
   current?: number,
   handleImageClick?: () => void,
   setActiveItem?: (index: object) => void,

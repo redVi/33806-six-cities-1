@@ -1,9 +1,9 @@
 import React from 'react';
-import {commentType} from '@/types';
+import {CommentType} from '@/types';
 import Rating from '@/components/rating/rating';
 
 interface Props {
-  comment: commentType
+  comment: CommentType
 }
 
 const ReviewItem = (props: Props) => {

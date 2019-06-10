@@ -1,4 +1,4 @@
-import {offerType} from '@/types';
+import {OfferType} from '@/types';
 
 const snakeToCamel = (word: string): string => word.replace(
   /(_\w)/g,
@@ -23,7 +23,7 @@ export const normalizeKeys = (obj: object): object => {
   return obj;
 };
 
-export const sortByField = (arr: offerType[], value: string, field: string): offerType[] => {
+export const sortByField = (arr: OfferType[], value: string, field: string): OfferType[] => {
   switch (field) {
     case `ASC`: return arr.sort((a, b) => a[value] - b[value]);
     case `DESC`: return arr.sort((a, b) => b[value] - a[value]);

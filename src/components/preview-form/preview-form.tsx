@@ -1,7 +1,7 @@
 import React, { FormEvent } from 'react';
 import {connect} from 'react-redux';
 
-import {stars} from '@/constants';
+import {STARS} from '@/constants';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 
@@ -29,7 +29,7 @@ const PreviewForm = (props: Props) => {
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
       <div className="reviews__rating-form form__rating">
-        {stars.map((star) => (
+        {STARS.map((star) => (
           <React.Fragment key={star.title}>
             <input
               className="form__rating-input visually-hidden"

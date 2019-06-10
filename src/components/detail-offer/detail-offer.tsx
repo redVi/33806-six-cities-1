@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {offerType, commentType} from '@/types';
+import {OfferType, CommentType} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
@@ -17,7 +17,7 @@ import Host from '@/components/host/host';
 import Inside from '@/components/inside/inside';
 import Price from '@/components/price/price';
 
-enum APARTMENT {
+enum Apartment {
   apartment = 'Apartment',
   room = 'Private Room',
   house = 'House',
@@ -26,9 +26,9 @@ enum APARTMENT {
 
 interface Props {
   id: number,
-  offer: offerType,
-  offers: offerType[],
-  comments: commentType[],
+  offer: OfferType,
+  offers: OfferType[],
+  comments: CommentType[],
   isLoggedIn: boolean,
   getComments: () => object[],
   setActiveItem?: () => void
@@ -88,7 +88,7 @@ class DetailOffer extends React.PureComponent<Props> {
 
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {APARTMENT[offer.type]}
+                    {Apartment[offer.type]}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
                     {offer.bedrooms} {offer.bedrooms > 1 ? `Bedrooms` : `Bedroom`}

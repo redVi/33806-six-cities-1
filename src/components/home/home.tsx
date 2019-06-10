@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {offerType, cityType} from '@/types';
+import {OfferType, CityType} from '@/types';
 import {dataActionCreator} from '@/reducer/data/data';
 import {getCities, getCity, getCityOffers} from '@/reducer/data/selectors';
 
@@ -11,9 +11,9 @@ import withSorting from '@/hocs/with-sorting/with-sorting';
 import withActiveItem from '@/hocs/with-active-item/with-active-item';
 
 interface Props {
-  offers: offerType[],
+  offers: OfferType[],
   cities: string[],
-  city: cityType,
+  city: CityType,
   changeCity: (city: string) => object,
 }
 

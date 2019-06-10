@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {offerType} from '@/types';
+import {OfferType} from '@/types';
 import {getFavorites} from '@/reducer/data/selectors';
 import FavoritesEmpty from '@/components/favorites-empty/favorites-empty';
 import FavoritesList from '@/components/favorites-list/favorites-list';
 import Footer from '@/components/footer/footer';
 
-const sortFavList = (list: offerType[]) => {
+const sortFavList = (list: OfferType[]) => {
   const HEADERS = {};
 
   // get city names as HEADER'S keys
@@ -26,7 +26,7 @@ const sortFavList = (list: offerType[]) => {
 };
 
 interface Props {
-  favorites?: offerType[]
+  favorites?: OfferType[]
 }
 
 const Favorites = (props: Props) => {
