@@ -178,7 +178,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
         <span
           style={
             Object {
-              "width": "0%",
+              "width": "86%",
             }
           }
         />

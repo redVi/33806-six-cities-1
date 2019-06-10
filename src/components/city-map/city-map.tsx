@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import leaflet from 'leaflet';
-import {locationType} from '@/types';
+import {locationType, offerType} from '@/types';
 
 const SETTINGS = {
   zoom: 12,
@@ -22,7 +22,7 @@ const ACTIVE_ICON = leaflet.icon({
 
 interface Props {
   location: locationType,
-  items: { location: locationType }[],
+  items: offerType[],
   hasSelectedItem?: boolean,
   canZoomChange?: boolean,
   className?: string
@@ -41,7 +41,7 @@ class CityMap extends Component<Props> {
     return nextProps.location.latitude !== this.props.location.latitude;
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>): void {
+  componentDidUpdate(): void {
     const {location, hasSelectedItem, canZoomChange} = this.props;
 
     if (!map) return;

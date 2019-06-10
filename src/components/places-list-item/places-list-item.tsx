@@ -6,12 +6,12 @@ import PlaceInfo from '@/components/place-info/place-info';
 
 interface Props {
   offer: offerType,
-  handleImageClick: () => void,
+  handleImageClick?: () => void,
   current?: number,
   className?: string
 }
 
-const PlacesListItem = (props) => {
+const PlacesListItem = (props: Props) => {
   const className = props.className || 'cities__place-card';
   const {offer, current, handleImageClick}: Props = props;
   const mark = offer.isPremium ? <Mark/> : null;

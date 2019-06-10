@@ -4,11 +4,20 @@ import {filterOptions} from '@/constants';
 import PlacesList from '@/components/places-list/places-list';
 import CityMap from '@/components/city-map/city-map';
 import PlacesForm from '@/components/places-form/places-form';
+import { offerType, cityType } from '@/types';
 
-const Offers = (props) => {
+interface Props {
+  items: offerType[],
+  city: cityType,
+  activeItem,
+  handleChangeOffersFilter: () => void
+  setActiveItem: () => void
+}
+
+const Offers = (props: Props) => {
   const {items, city, handleChangeOffersFilter, setActiveItem, activeItem} = props;
   const placesHeading: string = `${items.length} ${items.length > 1 ? `places` : `place`} to stay in ${city.name}`;
-  const hasActiveItem = activeItem && activeItem.location;
+  const hasActiveItem: boolean = activeItem && activeItem.location;
 
   return (
     <div className="cities__places-container container">

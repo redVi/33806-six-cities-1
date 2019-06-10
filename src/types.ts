@@ -10,7 +10,7 @@ type offerType = {
   title: string,
   rating: number,
   price: number,
-  isPremium?: number,
+  isPremium?: boolean,
   isFavorite?: boolean,
   previewImage?: string,
   type?: string,
@@ -20,7 +20,7 @@ type offerType = {
   goods?: string[],
   host?: hostType,
   location?: locationType,
-  city: cityType
+  city?: cityType
 }
 
 type cityType = {

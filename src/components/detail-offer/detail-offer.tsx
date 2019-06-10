@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {offerType} from '@/types';
+import {offerType, commentType} from '@/types';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
@@ -15,6 +15,7 @@ import Rating from '@/components/rating/rating';
 import Reviews from '@/components/reviews/reviews';
 import Host from '@/components/host/host';
 import Inside from "@/components/inside/inside";
+import Price from '../price/price';
 
 enum APARTMENT {
   apartment = 'Apartment',
@@ -25,11 +26,11 @@ enum APARTMENT {
 
 interface Props {
   id: number,
-  offer,
-  offers,
-  comments,
-  getComments: () => object[],
+  offer: offerType,
+  offers: offerType[],
+  comments: commentType[],
   isLoggedIn: boolean,
+  getComments: () => object[],
   setActiveItem?: () => void
 }
 
@@ -97,10 +98,7 @@ class DetailOffer extends React.PureComponent<Props> {
                   </li>
                 </ul>
 
-                <div className="property__price">
-                  <b className="property__price-value">&euro;{offer.price}</b>
-                  <span className="property__price-text">&nbsp;night</span>
-                </div>
+                <Price price={offer.price} className="property__price" text="&nbsp;night" />
 
                 <Inside items={offer.goods} title="What&apos;s inside" />
 
@@ -146,7 +144,7 @@ const mapStateToProps = (state: object, ownProps) => {
   });
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch: Function, ownProps) => ({
   getComments: () => {
     Comments.get(ownProps.match.params.id).then((response) => {
       dispatch(dataActionCreator.fetchComments(response.data));

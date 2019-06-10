@@ -31,5 +31,5 @@ export const getCities = createSelector(
 
 export const getFavorites = createSelector(
   [getOffers],
-  (offers) => offers.filter((o: offerType) => o.isFavorite)
+  (offers) => offers.filter((it: offerType) => it.isFavorite)
 );

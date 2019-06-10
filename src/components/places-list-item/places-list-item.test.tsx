@@ -14,6 +14,9 @@ describe(`PlacesListItem`, () => {
       isPremium: true,
       rating: 3.6,
       previewImage: `apartment-01.jpg`,
+      city: {
+        name: `Amsterdam`
+      }
     };
 
     const tree = renderer.create(
@@ -27,6 +30,10 @@ describe(`PlacesListItem`, () => {
   it(`renders correctly with only required props`, () => {
     const offer = {
       id: 2,
+      rating: 4.3,
+      city: {
+        name: `Berlin`
+      },
       title: `Wood and stone place`,
       price: 80
     };
