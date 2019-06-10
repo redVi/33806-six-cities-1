@@ -5,7 +5,7 @@ import Bookmark from '@/components/bookmark/bookmark';
 import Rating from '@/components/rating/rating';
 import Price from '@/components/price/price';
 
-const PlaceInfo = (props) => {
+const PlaceInfo = (props: offerType) => {
   const {id, title, type, price, rating, isFavorite}: offerType = props;
 
   return (

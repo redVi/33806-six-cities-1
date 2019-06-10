@@ -1,12 +1,14 @@
 import React, {PureComponent, ComponentType} from 'react';
 import {Subtract} from 'utility-types';
 
+type itemType = object | number | string | undefined;
+
 interface State {
-  activeItem: object | number | string
+  activeItem: itemType
 }
 
 interface InjectedProps {
-  setActiveItem: (current) => void
+  setActiveItem: (current: itemType) => void
 }
 
 function withActiveItem <T extends InjectedProps>(WrappedComponent: ComponentType<T>) {

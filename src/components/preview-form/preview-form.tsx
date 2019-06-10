@@ -59,6 +59,7 @@ const PreviewForm = (props: Props) => {
         defaultValue={null}
         required={true}
         minLength={50}
+        maxLength={300}
         placeholder="Tell how was your stay, what you like and what can be improved" />
 
       <div className="reviews__button-wrapper">

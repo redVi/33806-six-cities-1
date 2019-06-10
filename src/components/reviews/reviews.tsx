@@ -10,18 +10,20 @@ const Form = withFormData(PreviewForm);
 interface Props {
   id: number,
   comments: commentType[],
-  isLoggedIn: boolean
+  isLoggedIn: boolean,
+  maxCount?: number
 }
 
 const Reviews = (props: Props) => {
-  const {comments, isLoggedIn, id} = props;
+  const {isLoggedIn, id, maxCount} = props;
+  const comments = props.comments.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, maxCount);
 
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
         Reviews &middot;
         <span className="reviews__amount">
-          {comments && comments.length ? comments.length : 0}
+          {comments ? comments.length : null}
         </span>
       </h2>
 

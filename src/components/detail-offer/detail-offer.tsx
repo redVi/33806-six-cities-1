@@ -14,8 +14,8 @@ import PlacesList from '@/components/places-list/places-list';
 import Rating from '@/components/rating/rating';
 import Reviews from '@/components/reviews/reviews';
 import Host from '@/components/host/host';
-import Inside from "@/components/inside/inside";
-import Price from '../price/price';
+import Inside from '@/components/inside/inside';
+import Price from '@/components/price/price';
 
 enum APARTMENT {
   apartment = 'Apartment',
@@ -67,7 +67,7 @@ class DetailOffer extends React.PureComponent<Props> {
             <div className="property__container container">
               <div className="property__wrapper">
 
-                {offer.isPremium ? <Mark className="property__mark"/> : null}
+                {offer.isPremium ? <Mark className="property__mark" /> : null}
 
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
@@ -106,6 +106,7 @@ class DetailOffer extends React.PureComponent<Props> {
 
                 <Reviews
                   id={offer.id}
+                  maxCount={10}
                   isLoggedIn={isLoggedIn}
                   comments={comments} />
 

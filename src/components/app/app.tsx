@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Auth from '@/api/auth';
@@ -17,7 +17,7 @@ interface Props {
   fetchOffers: () => object[]
 }
 
-class App extends React.Component<Props> {
+class App extends Component<Props> {
   componentDidMount() {
     Auth.get().then((response) => {
       this.props.logIn(response.data);

@@ -29,7 +29,7 @@ const ReviewItem = (props: Props) => {
           {comment.comment}
         </p>
         <time className="reviews__time" dateTime={comment.date}>
-          {new Date(comment.date).toLocaleDateString()}
+          {new Date(comment.date).toLocaleDateString('en-US', {month: 'long', year: 'numeric'})}
         </time>
       </div>
     </li>
