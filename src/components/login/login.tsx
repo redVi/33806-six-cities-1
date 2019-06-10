@@ -16,9 +16,7 @@ interface Form {
 }
 
 const Login = (props: Props) => {
-  if (props.isFormReady) {
-    props.logIn(props.form);
-  }
+  if (props.isFormReady) props.logIn(props.form);
 
   return (
     <div className="page page--gray page--login">

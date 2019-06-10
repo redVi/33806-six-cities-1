@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-const PlacesList = (props) => {
+const PlacesList = (props: Props) => {
   const {places, current, setActiveItem}: Props = props;
   const className = props.className || 'cities__places-list';
 

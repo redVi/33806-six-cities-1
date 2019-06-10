@@ -21,7 +21,6 @@ describe(`Home`, () => {
               name: `Berlin`,
               location: {latitude: 51.225402, longitude: 6.776314, zoom: 13}
             }}
-            handleSelectCity={jest.fn()}
             changeCity={jest.fn()} />
         </Router>
     ).toJSON();

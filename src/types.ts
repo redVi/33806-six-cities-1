@@ -6,26 +6,26 @@ type locationType = {
 
 type offerType = {
   id: number,
-  description: string,
+  description?: string,
   title: string,
   rating: number,
   price: number,
   isPremium?: number,
-  isFavorite: boolean,
-  previewImage: string,
-  type: string,
-  bedrooms: number,
-  maxAdults: number,
-  images: string[],
-  goods: string[],
+  isFavorite?: boolean,
+  previewImage?: string,
+  type?: string,
+  bedrooms?: number,
+  maxAdults?: number,
+  images?: string[],
+  goods?: string[],
   host?: hostType,
-  location: locationType,
+  location?: locationType,
   city: cityType
 }
 
 type cityType = {
   name: string,
-  location: locationType
+  location?: locationType
 };
 
 type hostType = {

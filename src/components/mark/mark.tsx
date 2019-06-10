@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Mark = (props) => {
+interface Props {
+  className?: string
+}
+
+const Mark = (props: Props) => {
   return (
     <div className={props.className || 'place-card__mark'}>
       <span>Premium</span>

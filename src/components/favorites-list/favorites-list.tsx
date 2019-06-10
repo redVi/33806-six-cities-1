@@ -2,7 +2,7 @@ import React from 'react';
 import PlacesList from '@/components/places-list/places-list';
 
 interface Props {
-  items: {}
+  items: []
 }
 
 const FavoritesList = (props: Props) => {
@@ -12,7 +12,6 @@ const FavoritesList = (props: Props) => {
     <>
       <h1 className="favorites__title">Saved listing</h1>
       <ul className="favorites__list">
-
         {Object.entries(items).map(([key, value]) => (
           <li className="favorites__locations-items" key={key}>
             <div className="favorites__locations locations locations--current">

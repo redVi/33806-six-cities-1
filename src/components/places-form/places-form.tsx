@@ -8,7 +8,7 @@ type selectOption = {
 
 interface Props {
   filterOptions: selectOption[],
-  handleChangeOffersFilter?: (option) => void
+  handleChangeOffersFilter?: (option: selectOption) => void
 }
 
 interface State {

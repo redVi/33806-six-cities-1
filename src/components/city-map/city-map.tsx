@@ -37,16 +37,15 @@ class CityMap extends Component<Props> {
     }
   }
 
+  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+    return nextProps.location.latitude !== this.props.location.latitude;
+  }
+
   componentDidUpdate(prevProps: Readonly<Props>): void {
     const {location, hasSelectedItem, canZoomChange} = this.props;
 
-    if (!map || prevProps.location.latitude === location.latitude) {
-      return;
-    }
-
-    if (marker) {
-      map.removeLayer(marker);
-    }
+    if (!map) return;
+    if (marker) map.removeLayer(marker);
 
     if (hasSelectedItem) {
       marker = leaflet.marker([location.latitude, location.longitude], {icon: ACTIVE_ICON});

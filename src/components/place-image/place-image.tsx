@@ -5,7 +5,7 @@ interface Props {
   handleClick: () => void
 }
 
-const PlaceImage = (props) => {
+const PlaceImage = (props: Props) => {
   const {previewImage, handleClick}: Props = props;
 
   const handleLinkClick = (event) => {

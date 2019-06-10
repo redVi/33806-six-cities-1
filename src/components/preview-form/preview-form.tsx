@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import {connect} from 'react-redux';
 
 import {stars} from '@/constants';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 
-const PreviewForm = (props) => {
+type formType = {
+  rating: number,
+  comment: string
+}
+
+interface Props {
+  id: number,
+  form: formType,
+  comment: formType,
+  isFormReady: boolean,
+  handleFormFill: (event: FormEvent<HTMLFormElement>) => void,
+  sendForm: (id: number, comment: formType) => void
+}
+
+const PreviewForm = (props: Props) => {
   if (props.isFormReady) {
     props.sendForm(props.id, props.form);
   }
@@ -44,6 +58,7 @@ const PreviewForm = (props) => {
         name="comment"
         defaultValue={null}
         required={true}
+        minLength={50}
         placeholder="Tell how was your stay, what you like and what can be improved" />
 
       <div className="reviews__button-wrapper">
@@ -61,8 +76,8 @@ const PreviewForm = (props) => {
 };
 
 
-const mapDispatchToProps = (dispatch) => ({
-  sendForm: (id, comment) => {
+const mapDispatchToProps = (dispatch: Function) => ({
+  sendForm: (id: number, comment: formType) => {
     Comments.post(id, comment).then((response) => {
       dispatch(dataActionCreator.fetchComments(response.data));
     });

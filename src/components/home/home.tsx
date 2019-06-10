@@ -17,7 +17,7 @@ interface Props {
   changeCity: (city: string) => object,
 }
 
-const Home  = (props) => {
+const Home  = (props: Props) => {
   const {offers, cities, city, changeCity}: Props = props;
 
   const hasOffers = offers && offers.length;

@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 interface Props {
   text: string,
   link: string,
-  bg: object,
+  bg?: object,
   linkClass?: string
 }
 
-const HeaderLink = (props) => {
+const HeaderLink = (props: Props) => {
   const {text, link, bg, linkClass}: Props = props;
   const loginClass = linkClass ? `header__${linkClass}` : `header__login`;
 
