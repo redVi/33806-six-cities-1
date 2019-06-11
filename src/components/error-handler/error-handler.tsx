@@ -30,7 +30,10 @@ export default class ErrorHandler extends PureComponent<Props, State> {
           // 5xx errors
           if (status.includes(50)) {
             this.setState({error});
+            return;
           }
+
+          return Promise.reject(error.response);
         }
     );
   }

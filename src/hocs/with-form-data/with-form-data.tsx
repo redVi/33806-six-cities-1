@@ -1,38 +1,62 @@
 import React, {PureComponent} from 'react';
 
+const initialState = {form: {}, errors: {}, disabled: true, key: Math.random()};
+
 interface State {
+  key: number,
   form: object | {},
-  isFormReady: boolean
+  errors: object | {}
+  disabled: boolean
 }
 
 function withFormData (WrappedComponent) {
-  return class WithSorting extends PureComponent<any, State> {
+  return class FormDataComponent extends PureComponent<any, State> {
     constructor(props) {
       super(props);
-      this.state = {form: {}, isFormReady: false};
-      this._getData = this._getData.bind(this);
+      this.state = initialState;
+      this.handleChange = this.handleChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.handleServerError = this.handleServerError.bind(this);
     }
 
-    private _getData(e) {
-      e.preventDefault();
+    handleChange(evt) {
+      evt.persist();
 
-      const formData = new FormData(e.target);
-      const newForm = {};
+      this.setState(oldState => ({
+        form: Object.assign({}, oldState.form, {
+          [evt.target.name]: evt.target.value
+        }),
+        errors: Object.assign({}, oldState.errors, {
+          [evt.target.name]: evt.target.validationMessage
+        }),
+        disabled: !evt.target.form.checkValidity()
+      }));
+    }
 
-      for (let pair of formData.entries()) {
-        newForm[pair[0]] = pair[1];
-      }
+    handleFormSubmit() {
+      this.setState(Object.assign({}, initialState, {key: Math.random()}));
+    }
 
-      this.setState({form: newForm, isFormReady: true});
+    handleServerError(errors) {
+      this.setState(oldState => ({
+        errors: Object.assign({}, oldState.errors, errors),
+        disabled: false
+      }));
     }
 
     render() {
+      const {form, disabled, errors, key} = this.state;
+
       return (
         <WrappedComponent
           {...this.props}
-          form={this.state.form}
-          isFormReady={this.state.isFormReady}
-          handleFormFill={this._getData} />
+          form={form}
+          errors={errors}
+          disabled={disabled}
+          key={key}
+          onSubmit={this.handleFormSubmit}
+          onError={this.handleServerError}
+          onChange={this.handleChange} />
       );
     }
   };

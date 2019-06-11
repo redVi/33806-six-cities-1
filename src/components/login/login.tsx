@@ -1,12 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {userActionCreator} from '@/reducer/user/user';
 import Auth from '@/api/auth';
+import {userActionCreator} from '@/reducer/user/user';
+import Input from "@/components/input/input";
+import ErrorMessage from "@/components/error-message/error-message";
 
 interface Props {
-  handleFormFill?: (form: object) => any,
   form?: object | {},
-  isFormReady: boolean,
+  errors?: any,
+  disabled: boolean,
+  onChange: (evt) => void
   logIn: (form: Form) => object
 }
 
@@ -16,7 +19,12 @@ interface Form {
 }
 
 const Login = (props: Props) => {
-  if (props.isFormReady) props.logIn(props.form);
+  const {errors, disabled, onChange, form} = props;
+
+  const submitForm = (evt) => {
+    evt.preventDefault();
+    props.logIn(form);
+  };
 
   return (
     <div className="page page--gray page--login">
@@ -25,35 +33,36 @@ const Login = (props: Props) => {
           <section className="login">
             <h1 className="login__title">Sign in</h1>
 
-            <form
-              onSubmit={props.handleFormFill}
-              className="login__form form"
-              action="#"
-              method="post">
-
+            <form method="post" className="login__form form" onSubmit={submitForm} onChange={onChange}>
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">E-mail</label>
-                <input
-                  defaultValue={null}
+                <Input
                   className="login__input form__input"
                   type="email"
                   name="email"
                   placeholder="Email"
-                  required={true} />
+                  label="E-mail"
+                  defaultValue={null}
+                  required={true}
+                  error={errors.email}
+                />
               </div>
 
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">Password</label>
-                <input
-                  defaultValue={null}
+                <Input
                   className="login__input form__input"
                   type="password"
                   name="password"
                   placeholder="Password"
-                  required={true} />
+                  label="Password"
+                  defaultValue={null}
+                  required={true}
+                  error={errors.password}
+                />
               </div>
 
-              <button className="login__submit form__submit button" type="submit">
+              <ErrorMessage error={errors.error} />
+
+              <button className="login__submit form__submit button" type="submit" disabled={disabled}>
                 Sign in
               </button>
 
@@ -78,7 +87,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     Auth.post(form).then((response) => {
       dispatch(userActionCreator.logIn(response.data));
       ownProps.history.push(`/`);
-    });
+    }).catch((err) => {
+      ownProps.onError(err.data);
+    })
   }
 });
 

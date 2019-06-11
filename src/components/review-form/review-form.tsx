@@ -1,9 +1,11 @@
-import React, {FormEvent} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
 import {STARS} from '@/constants';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
+import Input from '@/components/input/input';
+import ErrorMessage from '@/components/error-message/error-message';
 
 type formType = {
   rating: number,
@@ -12,32 +14,40 @@ type formType = {
 
 interface Props {
   id: number,
+  key: number,
   form: formType,
+  errors?,
+  disabled: boolean,
   comment: formType,
-  isFormReady: boolean,
-  handleFormFill: (event: FormEvent<HTMLFormElement>) => void,
+  onChange: (evt: any) => void,
+  onSubmit: () => void,
   sendForm: (id: number, comment: formType) => void
 }
 
 const PreviewForm = (props: Props) => {
-  if (props.isFormReady) {
-    props.sendForm(props.id, props.form);
-  }
+  const {sendForm, onChange, id, form, errors, disabled} = props;
+
+  const submitForm = (evt) => {
+    evt.preventDefault();
+    props.onSubmit();
+    sendForm(id, form);
+  };
 
   return (
-    <form className="reviews__form form" method="post" onSubmit={props.handleFormFill}>
+    <form className="reviews__form form" method="post" onSubmit={submitForm} onChange={onChange}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
-      <div className="reviews__rating-form form__rating">
+      <div className="reviews__rating-form form__rating" key={`${props.key}-rating`}>
         {STARS.map((star) => (
           <React.Fragment key={star.title}>
-            <input
+            <Input
               className="form__rating-input visually-hidden"
               name="rating"
+              type="radio"
               value={star.value}
               id={`${star.value}-stars`}
               required={true}
-              type="radio" />
+              error={errors.value} />
 
             <label
               htmlFor={`${star.value}-stars`}
@@ -52,15 +62,20 @@ const PreviewForm = (props: Props) => {
         ))}
       </div>
 
-      <textarea
+      <Input
+        key={`${props.key}-comment`}
+        tag="textarea"
         className="reviews__textarea form__textarea"
+        placeholder="Tell how was your stay, what you like and what can be improved"
         id="comment"
         name="comment"
         defaultValue={null}
         required={true}
         minLength={50}
         maxLength={300}
-        placeholder="Tell how was your stay, what you like and what can be improved" />
+        error={errors.comment} />
+
+      <ErrorMessage error={errors.error} />
 
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -68,7 +83,7 @@ const PreviewForm = (props: Props) => {
           stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
 
-        <button className="reviews__submit form__submit button" type="submit">
+        <button className="reviews__submit form__submit button" type="submit" disabled={disabled}>
           Submit
         </button>
       </div>
@@ -77,11 +92,13 @@ const PreviewForm = (props: Props) => {
 };
 
 
-const mapDispatchToProps = (dispatch: Function) => ({
+const mapDispatchToProps = (dispatch: Function, ownProps) => ({
   sendForm: (id: number, comment: formType) => {
     Comments.post(id, comment).then((response) => {
       dispatch(dataActionCreator.fetchComments(response.data));
-    });
+    }).catch((err) => {
+      ownProps.onError(err.data);
+    })
   }
 });
 
