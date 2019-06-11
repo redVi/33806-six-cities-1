@@ -7,9 +7,4 @@ describe(`Bookmark`, () => {
     const tree = renderer.create(<Bookmark isFavorite={true} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  it(`renders correctly without props`, () => {
-    const tree = renderer.create(<Bookmark />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 });

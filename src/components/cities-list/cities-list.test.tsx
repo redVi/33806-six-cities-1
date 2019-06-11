@@ -6,11 +6,9 @@ describe(`CitiesList`, () => {
   it(`renders correctly`, () => {
     const tree = renderer.create(
         <CitiesList
-          cities={[`Berlin`, `Amsterdam`, `Paris`]}
+          items={[`Berlin`, `Amsterdam`, `Paris`]}
           current={`Berlin`}
-          handleSelectCity={jest.fn()}
-          setActiveItem={jest.fn()}
-        />
+          onClick={jest.fn()} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

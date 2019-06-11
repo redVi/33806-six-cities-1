@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {CommentType} from '@/types';
-import PreviewForm from '@/components/review-form/review-form';
+import ReviewForm from '@/components/review-form/review-form';
 import withFormData from '@/hocs/with-form-data/with-form-data';
 import ReviewItem from '@/components/review-item/review-item';
 
-const Form = withFormData(PreviewForm);
+const Form = withFormData(ReviewForm);
 
 interface Props {
   id: number,

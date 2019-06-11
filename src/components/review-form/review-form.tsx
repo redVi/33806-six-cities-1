@@ -14,23 +14,24 @@ type formType = {
 
 interface Props {
   id: number,
-  key: number,
+  key?: number,
   form: formType,
   errors?,
   disabled: boolean,
   comment: formType,
   onChange: (evt: any) => void,
   onSubmit: () => void,
-  sendForm: (id: number, comment: formType) => void
+  onError: (error: object) => void,
+  onSendForm: (id: number, comment: formType) => void
 }
 
-const PreviewForm = (props: Props) => {
-  const {sendForm, onChange, id, form, errors, disabled} = props;
+const ReviewForm = (props: Props) => {
+  const {onSendForm, onChange, id, form, errors, disabled} = props;
 
   const submitForm = (evt) => {
     evt.preventDefault();
     props.onSubmit();
-    sendForm(id, form);
+    onSendForm(id, form);
   };
 
   return (
@@ -102,5 +103,5 @@ const mapDispatchToProps = (dispatch: Function, ownProps) => ({
   }
 });
 
-export {PreviewForm};
-export default connect(null, mapDispatchToProps)(PreviewForm);
+export {ReviewForm};
+export default connect(null, mapDispatchToProps)(ReviewForm);

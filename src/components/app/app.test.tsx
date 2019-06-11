@@ -1,6 +1,6 @@
 import React from 'react';
-import {MemoryRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
+import {MemoryRouter as Router} from 'react-router-dom';
 import {App} from '@/components/app/app';
 
 describe(`App`, () => {
@@ -9,8 +9,8 @@ describe(`App`, () => {
         <Router>
           <App
             user={{}}
-            logIn={jest.fn()}
-            logOut={jest.fn()}
+            onLogIn={jest.fn()}
+            onLogOut={jest.fn()}
             fetchOffers={jest.fn()} />
         </Router>
     ).toJSON();

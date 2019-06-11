@@ -27,7 +27,7 @@ const Offers = (props: Props) => {
 
         <PlacesForm
           filterOptions={FILTER_OPTIONS}
-          handleChangeOffersFilter={handleChangeOffersFilter} />
+          onChangeOffersFilter={handleChangeOffersFilter} />
 
         <PlacesList
           key={`${city.name}-wrapped-list`}

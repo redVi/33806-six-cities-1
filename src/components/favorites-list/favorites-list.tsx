@@ -1,8 +1,11 @@
 import React from 'react';
+import {OfferType} from '@/types';
 import PlacesList from '@/components/places-list/places-list';
 
 interface Props {
-  items: []
+  items: {
+    [key: string]: OfferType[]
+  }
 }
 
 const FavoritesList = (props: Props) => (

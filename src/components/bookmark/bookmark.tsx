@@ -2,12 +2,11 @@ import React from 'react';
 import withFavoriteAction from '@/hocs/with-favorite-action/with-favorite-action';
 
 interface Props {
-  id?: number,
+  isFavorite: boolean,
   width?: string,
   height?: string,
   className?: string,
-  isFavorite?: boolean,
-  handleClick?: () => void
+  onClick?: () => void
 }
 
 const Bookmark = (props: Props) => {
@@ -18,7 +17,7 @@ const Bookmark = (props: Props) => {
     <button
       className={`${rootClass}__bookmark-button ${active} button`}
       type="button"
-      onClick={props.handleClick}>
+      onClick={props.onClick}>
       <svg className={`${rootClass}__bookmark-icon`} width={props.width || `18`} height={props.height || `19`}>
         <use xlinkHref="#icon-bookmark"/>
       </svg>

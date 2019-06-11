@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inside renders correctly 1`] = `
+<div
+  className="property__inside"
+>
+  <h2
+    className="property__inside-title"
+  >
+    What's inside
+  </h2>
+  <ul
+    className="property__inside-list"
+  >
+    <li
+      className="property__inside-item"
+    >
+      Breakfast
+    </li>
+    <li
+      className="property__inside-item"
+    >
+      Towels
+    </li>
+  </ul>
+</div>
+`;

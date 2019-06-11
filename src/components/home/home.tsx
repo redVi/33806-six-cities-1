@@ -34,9 +34,9 @@ const Home  = (props: Props) => {
         <h1 className="visually-hidden">Cities</h1>
 
         <CitiesList
-          cities={cities}
+          items={cities}
           current={city.name}
-          handleSelectCity={changeCity} />
+          onClick={changeCity} />
 
         <div className="cities__places-wrapper">
           {content}

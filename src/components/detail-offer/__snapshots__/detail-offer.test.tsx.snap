@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating renders correctly 1`] = `
+<div
+  className="page"
+>
+  <main
+    className="page__main page__main--property"
+  >
+    <section
+      className="property"
+    >
+      <div
+        className="property__gallery-container container"
+      >
+        <div
+          className="property__gallery"
+        >
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="house.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="house2.jpg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="property__container container"
+      >
+        <div
+          className="property__wrapper"
+        >
+          <div
+            className="property__name-wrapper"
+          >
+            <h1
+              className="property__name"
+            >
+              Hotel
+            </h1>
+          </div>
+          <withRouter(withProps)
+            className="property"
+            height="33"
+            id={24}
+            isFavorite={false}
+            width="31"
+          />
+          <Rating
+            className="property"
+            rating={4.6}
+          >
+            <span
+              className="property__rating-value rating__value"
+            >
+              4.6
+            </span>
+          </Rating>
+          <ul
+            className="property__features"
+          >
+            <li
+              className="property__feature property__feature--entire"
+            />
+            <li
+              className="property__feature property__feature--bedrooms"
+            >
+              3
+               
+              Bedrooms
+            </li>
+            <li
+              className="property__feature property__feature--adults"
+            >
+              Max 
+              2
+               adults
+            </li>
+          </ul>
+          <Price
+            className="property__price"
+            price={120}
+            text=" night"
+          />
+          <Inside
+            items={
+              Array [
+                "Breakfast",
+                "Towels",
+              ]
+            }
+            title="What's inside"
+          />
+          <Host
+            host={
+              Object {
+                "avatarUrl": "bob's-avarar.jpg",
+                "description": "The best host in the world",
+                "isPro": false,
+                "name": "Bob",
+              }
+            }
+          />
+          <Reviews
+            comments={
+              Array [
+                Object {
+                  "comment": "Nice place",
+                  "date": "2019-06-10T02:34:08.739Z",
+                  "id": 1,
+                  "rating": 5,
+                  "user": Object {
+                    "avatarUrl": "tina-avatar.jpg",
+                    "name": "Tina",
+                  },
+                },
+              ]
+            }
+            id={24}
+            isLoggedIn={false}
+            maxCount={10}
+          />
+        </div>
+      </div>
+      <CityMap
+        className="property__map"
+        hasSelectedItem={true}
+        items={
+          Array [
+            Object {
+              "bedrooms": 3,
+              "goods": Array [
+                "Breakfast",
+                "Towels",
+              ],
+              "host": Object {
+                "avatarUrl": "bob's-avarar.jpg",
+                "description": "The best host in the world",
+                "isPro": false,
+                "name": "Bob",
+              },
+              "id": 24,
+              "images": Array [
+                "house.jpg",
+                "house2.jpg",
+              ],
+              "isFavorite": false,
+              "maxAdults": 2,
+              "price": 120,
+              "rating": 4.6,
+              "title": "Hotel",
+            },
+            Object {
+              "bedrooms": 3,
+              "goods": Array [
+                "Breakfast",
+                "Towels",
+              ],
+              "host": Object {
+                "avatarUrl": "bob's-avarar.jpg",
+                "description": "The best host in the world",
+                "isPro": false,
+                "name": "Bob",
+              },
+              "id": 24,
+              "images": Array [
+                "house.jpg",
+                "house2.jpg",
+              ],
+              "isFavorite": false,
+              "maxAdults": 2,
+              "price": 120,
+              "rating": 4.6,
+              "title": "Hotel",
+            },
+          ]
+        }
+      />
+    </section>
+    <div
+      className="container"
+    >
+      <section
+        className="near-places places"
+      >
+        <h2
+          className="near-places__title"
+        >
+          Other places in the neighbourhood
+        </h2>
+        <PlacesList
+          className="near-places__list"
+          places={
+            Array [
+              Object {
+                "bedrooms": 3,
+                "goods": Array [
+                  "Breakfast",
+                  "Towels",
+                ],
+                "host": Object {
+                  "avatarUrl": "bob's-avarar.jpg",
+                  "description": "The best host in the world",
+                  "isPro": false,
+                  "name": "Bob",
+                },
+                "id": 24,
+                "images": Array [
+                  "house.jpg",
+                  "house2.jpg",
+                ],
+                "isFavorite": false,
+                "maxAdults": 2,
+                "price": 120,
+                "rating": 4.6,
+                "title": "Hotel",
+              },
+            ]
+          }
+        />
+      </section>
+    </div>
+  </main>
+</div>
+`;

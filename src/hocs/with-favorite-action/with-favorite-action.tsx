@@ -18,12 +18,12 @@ interface Props {
 function withFavoriteAction (WrappedComponent) {
   return function withProps(props: Props) {
     const {id, changeFavorite, isFavorite, isLoggedIn} = props;
-    const onFavoriteClick = () => !isLoggedIn ? props.history.push('/login') : changeFavorite(id, isFavorite ? 0 : 1);
+    const handleFavoriteClick = () => !isLoggedIn ? props.history.push('/login') : changeFavorite(id, isFavorite ? 0 : 1);
 
     return (
       <WrappedComponent
         {...props}
-        handleClick={onFavoriteClick} />
+        onClick={handleFavoriteClick} />
     );
   };
 }

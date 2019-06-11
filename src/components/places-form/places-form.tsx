@@ -8,7 +8,7 @@ type selectOption = {
 
 interface Props {
   filterOptions: selectOption[],
-  handleChangeOffersFilter?: (option: selectOption) => void
+  onChangeOffersFilter?: (option: selectOption) => void
 }
 
 interface State {
@@ -37,7 +37,7 @@ export default class PlacesForm extends PureComponent<Props, State> {
   }
 
   private _handleSelectOption(selectedOption) {
-    this.props.handleChangeOffersFilter(selectedOption);
+    this.props.onChangeOffersFilter(selectedOption);
 
     this.setState({
       option: selectedOption,

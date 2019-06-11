@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import Auth from '@/api/auth';
 import Hotels from '@/api/hotels';
-
 import {getUserData} from '@/reducer/user/selectors';
 import {userActionCreator} from '@/reducer/user/user';
 import {dataActionCreator} from '@/reducer/data/data';
@@ -12,17 +11,19 @@ import Header from '@/components/header/header';
 
 interface Props {
   user: object
-  logIn: (user: object) => object,
-  logOut: () => object,
+  onLogIn: (user: object) => object,
+  onLogOut: () => object,
   fetchOffers: () => object[]
 }
 
 class App extends PureComponent<Props> {
   componentDidMount() {
     Auth.get().then((response) => {
-      this.props.logIn(response.data);
-    }).catch(() => {
-      this.props.logOut();
+      this.props.onLogIn(response.data);
+    }).catch((err) => {
+      if (err.status === 403 || err.status === 401) {
+        this.props.onLogOut();
+      }
     });
 
     this.props.fetchOffers();
@@ -45,10 +46,10 @@ const mapStateToProps = (state: object, ownProps: object | {}) => (
 );
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  logIn: (form: object) => {
+  onLogIn: (form: object) => {
     dispatch(userActionCreator.logIn(form));
   },
-  logOut: () => {
+  onLogOut: () => {
     dispatch(userActionCreator.logOut());
   },
   fetchOffers: () => {

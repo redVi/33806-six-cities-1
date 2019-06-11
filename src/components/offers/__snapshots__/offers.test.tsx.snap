@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Offers renders correctly 1`] = `
+<div
+  className="cities__places-container container"
+>
+  <section
+    className="cities__places places"
+  >
+    <h2
+      className="visually-hidden"
+    >
+      Places
+    </h2>
+    <b
+      className="places__found"
+    >
+      2 places to stay in Amsterdam
+    </b>
+    <PlacesForm
+      filterOptions={
+        Array [
+          Object {
+            "text": "Popular",
+            "value": "popular",
+          },
+          Object {
+            "field": "ASC",
+            "text": "Price: low to high",
+            "value": "price",
+          },
+          Object {
+            "field": "DESC",
+            "text": "Price: high to low",
+            "value": "price",
+          },
+          Object {
+            "field": "DESC",
+            "text": "Top rated first",
+            "value": "rating",
+          },
+        ]
+      }
+      onChangeOffersFilter={[MockFunction]}
+    />
+    <PlacesList
+      places={
+        Array [
+          Object {
+            "id": 1,
+            "location": Object {
+              "latitude": 51.23,
+              "longitude": 6.8,
+              "zoom": 13,
+            },
+            "price": 320,
+            "rating": 0,
+            "title": "Title",
+          },
+          Object {
+            "id": 2,
+            "location": Object {
+              "latitude": 51.24,
+              "longitude": 6.81,
+              "zoom": 13,
+            },
+            "price": 120,
+            "rating": 3.4,
+            "title": "Title",
+          },
+        ]
+      }
+      setActiveItem={[MockFunction]}
+    />
+  </section>
+  <div
+    className="cities__right-section"
+  >
+    <CityMap
+      canZoomChange={true}
+      hasSelectedItem={
+        Object {
+          "latitude": 51.23,
+          "longitude": 6.8,
+          "zoom": 13,
+        }
+      }
+      items={
+        Array [
+          Object {
+            "id": 1,
+            "location": Object {
+              "latitude": 51.23,
+              "longitude": 6.8,
+              "zoom": 13,
+            },
+            "price": 320,
+            "rating": 0,
+            "title": "Title",
+          },
+          Object {
+            "id": 2,
+            "location": Object {
+              "latitude": 51.24,
+              "longitude": 6.81,
+              "zoom": 13,
+            },
+            "price": 120,
+            "rating": 3.4,
+            "title": "Title",
+          },
+        ]
+      }
+      location={
+        Object {
+          "latitude": 51.23,
+          "longitude": 6.8,
+          "zoom": 13,
+        }
+      }
+    />
+  </div>
+</div>
+`;
