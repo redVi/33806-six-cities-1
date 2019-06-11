@@ -11,7 +11,6 @@ import ErrorHandler from '@/components/error-handler/error-handler';
 import withGuardRoute from '@/hocs/with-guard-route/with-guard-route';
 import withFormData from '@/hocs/with-form-data/with-form-data';
 
-
 export default (
   <ErrorHandler api={api}>
     <Router>
