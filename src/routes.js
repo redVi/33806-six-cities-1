@@ -21,6 +21,7 @@ export default (
         <Route path="/login" component={withFormData(withGuardRoute(Login, `anonymous`))} />
         <Route path="/favorites" component={withGuardRoute(Favorites, `user`)} />
         <Route path="/offer/:id" component={DetailOffer} />
+        <Route component={Home} />
       </Switch>
     </Router>
   </ErrorHandler>

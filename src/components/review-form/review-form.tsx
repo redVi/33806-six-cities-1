@@ -94,7 +94,7 @@ const ReviewForm = (props: Props) => {
 
 
 const mapDispatchToProps = (dispatch: Function, ownProps) => ({
-  sendForm: (id: number, comment: formType) => {
+  onSendForm: (id: number, comment: formType) => {
     Comments.post(id, comment).then((response) => {
       dispatch(dataActionCreator.fetchComments(response.data));
     }).catch((err) => {
