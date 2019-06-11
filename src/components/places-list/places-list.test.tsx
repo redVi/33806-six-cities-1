@@ -6,22 +6,13 @@ import PlacesList from '@/components/places-list/places-list';
 describe(`PlacesList`, () => {
   it(`renders correctly with props`, () => {
     const offers = [
-      {id: 1, title: `Canal View Prinsengracht`, price: 132},
-      {id: 2, title: `Nice, cozy, warm big bed apartment`, price: 180},
+      {id: 1, title: `Canal View Prinsengracht`, price: 180, rating: 3.2, city: {name: `Amsterdam`}},
+      {id: 2, title: `Nice, cozy, warm big bed apartment`, price: 120, rating: 4.5, city: {name: `Amsterdam`}},
     ];
 
     const tree = renderer.create(
         <Router>
           <PlacesList places={offers} handleImageClick={jest.fn()} />
-        </Router>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`renders correctly without props`, () => {
-    const tree = renderer.create(
-        <Router>
-          <PlacesList offers={[]} handleImageClick={jest.fn()} />
         </Router>
     ).toJSON();
     expect(tree).toMatchSnapshot();

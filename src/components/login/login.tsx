@@ -1,74 +1,68 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {userActionCreator} from '@/reducer/user/user';
 import Auth from '@/api/auth';
+import {userActionCreator} from '@/reducer/user/user';
+import Input from "@/components/input/input";
+import ErrorMessage from "@/components/error-message/error-message";
 
 interface Props {
-  logIn: (form: State) => object
+  form?: object | {},
+  errors?: any,
+  disabled: boolean,
+  onChange: (evt) => void
+  logIn: (form: Form) => object
 }
 
-interface State {
-  email: string,
-  password: string
+interface Form {
+  email?: string,
+  password?: string
 }
 
-class Login extends PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {email: ``, password: ``};
-    this.changeText = this.changeText.bind(this);
-    this.sendLogInForm = this.sendLogInForm.bind(this);
-  }
+const Login = (props: Props) => {
+  const {errors, disabled, onChange, form} = props;
 
-  private changeText(e: React.ChangeEvent<HTMLInputElement>, name: string): void {
-    this.setState({
-      [name]: e.target.value
-    } as Pick<State, keyof State>);
-  }
+  const submitForm = (evt) => {
+    evt.preventDefault();
+    props.logIn(form);
+  };
 
-  private sendLogInForm(e): void {
-    e.preventDefault();
-    this.props.logIn(this.state);
-  }
-
-  render() {
-    return (
+  return (
+    <div className="page page--gray page--login">
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form
-              onSubmit={this.sendLogInForm}
-              className="login__form form"
-              action="#"
-              method="post">
+
+            <form method="post" className="login__form form" onSubmit={submitForm} onChange={onChange}>
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">E-mail</label>
-                <input
-                  value={this.state.email}
-                  onChange={(e) => this.changeText(e, `email`)}
+                <Input
                   className="login__input form__input"
                   type="email"
                   name="email"
                   placeholder="Email"
-                  required={true} />
+                  label="E-mail"
+                  defaultValue={null}
+                  required={true}
+                  error={errors.email}
+                />
               </div>
+
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">Password</label>
-                <input
-                  value={this.state.password}
-                  onChange={(e) => this.changeText(e, `password`)}
+                <Input
                   className="login__input form__input"
                   type="password"
                   name="password"
                   placeholder="Password"
-                  required={true} />
+                  label="Password"
+                  defaultValue={null}
+                  required={true}
+                  error={errors.password}
+                />
               </div>
 
-              <button
-                disabled={!this.state.email || !this.state.password}
-                className="login__submit form__submit button"
-                type="submit">
+              <ErrorMessage error={errors.error} />
+
+              <button className="login__submit form__submit button" type="submit" disabled={disabled}>
                 Sign in
               </button>
 
@@ -77,23 +71,25 @@ class Login extends PureComponent<Props, State> {
 
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <div className="locations__item-link">
                 <span>Amsterdam</span>
-              </a>
+              </div>
             </div>
           </section>
         </div>
       </main>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  logIn: (form: State) => {
+  logIn: (form: Form) => {
     Auth.post(form).then((response) => {
       dispatch(userActionCreator.logIn(response.data));
       ownProps.history.push(`/`);
-    });
+    }).catch((err) => {
+      ownProps.onError(err.data);
+    })
   }
 });
 

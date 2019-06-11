@@ -5,13 +5,14 @@ exports[`PlaceImage renders correctly without props 1`] = `
   className="cities__image-wrapper place-card__image-wrapper"
 >
   <a
-    href="#"
+    href=""
     onClick={[Function]}
   >
     <img
       alt="Place image"
       className="place-card__image"
       height="200"
+      src="preview.jpg"
       width="260"
     />
   </a>

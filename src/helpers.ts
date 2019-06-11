@@ -1,11 +1,14 @@
-const getRandomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
+import {OfferType} from '@/types';
 
-const snakeToCamel = (word: string) => word.replace(
-    /(_\w)/g,
-    (matches) => matches[1].toUpperCase()
+const snakeToCamel = (word: string): string => word.replace(
+  /(_\w)/g,
+  (matches) => matches[1].toUpperCase()
 );
 
-const normalizeKeys = (obj: object) => {
+export const getRandomNumber = (min: number, max: number): number =>
+  Math.floor(Math.random() * (max - min)) + min;
+
+export const normalizeKeys = (obj: object): object => {
   if (Array.isArray(obj)) {
     return obj.map((item) => normalizeKeys(item));
   }
@@ -20,7 +23,10 @@ const normalizeKeys = (obj: object) => {
   return obj;
 };
 
-export {
-  getRandomNumber,
-  normalizeKeys
+export const sortByField = (arr: OfferType[], value: string, field: string): OfferType[] => {
+  switch (field) {
+    case `ASC`: return arr.sort((a, b) => a[value] - b[value]);
+    case `DESC`: return arr.sort((a, b) => b[value] - a[value]);
+    default: return arr;
+  }
 };

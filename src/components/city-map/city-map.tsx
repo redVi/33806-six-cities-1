@@ -1,6 +1,6 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import leaflet from 'leaflet';
-import {location} from '@/types';
+import {LocationType, OfferType} from '@/types';
 
 const SETTINGS = {
   zoom: 12,
@@ -12,13 +12,24 @@ const SETTINGS = {
   })
 };
 
+let map = null;
+let marker = null;
+
+const ACTIVE_ICON = leaflet.icon({
+  iconUrl: `/img/pin-active.svg`,
+  iconSize: [27, 39]
+});
+
 interface Props {
-  location,
-  coordinates: location[]
+  location: LocationType,
+  items: OfferType[],
+  hasSelectedItem?: boolean,
+  canZoomChange?: boolean,
+  className?: string
 }
 
-class CityMap extends PureComponent<Props> {
-  componentDidMount() {
+class CityMap extends Component<Props> {
+  componentDidMount(): void {
     try {
       this._initMap();
     } catch (e) {
@@ -26,15 +37,39 @@ class CityMap extends PureComponent<Props> {
     }
   }
 
+  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+    return nextProps.location.latitude !== this.props.location.latitude;
+  }
+
+  componentDidUpdate(): void {
+    const {location, hasSelectedItem, canZoomChange} = this.props;
+
+    if (!map) return;
+    if (marker) map.removeLayer(marker);
+
+    if (hasSelectedItem) {
+      marker = leaflet.marker([location.latitude, location.longitude], {icon: ACTIVE_ICON});
+      marker.addTo(map);
+    }
+
+    if (canZoomChange) {
+      map.flyTo([location.latitude, location.longitude], this.props.location.zoom);
+    }
+  }
+
+  componentWillUnmount(): void {
+    map.remove();
+  }
+
   _initMap() {
-    const map = leaflet.map(`map`, SETTINGS);
     const {
-      location: {latitude, longitude, zoom},
-      coordinates
+      location: {latitude, longitude},
+      items
     } = this.props;
 
-    map.setView([latitude, longitude], zoom);
+    const coordinates: LocationType[] = items.map((item) => item.location);
 
+    map = leaflet.map(`map`, SETTINGS).setView([latitude, longitude], SETTINGS.zoom);
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
       .addTo(map);
@@ -42,11 +77,17 @@ class CityMap extends PureComponent<Props> {
     coordinates.forEach((city) => {
       leaflet.marker([city.latitude, city.longitude], {icon: SETTINGS.icon}).addTo(map);
     });
+
+    if (this.props.hasSelectedItem) {
+      marker = leaflet.marker([latitude, longitude], {icon: ACTIVE_ICON});
+      marker.addTo(map);
+    }
   }
 
   render() {
+    const className = this.props.className || `cities__map map`;
     return (
-      <section className="cities__map map" id="map" />
+      <section className={className} id="map" />
     );
   }
 }

@@ -1,25 +1,28 @@
 import React from 'react';
-import {offer} from '@/types';
+import {OfferType} from '@/types';
 import PlacesListItem from '@/components/places-list-item/places-list-item';
 
 interface Props {
-  places: offer[],
+  places: OfferType[],
   current?: number,
-  setActiveItem: (index: number) => void
+  handleImageClick?: () => void,
+  setActiveItem?: (index: object) => void,
+  className?: string
 }
 
-const PlacesList = (props) => {
+const PlacesList = (props: Props) => {
   const {places, current, setActiveItem}: Props = props;
+  const className = props.className || 'cities__places-list';
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={`${className} places__list tabs__content`}>
       {places
         ? places.map((offer, index) =>
           <PlacesListItem
             key={`place-${offer.id}`}
             offer={offer}
             current={current === index ? current : undefined}
-            handleImageClick={() => setActiveItem(index)} />)
+            handleImageClick={() => setActiveItem ? setActiveItem(offer) : undefined} />)
         : null
       }
     </div>

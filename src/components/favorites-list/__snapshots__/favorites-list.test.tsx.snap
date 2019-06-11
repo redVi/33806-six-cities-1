@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating renders correctly 1`] = `
+<React.Fragment>
+  <h1
+    className="favorites__title"
+  >
+    Saved listing
+  </h1>
+  <ul
+    className="favorites__list"
+  >
+    <li
+      className="favorites__locations-items"
+    >
+      <div
+        className="favorites__locations locations locations--current"
+      >
+        <div
+          className="locations__item"
+        >
+          <a
+            className="locations__item-link"
+            href=""
+          >
+            <span>
+              Amsterdam
+            </span>
+          </a>
+        </div>
+      </div>
+      <PlacesList
+        className="favorites__places"
+        places={
+          Array [
+            Object {
+              "id": 1,
+              "price": 250,
+              "rating": 3.5,
+              "title": "Amster Hotel",
+            },
+          ]
+        }
+      />
+    </li>
+    <li
+      className="favorites__locations-items"
+    >
+      <div
+        className="favorites__locations locations locations--current"
+      >
+        <div
+          className="locations__item"
+        >
+          <a
+            className="locations__item-link"
+            href=""
+          >
+            <span>
+              Paris
+            </span>
+          </a>
+        </div>
+      </div>
+      <PlacesList
+        className="favorites__places"
+        places={
+          Array [
+            Object {
+              "id": 2,
+              "price": 98,
+              "rating": 4.2,
+              "title": "Paris Hotel",
+            },
+            Object {
+              "id": 3,
+              "price": 100,
+              "rating": 2.3,
+              "title": "Paris Hotel 1",
+            },
+          ]
+        }
+      />
+    </li>
+  </ul>
+</React.Fragment>
+`;

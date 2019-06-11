@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorHandler renders correctly 1`] = `
+<p
+  api={[Function]}
+>
+  <p>
+    I have no errors.
+  </p>
+</p>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+Array [
+  <label
+    className="visually-hidden"
+  >
+    E-mail
+  </label>,
+  <input
+    name="email"
+    placeholder="E-mail"
+    required={true}
+  />,
+  <span
+    className="error error__validation"
+  >
+    Is not valid e-mail address
+  </span>,
+]
+`;

@@ -15,7 +15,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="#"
+      href=""
       onClick={[Function]}
     >
       <img
@@ -50,6 +50,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
       </div>
       <button
         className="place-card__bookmark-button  button"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -92,7 +93,7 @@ exports[`PlacesListItem renders correctly with all props 1`] = `
       className="place-card__name"
     >
       <a
-        href="/1"
+        href="/offer/1"
         onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
@@ -115,7 +116,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="#"
+      href=""
       onClick={[Function]}
     >
       <img
@@ -149,6 +150,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
       </div>
       <button
         className="place-card__bookmark-button  button"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -176,7 +178,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
         <span
           style={
             Object {
-              "width": "0%",
+              "width": "86%",
             }
           }
         />
@@ -191,7 +193,7 @@ exports[`PlacesListItem renders correctly with only required props 1`] = `
       className="place-card__name"
     >
       <a
-        href="/2"
+        href="/offer/2"
         onClick={[Function]}
       >
         Wood and stone place
