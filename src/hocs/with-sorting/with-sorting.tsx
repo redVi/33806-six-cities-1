@@ -8,8 +8,7 @@ interface State {
 }
 
 interface InjectedProps {
-  items: object | string | number,
-  setActiveItem: (current: number) => void
+  items: object | string | number
 }
 
 function withSorting <T extends InjectedProps>(WrappedComponent: ComponentType<T>, items) {
@@ -36,7 +35,7 @@ function withSorting <T extends InjectedProps>(WrappedComponent: ComponentType<T
         <WrappedComponent
           {...this.props as T}
           items={this.state.list}
-          handleChangeOffersFilter={this._sortOffersByField} />
+          onChangeOffersFilter={this._sortOffersByField} />
       );
     }
   };

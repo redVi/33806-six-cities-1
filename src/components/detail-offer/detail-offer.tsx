@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {OfferType, CommentType} from '@/types';
+import {redirectToId} from '@/helpers';
 import Comments from '@/api/comments';
 import {dataActionCreator} from '@/reducer/data/data';
 import {checkAuthorization} from '@/reducer/user/selectors';
@@ -25,6 +26,7 @@ enum Apartment {
 }
 
 interface Props {
+  history?: any[],
   id: number,
   offer: OfferType,
   offers: OfferType[],
@@ -47,6 +49,7 @@ class DetailOffer extends React.PureComponent<Props> {
 
   render() {
     const {offer, offers, comments, isLoggedIn} = this.props;
+    const redirect = (item) => redirectToId(`/offer/${item.id}`, this.props.history);
 
     if (!offer) return null;
 
@@ -124,7 +127,7 @@ class DetailOffer extends React.PureComponent<Props> {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <PlacesList places={offers} className="near-places__list"/>
+              <PlacesList places={offers} className="near-places__list" onImageClick={redirect} />
             </section>
           </div>
         </main>

@@ -6,21 +6,21 @@ import PlaceInfo from '@/components/place-info/place-info';
 
 interface Props {
   offer: OfferType,
-  handleImageClick?: () => void,
+  onImageClick?: () => void,
   current?: number,
   className?: string
 }
 
 const PlacesListItem = (props: Props) => {
   const className = props.className || 'cities__place-card';
-  const {offer, current, handleImageClick}: Props = props;
+  const {offer, current, onImageClick}: Props = props;
   const mark = offer.isPremium ? <Mark/> : null;
   const activeClass = current >= 0 ? `${className}--active` : ``;
 
   return (
     <article className={`${className} ${activeClass} place-card`}>
       {mark}
-      <PlaceImage previewImage={offer.previewImage} handleClick={() => handleImageClick()} />
+      <PlaceImage previewImage={offer.previewImage} onClick={onImageClick} />
       <PlaceInfo {...offer} />
     </article>
   );
