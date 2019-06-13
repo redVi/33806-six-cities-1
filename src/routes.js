@@ -17,8 +17,8 @@ export default (
       <Route path="/" component={App} />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/login" component={withFormData(withGuardRoute(Login, `anonymous`))} />
-        <Route path="/favorites" component={withGuardRoute(Favorites, `user`)} />
+        <Route path="/login" component={withFormData(withGuardRoute(Login, true, `/`))} />
+        <Route path="/favorites" component={withGuardRoute(Favorites, false, `/login`)} />
         <Route path="/offer/:id" component={DetailOffer} />
         <Route component={Home} />
       </Switch>
