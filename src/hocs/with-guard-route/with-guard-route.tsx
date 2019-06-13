@@ -8,14 +8,13 @@ interface Props {
   isLoggedIn: boolean
 }
 
-const withGuardRoute = function (WrappedComponent, accessTo) {
+const withGuardRoute = function (WrappedComponent, flag: boolean, path: string) {
   return function withProps(props: Props) {
     const {isLoggedIn} = props;
 
     switch (true) {
       case isLoggedIn === undefined: return null;
-      case isLoggedIn === false && accessTo === 'user': return <Redirect to="/login" />;
-      case isLoggedIn === true && accessTo === 'anonymous': return <Redirect to="/" />;
+      case isLoggedIn === flag: return <Redirect to={path} />
       default: return <WrappedComponent {...props} />;
     }
   }
