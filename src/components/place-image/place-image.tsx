@@ -2,15 +2,15 @@ import React from 'react';
 
 interface Props {
   previewImage: string,
-  handleClick: () => void
+  onClick: () => void
 }
 
 const PlaceImage = (props: Props) => {
-  const {previewImage, handleClick}: Props = props;
+  const {previewImage, onClick}: Props = props;
 
   const handleLinkClick = (event) => {
     event.preventDefault();
-    handleClick();
+    onClick();
   };
 
   return (

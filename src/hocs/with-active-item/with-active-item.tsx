@@ -8,7 +8,7 @@ interface State {
 }
 
 interface InjectedProps {
-  setActiveItem: (current: itemType) => void
+  onSetActiveItem: (current: itemType) => void
 }
 
 function withActiveItem <T extends InjectedProps>(WrappedComponent: ComponentType<T>) {
@@ -28,7 +28,7 @@ function withActiveItem <T extends InjectedProps>(WrappedComponent: ComponentTyp
         <WrappedComponent
           {...this.props as T}
           activeItem={this.state.activeItem}
-          setActiveItem={this._setActiveItem} />
+          onSetActiveItem={this._setActiveItem} />
       );
     }
   };

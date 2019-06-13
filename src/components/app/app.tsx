@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Auth from '@/api/auth';
@@ -16,7 +16,7 @@ interface Props {
   fetchOffers: () => object[]
 }
 
-class App extends PureComponent<Props> {
+class App extends Component<Props> {
   componentDidMount() {
     Auth.get().then((response) => {
       this.props.onLogIn(response.data);

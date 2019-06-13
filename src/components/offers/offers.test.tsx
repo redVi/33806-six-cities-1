@@ -26,8 +26,8 @@ describe(`Offers`, () => {
         items={items}
         city={city}
         activeItem={items[0]}
-        handleChangeOffersFilter={jest.fn()}
-        setActiveItem={jest.fn()} />
+        onChangeOffersFilter={jest.fn()}
+        onSetActiveItem={jest.fn()} />
     );
 
     const tree = renderer.getRenderOutput();

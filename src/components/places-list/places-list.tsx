@@ -5,13 +5,12 @@ import PlacesListItem from '@/components/places-list-item/places-list-item';
 interface Props {
   places: OfferType[],
   current?: number,
-  handleImageClick?: () => void,
-  setActiveItem?: (index: object) => void,
+  onImageClick?: (item: object) => any,
   className?: string
 }
 
 const PlacesList = (props: Props) => {
-  const {places, current, setActiveItem}: Props = props;
+  const {places, current, onImageClick}: Props = props;
   const className = props.className || 'cities__places-list';
 
   return (
@@ -22,7 +21,7 @@ const PlacesList = (props: Props) => {
             key={`place-${offer.id}`}
             offer={offer}
             current={current === index ? current : undefined}
-            handleImageClick={() => setActiveItem ? setActiveItem(offer) : undefined} />)
+            onImageClick={() => onImageClick ? onImageClick(offer): undefined} />)
         : null
       }
     </div>

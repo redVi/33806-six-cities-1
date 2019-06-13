@@ -202,6 +202,7 @@ exports[`Rating renders correctly 1`] = `
         </h2>
         <PlacesList
           className="near-places__list"
+          onImageClick={[Function]}
           places={
             Array [
               Object {

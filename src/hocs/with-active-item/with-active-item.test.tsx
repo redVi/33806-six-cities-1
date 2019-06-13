@@ -10,7 +10,7 @@ describe(`withActiveItem`, () => {
 
     expect(wrapper.props().activeItem).toEqual(undefined);
 
-    wrapper.props().setActiveItem(2);
+    wrapper.props().onSetActiveItem(2);
     expect(wrapper.props().activeItem).toEqual(2);
   });
 });

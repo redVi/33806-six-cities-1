@@ -26,6 +26,7 @@ const sortFavList = (list: OfferType[]) => {
 };
 
 interface Props {
+  history?: any[],
   favorites?: OfferType[]
 }
 
@@ -42,7 +43,7 @@ const Favorites = (props: Props) => {
       <main className={`page__main page__main--favorites ${mainClass}`}>
         <div className="page__favorites-container container">
           <section className={`favorites ${sectionClass}`}>
-            {hasFavorites ? <FavoritesList items={items} /> : <FavoritesEmpty />}
+            {hasFavorites ? <FavoritesList items={items} history={props.history} /> : <FavoritesEmpty />}
           </section>
         </div>
       </main>

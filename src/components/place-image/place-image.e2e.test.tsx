@@ -6,7 +6,7 @@ describe(`PlaceImage`, () => {
   it(`should call callback by clicking`, () => {
     const clickHandler = jest.fn();
     const clickHandlerPrevention = jest.fn();
-    const wrapper = shallow(<PlaceImage previewImage={`apartment.jpg`} handleClick={clickHandler} />);
+    const wrapper = shallow(<PlaceImage previewImage={`apartment.jpg`} onClick={clickHandler} />);
 
     wrapper.find(`a`).simulate(`click`, {preventDefault: clickHandlerPrevention});
 

@@ -14,7 +14,7 @@ const items = {
   ],
 }
 
-describe(`Rating`, () => {
+describe(`FavoritesList`, () => {
   it(`renders correctly`, () => {
     renderer.render(<FavoritesList items={items} />);
     const tree = renderer.getRenderOutput();

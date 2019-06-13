@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rating renders correctly 1`] = `
+exports[`FavoritesList renders correctly 1`] = `
 <React.Fragment>
   <h1
     className="favorites__title"
@@ -31,6 +31,7 @@ exports[`Rating renders correctly 1`] = `
       </div>
       <PlacesList
         className="favorites__places"
+        onImageClick={[Function]}
         places={
           Array [
             Object {
@@ -64,6 +65,7 @@ exports[`Rating renders correctly 1`] = `
       </div>
       <PlacesList
         className="favorites__places"
+        onImageClick={[Function]}
         places={
           Array [
             Object {

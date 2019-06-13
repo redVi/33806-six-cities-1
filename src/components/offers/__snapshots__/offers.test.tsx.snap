@@ -44,6 +44,7 @@ exports[`Offers renders correctly 1`] = `
       onChangeOffersFilter={[MockFunction]}
     />
     <PlacesList
+      onImageClick={[MockFunction]}
       places={
         Array [
           Object {
@@ -70,7 +71,6 @@ exports[`Offers renders correctly 1`] = `
           },
         ]
       }
-      setActiveItem={[MockFunction]}
     />
   </section>
   <div

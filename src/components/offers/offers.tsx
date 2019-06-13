@@ -10,12 +10,12 @@ interface Props {
   items: OfferType[],
   city: CityType,
   activeItem,
-  handleChangeOffersFilter: () => void
-  setActiveItem: () => void
+  onChangeOffersFilter: () => void
+  onSetActiveItem: () => void
 }
 
 const Offers = (props: Props) => {
-  const {items, city, handleChangeOffersFilter, setActiveItem, activeItem} = props;
+  const {items, city, onChangeOffersFilter, onSetActiveItem, activeItem} = props;
   const placesHeading: string = `${items.length} ${items.length > 1 ? `places` : `place`} to stay in ${city.name}`;
   const hasActiveItem: boolean = activeItem && activeItem.location;
 
@@ -27,12 +27,12 @@ const Offers = (props: Props) => {
 
         <PlacesForm
           filterOptions={FILTER_OPTIONS}
-          onChangeOffersFilter={handleChangeOffersFilter} />
+          onChangeOffersFilter={onChangeOffersFilter} />
 
         <PlacesList
           key={`${city.name}-wrapped-list`}
           places={items}
-          setActiveItem={setActiveItem} />
+          onImageClick={onSetActiveItem} />
       </section>
 
       <div className="cities__right-section">

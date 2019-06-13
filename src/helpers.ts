@@ -30,3 +30,5 @@ export const sortByField = (arr: OfferType[], value: string, field: string): Off
     default: return arr;
   }
 };
+
+export const redirectToId = (url: string, history) => history.push(url);

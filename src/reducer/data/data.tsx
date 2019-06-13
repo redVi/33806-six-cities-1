@@ -13,18 +13,18 @@ interface ActionType {
   payload: any
 }
 
-const getRandomCity = (offers: OfferType[]) => offers.length ? offers[getRandomNumber(1, offers.length)].city : {};
-const getCityFromOffers = (offers: OfferType[], cityName: string) =>
-  offers.filter((o) => o.city.name === cityName)[0].city;
+function getRandomCity(offers: OfferType[]) {
+  return offers.length ? offers[getRandomNumber(1, offers.length)].city : {};
+}
 
-const updateOffer = (offers: OfferType[], current: OfferType) => {
-  const offerIndex = offers.findIndex((it) => it.id === current.id);
+function getCityFromOffers(offers: OfferType[], cityName: string) {
+  return offers.filter((o) => o.city.name === cityName)[0].city;
+}
 
-  if (offerIndex !== -1) {
-    offers.splice(offerIndex, 1, current);
-  }
-
-  return offers;
+function updateOffer(offers: OfferType[], current: OfferType) {
+  return offers.map(offer => offer.id === current.id ?
+    { ...current } : offer
+  );
 };
 
 const initialState = {

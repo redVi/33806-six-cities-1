@@ -12,7 +12,7 @@ describe(`PlacesList`, () => {
 
     const tree = renderer.create(
         <Router>
-          <PlacesList places={offers} handleImageClick={jest.fn()} />
+          <PlacesList places={offers} onImageClick={jest.fn()} />
         </Router>
     ).toJSON();
     expect(tree).toMatchSnapshot();
