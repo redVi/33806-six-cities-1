@@ -33,7 +33,7 @@ const comment = {
   }
 };
 
-describe(`Rating`, () => {
+describe(`DetailOffer`, () => {
   it(`renders correctly`, () => {
     renderer.render(
       <DetailOffer

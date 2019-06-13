@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {OfferType, CommentType} from '@/types';
@@ -17,13 +17,8 @@ import Reviews from '@/components/reviews/reviews';
 import Host from '@/components/host/host';
 import Inside from '@/components/inside/inside';
 import Price from '@/components/price/price';
-
-enum Apartment {
-  apartment = 'Apartment',
-  room = 'Private Room',
-  house = 'House',
-  hotel = 'Hotel'
-}
+import Features from '@/components/features/features';
+import Gallery from '@/components/gallery/gallery';
 
 interface Props {
   history?: any[],
@@ -36,7 +31,7 @@ interface Props {
   setActiveItem?: () => void
 }
 
-class DetailOffer extends React.PureComponent<Props> {
+class DetailOffer extends Component<Props> {
   componentDidMount(): void {
     this.props.getComments();
   }
@@ -57,15 +52,8 @@ class DetailOffer extends React.PureComponent<Props> {
       <div className="page">
         <main className="page__main page__main--property">
           <section className="property">
-            <div className="property__gallery-container container">
-              <div className="property__gallery">
-                {offer.images.slice(0, 6).map((image, index) => (
-                  <div className="property__image-wrapper" key={`image-${index}`}>
-                    <img className="property__image" src={image} alt="Photo studio"/>
-                  </div>
-                ))}
-              </div>
-            </div>
+
+            <Gallery images={offer.images} maxCount={6} />
 
             <div className="property__container container">
               <div className="property__wrapper">
@@ -89,17 +77,10 @@ class DetailOffer extends React.PureComponent<Props> {
                   </span>
                 </Rating>
 
-                <ul className="property__features">
-                  <li className="property__feature property__feature--entire">
-                    {Apartment[offer.type]}
-                  </li>
-                  <li className="property__feature property__feature--bedrooms">
-                    {offer.bedrooms} {offer.bedrooms > 1 ? `Bedrooms` : `Bedroom`}
-                  </li>
-                  <li className="property__feature property__feature--adults">
-                    Max {offer.maxAdults} adults
-                  </li>
-                </ul>
+                <Features
+                  type={offer.type}
+                  bedrooms={offer.bedrooms}
+                  maxAdults={offer.maxAdults} />
 
                 <Price price={offer.price} className="property__price" text="&nbsp;night" />
 
@@ -112,7 +93,6 @@ class DetailOffer extends React.PureComponent<Props> {
                   maxCount={10}
                   isLoggedIn={isLoggedIn}
                   comments={comments} />
-
               </div>
             </div>
 
