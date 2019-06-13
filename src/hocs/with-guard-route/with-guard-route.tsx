@@ -8,7 +8,7 @@ interface Props {
   isLoggedIn: boolean
 }
 
-const withGuardRoute = function (WrappedComponent, flag: boolean, path: string) {
+function withGuardRoute(WrappedComponent, flag: boolean, path: string) {
   return function withProps(props: Props) {
     const {isLoggedIn} = props;
 

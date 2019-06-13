@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rating renders correctly 1`] = `
+exports[`DetailOffer renders correctly 1`] = `
 <div
   className="page"
 >
@@ -10,32 +10,15 @@ exports[`Rating renders correctly 1`] = `
     <section
       className="property"
     >
-      <div
-        className="property__gallery-container container"
-      >
-        <div
-          className="property__gallery"
-        >
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="house.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="house2.jpg"
-            />
-          </div>
-        </div>
-      </div>
+      <Gallery
+        images={
+          Array [
+            "house.jpg",
+            "house2.jpg",
+          ]
+        }
+        maxCount={6}
+      />
       <div
         className="property__container container"
       >
@@ -68,27 +51,10 @@ exports[`Rating renders correctly 1`] = `
               4.6
             </span>
           </Rating>
-          <ul
-            className="property__features"
-          >
-            <li
-              className="property__feature property__feature--entire"
-            />
-            <li
-              className="property__feature property__feature--bedrooms"
-            >
-              3
-               
-              Bedrooms
-            </li>
-            <li
-              className="property__feature property__feature--adults"
-            >
-              Max 
-              2
-               adults
-            </li>
-          </ul>
+          <Features
+            bedrooms={3}
+            maxAdults={2}
+          />
           <Price
             className="property__price"
             price={120}

@@ -22,10 +22,8 @@ function getCityFromOffers(offers: OfferType[], cityName: string) {
 }
 
 function updateOffer(offers: OfferType[], current: OfferType) {
-  return offers.map(offer => offer.id === current.id ?
-    { ...current } : offer
-  );
-};
+  return offers.map(offer => offer.id === current.id ? current : offer);
+}
 
 const initialState = {
   city: {},
