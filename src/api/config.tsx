@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const BASE_URL = `https://es31-server.appspot.com/six-cities`;
+export const BASE_URL = "https://es31-server.appspot.com/six-cities";
 
 const api = axios.create({
   baseURL: BASE_URL,

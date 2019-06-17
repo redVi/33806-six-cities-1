@@ -1,10 +1,10 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {FILTER_OPTIONS} from '@/constants';
-import Select from '@/components/select/select';
+import React from "react";
+import renderer from "react-test-renderer";
+import {FILTER_OPTIONS} from "@/constants";
+import Select from "@/components/select/select";
 
-describe(`Select`, () => {
-  it(`renders correctly`, () => {
+describe("Select", () => {
+  it("renders correctly", () => {
     const tree = renderer.create(
       <Select
         opened={true}

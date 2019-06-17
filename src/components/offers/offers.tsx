@@ -1,22 +1,22 @@
-import React from 'react';
-import {FILTER_OPTIONS} from '@/constants';
+import React from "react";
+import {FILTER_OPTIONS} from "@/constants";
 
-import PlacesList from '@/components/places-list/places-list';
-import CityMap from '@/components/city-map/city-map';
-import PlacesForm from '@/components/places-form/places-form';
-import {OfferType, CityType} from '@/types';
+import PlacesList from "@/components/places-list/places-list";
+import CityMap from "@/components/city-map/city-map";
+import PlacesForm from "@/components/places-form/places-form";
+import {OfferType, CityType} from "@/types";
 
 interface Props {
-  items: OfferType[],
-  city: CityType,
-  activeItem,
-  onChangeOffersFilter: () => void
-  onSetActiveItem: () => void
+  items: OfferType[];
+  city: CityType;
+  activeItem;
+  onChangeOffersFilter: () => void;
+  onSetActiveItem: () => void;
 }
 
 const Offers = (props: Props) => {
   const {items, city, onChangeOffersFilter, onSetActiveItem, activeItem} = props;
-  const placesHeading: string = `${items.length} ${items.length > 1 ? `places` : `place`} to stay in ${city.name}`;
+  const placesHeading = `${items.length} ${items.length > 1 ? "places" : "place"} to stay in ${city.name}`;
   const hasActiveItem: boolean = activeItem && activeItem.location;
 
   return (

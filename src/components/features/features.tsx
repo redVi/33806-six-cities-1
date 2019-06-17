@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
 enum Apartment {
-  apartment = 'Apartment',
-  room = 'Private Room',
-  house = 'House',
-  hotel = 'Hotel'
+  apartment = "Apartment",
+  room = "Private Room",
+  house = "House",
+  hotel = "Hotel"
 }
 
 interface Props {
-  type: string,
-  bedrooms: number,
-  maxAdults: number
+  type: string;
+  bedrooms: number;
+  maxAdults: number;
 }
 
 const Features = (props: Props) => {
@@ -22,7 +22,7 @@ const Features = (props: Props) => {
         {Apartment[type]}
       </li>
       <li className="property__feature property__feature--bedrooms">
-        {bedrooms} {bedrooms > 1 ? `Bedrooms` : `Bedroom`}
+        {bedrooms} {bedrooms > 1 ? "Bedrooms" : "Bedroom"}
       </li>
       <li className="property__feature property__feature--adults">
         Max {maxAdults} adults

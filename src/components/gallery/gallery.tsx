@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-  images: string[],
-  maxCount: number
+  images: string[];
+  maxCount: number;
 }
 
 const Gallery = (props: Props) => {

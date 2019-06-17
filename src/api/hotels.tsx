@@ -1,7 +1,7 @@
-import api from '@/api/config';
+import api from "@/api/config";
 
 const Hotels = {
-  get: () => api.get(`/hotels`)
+  get: () => api.get("/hotels")
 };
 
 export default Hotels;

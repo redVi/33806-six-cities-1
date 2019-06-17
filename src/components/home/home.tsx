@@ -1,20 +1,20 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {OfferType, CityType} from '@/types';
-import {dataActionCreator} from '@/reducer/data/data';
-import {getCities, getCity, getCityOffers} from '@/reducer/data/selectors';
+import React from "react";
+import {connect} from "react-redux";
+import {OfferType, CityType} from "@/types";
+import {dataActionCreator} from "@/reducer/data/data";
+import {getCities, getCity, getCityOffers} from "@/reducer/data/selectors";
 
-import CitiesList from '@/components/cities-list/cities-list';
-import OffersEmpty from '@/components/offers-empty/offers-empty';
-import Offers from '@/components/offers/offers';
-import withSorting from '@/hocs/with-sorting/with-sorting';
-import withActiveItem from '@/hocs/with-active-item/with-active-item';
+import CitiesList from "@/components/cities-list/cities-list";
+import OffersEmpty from "@/components/offers-empty/offers-empty";
+import Offers from "@/components/offers/offers";
+import withSorting from "@/hocs/with-sorting/with-sorting";
+import withActiveItem from "@/hocs/with-active-item/with-active-item";
 
 interface Props {
-  offers: OfferType[],
-  cities: string[],
-  city: CityType,
-  changeCity: (city: string) => object,
+  offers: OfferType[];
+  cities: string[];
+  city: CityType;
+  changeCity: (city: string) => object;
 }
 
 const Home  = (props: Props) => {
@@ -25,8 +25,8 @@ const Home  = (props: Props) => {
   const content = hasOffers ? <Places city={city} /> : <OffersEmpty />;
 
   const mainClass = hasOffers
-    ? 'page page--gray page--main'
-    : 'page__main page__main--index page__main--index-empty';
+    ? "page page--gray page--main"
+    : "page__main page__main--index page__main--index-empty";
 
   return (
     <div className="page page--gray page--main">

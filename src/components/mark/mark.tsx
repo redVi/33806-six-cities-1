@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-  className?: string
+  className?: string;
 }
 
 const Mark = (props: Props) => {
   return (
-    <div className={props.className || 'place-card__mark'}>
+    <div className={props.className || "place-card__mark"}>
       <span>Premium</span>
     </div>
   )

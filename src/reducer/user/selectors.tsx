@@ -1,4 +1,4 @@
-import NameSpace from '@/reducer/namespaces';
+import NameSpace from "@/reducer/namespaces";
 
 const NAME_SPACE = NameSpace.USER;
 

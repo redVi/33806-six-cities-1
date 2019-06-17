@@ -1,23 +1,23 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
-import Auth from '@/api/auth';
-import Hotels from '@/api/hotels';
-import {getUserData} from '@/reducer/user/selectors';
-import {userActionCreator} from '@/reducer/user/user';
-import {dataActionCreator} from '@/reducer/data/data';
-import SvgSprite from '@/components/svg-sprite/svg-sprite';
-import Header from '@/components/header/header';
+import Auth from "@/api/auth";
+import Hotels from "@/api/hotels";
+import {getUserData} from "@/reducer/user/selectors";
+import {userActionCreator} from "@/reducer/user/user";
+import {dataActionCreator} from "@/reducer/data/data";
+import SvgSprite from "@/components/svg-sprite/svg-sprite";
+import Header from "@/components/header/header";
 
 interface Props {
-  user: object
-  onLogIn: (user: object) => object,
-  onLogOut: () => object,
-  fetchOffers: () => object[]
+  user: object;
+  onLogIn: (user: object) => object;
+  onLogOut: () => object;
+  fetchOffers: () => object[];
 }
 
 class App extends Component<Props> {
-  componentDidMount() {
+  componentDidMount(): void {
     Auth.get().then((response) => {
       this.props.onLogIn(response.data);
     }).catch((err) => {

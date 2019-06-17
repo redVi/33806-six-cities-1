@@ -1,6 +1,6 @@
-import api from '@/api/config';
+import api from "@/api/config";
 
-const URL = `/favorite`;
+const URL = "/favorite";
 
 const Favorites = {
   get: () => api.get(URL),

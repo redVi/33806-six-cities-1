@@ -1,21 +1,21 @@
-import React from 'react';
-import ErrorMessage from '@/components/error-message/error-message';
+import React from "react";
+import ErrorMessage from "@/components/error-message/error-message";
 
 enum Tag {
-  input = 'input',
-  textarea = 'textarea'
+  input = "input",
+  textarea = "textarea"
 }
 
 interface Props {
-  label?: string,
-  error?: string,
-  tag?: string,
-  [x: string] : string | number | boolean
+  label?: string;
+  error?: string;
+  tag?: string;
+  [x: string]: string | number | boolean;
 }
 
 const Input = (props: Props) => {
   const {label, error, tag, ...rest} = props;
-  const TagName = Tag[tag || 'input'];
+  const TagName = Tag[tag || "input"];
 
   return (
     <>

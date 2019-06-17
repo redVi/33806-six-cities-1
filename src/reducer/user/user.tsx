@@ -1,16 +1,16 @@
-import {normalizeKeys} from '@/helpers';
+import {normalizeKeys} from "@/helpers";
 import {OfferType} from "@/types";
 
 enum TYPE {
-  REQUIRED_AUTHORIZATION = 'REQUIRED_AUTHORIZATION',
-  FETCH_FAVORITES = 'FETCH_FAVORITES',
-  LOGIN = 'LOGIN',
-  LOGOUT = 'LOGOUT'
+  REQUIRED_AUTHORIZATION = "REQUIRED_AUTHORIZATION",
+  FETCH_FAVORITES = "FETCH_FAVORITES",
+  LOGIN = "LOGIN",
+  LOGOUT = "LOGOUT"
 }
 
 interface ActionType {
-  type: TYPE,
-  payload: any
+  type: TYPE;
+  payload: any;
 }
 
 const initialState = {

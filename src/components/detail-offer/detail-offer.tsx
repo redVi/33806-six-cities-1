@@ -1,34 +1,34 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
-import {OfferType, CommentType} from '@/types';
-import {redirectToId} from '@/helpers';
-import Comments from '@/api/comments';
-import {dataActionCreator} from '@/reducer/data/data';
-import {checkAuthorization} from '@/reducer/user/selectors';
-import {getComments, getOfferById, getSimilarOffers} from '@/reducer/data/selectors';
+import {OfferType, CommentType} from "@/types";
+import {redirectToId} from "@/helpers";
+import Comments from "@/api/comments";
+import {dataActionCreator} from "@/reducer/data/data";
+import {checkAuthorization} from "@/reducer/user/selectors";
+import {getComments, getOfferById, getSimilarOffers} from "@/reducer/data/selectors";
 
-import Mark from '@/components/mark/mark';
-import Bookmark from '@/components/bookmark/bookmark';
-import CityMap from '@/components/city-map/city-map';
-import PlacesList from '@/components/places-list/places-list';
-import Rating from '@/components/rating/rating';
-import Reviews from '@/components/reviews/reviews';
-import Host from '@/components/host/host';
-import Inside from '@/components/inside/inside';
-import Price from '@/components/price/price';
-import Features from '@/components/features/features';
-import Gallery from '@/components/gallery/gallery';
+import Mark from "@/components/mark/mark";
+import Bookmark from "@/components/bookmark/bookmark";
+import CityMap from "@/components/city-map/city-map";
+import PlacesList from "@/components/places-list/places-list";
+import Rating from "@/components/rating/rating";
+import Reviews from "@/components/reviews/reviews";
+import Host from "@/components/host/host";
+import Inside from "@/components/inside/inside";
+import Price from "@/components/price/price";
+import Features from "@/components/features/features";
+import Gallery from "@/components/gallery/gallery";
 
 interface Props {
-  history?: any[],
-  id: number,
-  offer: OfferType,
-  offers: OfferType[],
-  comments: CommentType[],
-  isLoggedIn: boolean,
-  getComments: () => object[],
-  setActiveItem?: () => void
+  history?: any[];
+  id: number;
+  offer: OfferType;
+  offers: OfferType[];
+  comments: CommentType[];
+  isLoggedIn: boolean;
+  getComments: () => object[];
+  setActiveItem?: () => void;
 }
 
 class DetailOffer extends Component<Props> {

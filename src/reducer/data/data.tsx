@@ -1,16 +1,16 @@
-import {getRandomNumber, normalizeKeys} from '@/helpers';
-import {OfferType} from '@/types';
+import {getRandomNumber, normalizeKeys} from "@/helpers";
+import {OfferType} from "@/types";
 
 enum TYPE {
-  CHANGE_CITY = 'CHANGE_CITY',
-  FETCH_OFFERS = 'FETCH_OFFERS',
-  FETCH_COMMENTS = 'FETCH_COMMENTS',
-  UPDATE_OFFER = 'UPDATE_OFFER'
+  CHANGE_CITY = "CHANGE_CITY",
+  FETCH_OFFERS = "FETCH_OFFERS",
+  FETCH_COMMENTS = "FETCH_COMMENTS",
+  UPDATE_OFFER = "UPDATE_OFFER"
 }
 
 interface ActionType {
-  type: TYPE,
-  payload: any
+  type: TYPE;
+  payload: any;
 }
 
 function getRandomCity(offers: OfferType[]) {

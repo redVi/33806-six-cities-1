@@ -1,8 +1,8 @@
-import {OfferType} from '@/types';
+import {OfferType} from "@/types";
 
 const snakeToCamel = (word: string): string => word.replace(
   /(_\w)/g,
-  (matches) => matches[1].toUpperCase()
+  (matches): string => matches[1].toUpperCase()
 );
 
 export const getRandomNumber = (min: number, max: number): number =>
@@ -25,8 +25,8 @@ export const normalizeKeys = (obj: object): object => {
 
 export const sortByField = (arr: OfferType[], value: string, field: string): OfferType[] => {
   switch (field) {
-    case `ASC`: return arr.sort((a, b) => a[value] - b[value]);
-    case `DESC`: return arr.sort((a, b) => b[value] - a[value]);
+    case "ASC": return arr.sort((a, b) => a[value] - b[value]);
+    case "DESC": return arr.sort((a, b) => b[value] - a[value]);
     default: return arr;
   }
 };

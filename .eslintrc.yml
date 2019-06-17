@@ -5,16 +5,21 @@ env:
   jest: true
   node: true
 
-extends: ['htmlacademy/es6', 'plugin:react/recommended']
+parser: "@typescript-eslint/parser"
+extends: ["plugin:react/recommended"]
 
 parserOptions:
   ecmaFeatures:
     jsx: true
   ecmaVersion: 9
   sourceType: module
+  project: "./tsconfig.json"
 
-plugins: ['react']
+plugins: ["react"]
 
 settings:
   react:
-    version: '16'
+    version: "16"
+
+rules:
+  quotes: ["error", "double"]

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-  title: string,
-  items: string[]
+  title: string;
+  items: string[];
 }
 
 const Inside = (props: Props) => (

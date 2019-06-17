@@ -1,12 +1,12 @@
-import React, {PureComponent, ReactElement} from 'react';
-import {AxiosInstance, AxiosError} from 'axios';
+import React, {PureComponent, ReactElement} from "react";
+import {AxiosInstance, AxiosError} from "axios";
 
 interface Props {
-  api: AxiosInstance
+  api: AxiosInstance;
 }
 
 interface State {
-  error: AxiosError
+  error: AxiosError;
 }
 
 export default class ErrorHandler extends PureComponent<Props, State> {
@@ -23,18 +23,18 @@ export default class ErrorHandler extends PureComponent<Props, State> {
     });
 
     this.responseInterceptor = props.api.interceptors.response.use(
-        (res) => res,
-        (error) => {
-          const status = error.response.status.toString();
+      (res) => res,
+      (error) => {
+        const status = error.response.status.toString();
 
-          // 5xx errors
-          if (status.includes(50)) {
-            this.setState({error});
-            return;
-          }
-
-          return Promise.reject(error.response);
+        // 5xx errors
+        if (status.includes(50)) {
+          this.setState({error});
+          return;
         }
+
+        return Promise.reject(error.response);
+      }
     );
   }
 

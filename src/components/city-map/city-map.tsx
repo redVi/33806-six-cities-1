@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import leaflet from 'leaflet';
-import {LocationType, OfferType} from '@/types';
+import React, {Component} from "react";
+import leaflet from "leaflet";
+import {LocationType, OfferType} from "@/types";
 
 const SETTINGS = {
   zoom: 12,
   zoomControl: false,
   marker: true,
   icon: leaflet.icon({
-    iconUrl: `img/pin.svg`,
+    iconUrl: "img/pin.svg",
     iconSize: [27, 39]
   })
 };
@@ -16,16 +16,16 @@ let map = null;
 let marker = null;
 
 const ACTIVE_ICON = leaflet.icon({
-  iconUrl: `/img/pin-active.svg`,
+  iconUrl: "/img/pin-active.svg",
   iconSize: [27, 39]
 });
 
 interface Props {
-  location: LocationType,
-  items: OfferType[],
-  hasSelectedItem?: boolean,
-  canZoomChange?: boolean,
-  className?: string
+  location: LocationType;
+  items: OfferType[];
+  hasSelectedItem?: boolean;
+  canZoomChange?: boolean;
+  className?: string;
 }
 
 class CityMap extends Component<Props> {
@@ -69,9 +69,9 @@ class CityMap extends Component<Props> {
 
     const coordinates: LocationType[] = items.map((item) => item.location);
 
-    map = leaflet.map(`map`, SETTINGS).setView([latitude, longitude], SETTINGS.zoom);
+    map = leaflet.map("map", SETTINGS).setView([latitude, longitude], SETTINGS.zoom);
     leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`)
+      .tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png")
       .addTo(map);
 
     coordinates.forEach((city) => {
@@ -85,7 +85,7 @@ class CityMap extends Component<Props> {
   }
 
   render() {
-    const className = this.props.className || `cities__map map`;
+    const className = this.props.className || "cities__map map";
     return (
       <section className={className} id="map" />
     );

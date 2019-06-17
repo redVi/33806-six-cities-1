@@ -1,6 +1,6 @@
-import api from '@/api/config';
+import api from "@/api/config";
 
-const URL = `/login`;
+const URL = "/login";
 
 const Auth = {
   get: () => api.get(URL),

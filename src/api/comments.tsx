@@ -1,6 +1,6 @@
-import api from '@/api/config';
+import api from "@/api/config";
 
-const URL = `/comments`;
+const URL = "/comments";
 
 const Comments = {
   get: (hotelId: number) => api.get(`${URL}/${hotelId}`),

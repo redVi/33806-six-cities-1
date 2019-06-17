@@ -1,21 +1,21 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import Auth from '@/api/auth';
-import {userActionCreator} from '@/reducer/user/user';
+import React from "react";
+import {connect} from "react-redux";
+import Auth from "@/api/auth";
+import {userActionCreator} from "@/reducer/user/user";
 import Input from "@/components/input/input";
 import ErrorMessage from "@/components/error-message/error-message";
 
 interface Props {
-  form?: object | {},
-  errors?: any,
-  disabled: boolean,
-  onChange: (evt) => void
-  logIn: (form: Form) => object
+  form?: object | {};
+  errors?: any;
+  disabled: boolean;
+  onChange: (evt) => void;
+  logIn: (form: Form) => object;
 }
 
 interface Form {
-  email?: string,
-  password?: string
+  email?: string;
+  password?: string;
 }
 
 const Login = (props: Props) => {
@@ -86,7 +86,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   logIn: (form: Form) => {
     Auth.post(form).then((response) => {
       dispatch(userActionCreator.logIn(response.data));
-      ownProps.history.push(`/`);
+      ownProps.history.push("/");
     }).catch((err) => {
       ownProps.onError(err.data);
     })

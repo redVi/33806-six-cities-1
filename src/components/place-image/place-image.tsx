@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-  previewImage: string,
-  onClick: () => void
+  previewImage: string;
+  onClick: () => void;
 }
 
 const PlaceImage = (props: Props) => {

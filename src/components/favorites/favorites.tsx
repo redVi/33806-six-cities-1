@@ -1,11 +1,11 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React from "react";
+import {connect} from "react-redux";
 
-import {OfferType} from '@/types';
-import {getFavorites} from '@/reducer/data/selectors';
-import FavoritesEmpty from '@/components/favorites-empty/favorites-empty';
-import FavoritesList from '@/components/favorites-list/favorites-list';
-import Footer from '@/components/footer/footer';
+import {OfferType} from "@/types";
+import {getFavorites} from "@/reducer/data/selectors";
+import FavoritesEmpty from "@/components/favorites-empty/favorites-empty";
+import FavoritesList from "@/components/favorites-list/favorites-list";
+import Footer from "@/components/footer/footer";
 
 const sortFavList = (list: OfferType[]) => {
   const HEADERS = {};
@@ -26,16 +26,16 @@ const sortFavList = (list: OfferType[]) => {
 };
 
 interface Props {
-  history?: any[],
-  favorites?: OfferType[]
+  history?: any[];
+  favorites?: OfferType[];
 }
 
 const Favorites = (props: Props) => {
   const {favorites} = props;
   const hasFavorites: boolean = favorites && favorites.length > 0;
-  const pageClass: string = hasFavorites ? `` : `page--favorites-empty`;
-  const mainClass: string = hasFavorites ? `` : `page__main--favorites-empty`;
-  const sectionClass: string = hasFavorites ? `` : `favorites--empty`;
+  const pageClass: string = hasFavorites ? "" : "page--favorites-empty";
+  const mainClass: string = hasFavorites ? "" : "page__main--favorites-empty";
+  const sectionClass: string = hasFavorites ? "" : "favorites--empty";
   const items: any = sortFavList(props.favorites);
 
   return (

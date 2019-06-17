@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-  price?: number,
-  className?: string,
-  text?: string
+  price?: number;
+  className?: string;
+  text?: string;
 }
 
 const Price = (props: Props) => {
-  const className = props.className || `place-card__price`;
+  const className = props.className || "place-card__price";
 
   return (
     <div className={className}>

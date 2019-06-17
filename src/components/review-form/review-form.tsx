@@ -1,28 +1,28 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React from "react";
+import {connect} from "react-redux";
 
-import {STARS} from '@/constants';
-import Comments from '@/api/comments';
-import {dataActionCreator} from '@/reducer/data/data';
-import Input from '@/components/input/input';
-import ErrorMessage from '@/components/error-message/error-message';
+import {STARS} from "@/constants";
+import Comments from "@/api/comments";
+import {dataActionCreator} from "@/reducer/data/data";
+import Input from "@/components/input/input";
+import ErrorMessage from "@/components/error-message/error-message";
 
-type formType = {
-  rating: number,
-  comment: string
+interface formType {
+  rating: number;
+  comment: string;
 }
 
 interface Props {
-  id: number,
-  key?: number,
-  form: formType,
-  errors?,
-  disabled: boolean,
-  comment: formType,
-  onChange: (evt: any) => void,
-  onSubmit: () => void,
-  onError: (error: object) => void,
-  onSendForm: (id: number, comment: formType) => void
+  id: number;
+  key?: number;
+  form: formType;
+  errors?;
+  disabled: boolean;
+  comment: formType;
+  onChange: (evt: any) => void;
+  onSubmit: () => void;
+  onError: (error: object) => void;
+  onSendForm: (id: number, comment: formType) => void;
 }
 
 const ReviewForm = (props: Props) => {

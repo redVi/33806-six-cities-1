@@ -1,14 +1,14 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {ReviewForm} from '@/components/review-form/review-form';
+import React from "react";
+import renderer from "react-test-renderer";
+import {ReviewForm} from "@/components/review-form/review-form";
 
 const form = {
   rating: 5,
-  comment: `Nice place`
+  comment: "Nice place"
 }
 
-describe(`PreviewForm`, () => {
-  it(`renders correctly`, () => {
+describe("PreviewForm", () => {
+  it("renders correctly", () => {
     const tree = renderer.create(
       <ReviewForm
         id={50}

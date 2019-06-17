@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import {CommentType} from '@/types';
-import ReviewForm from '@/components/review-form/review-form';
-import withFormData from '@/hocs/with-form-data/with-form-data';
-import ReviewItem from '@/components/review-item/review-item';
+import {CommentType} from "@/types";
+import ReviewForm from "@/components/review-form/review-form";
+import withFormData from "@/hocs/with-form-data/with-form-data";
+import ReviewItem from "@/components/review-item/review-item";
 
 const Form = withFormData(ReviewForm);
 
 interface Props {
-  id: number,
-  comments: CommentType[],
-  isLoggedIn: boolean,
-  maxCount?: number
+  id: number;
+  comments: CommentType[];
+  isLoggedIn: boolean;
+  maxCount?: number;
 }
 
 const Reviews = (props: Props) => {

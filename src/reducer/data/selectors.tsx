@@ -1,6 +1,6 @@
-import {createSelector} from 'reselect';
-import {OfferType} from '@/types';
-import NameSpace from '@/reducer/namespaces';
+import {createSelector} from "reselect";
+import {OfferType} from "@/types";
+import NameSpace from "@/reducer/namespaces";
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -20,13 +20,13 @@ export const getSimilarOffers = (state: object, id: string) => {
 };
 
 export const getCityOffers = createSelector(
-    [getOffers, getCity],
-    (offers, city) => offers.filter((o: OfferType) => o.city.name === city.name)
+  [getOffers, getCity],
+  (offers, city) => offers.filter((o: OfferType) => o.city.name === city.name)
 );
 
 export const getCities = createSelector(
-    [getOffers],
-    (offers) => Array.from(new Set(offers.map((it: OfferType) => it.city.name))).slice(0, 6),
+  [getOffers],
+  (offers) => Array.from(new Set(offers.map((it: OfferType) => it.city.name))).slice(0, 6),
 );
 
 export const getFavorites = createSelector(

@@ -1,4 +1,4 @@
-import {reducer, TYPE} from './user';
+import {reducer, TYPE} from "./user";
 
 const initialState = {
   isLoggedIn: undefined,
@@ -6,8 +6,8 @@ const initialState = {
   favorites: []
 };
 
-describe(`User reducer`, () => {
-  it(`should handle REQUIRED_AUTHORIZATION`, () => {
+describe("User reducer", () => {
+  it("should handle REQUIRED_AUTHORIZATION", () => {
     const action = {
       type: TYPE.REQUIRED_AUTHORIZATION,
       payload: false,
@@ -19,12 +19,12 @@ describe(`User reducer`, () => {
     });
   });
 
-  it(`should handle FETCH_FAVORITES`, () => {
+  it("should handle FETCH_FAVORITES", () => {
     const action = {
       type: TYPE.FETCH_FAVORITES,
       payload: [
-        {id: 1, title: `Favorite house`},
-        {id: 1, title: `Favorite hotel`},
+        {id: 1, title: "Favorite house"},
+        {id: 1, title: "Favorite hotel"},
       ],
     };
 
@@ -34,10 +34,10 @@ describe(`User reducer`, () => {
     });
   });
 
-  it(`should handle LOGIN`, () => {
+  it("should handle LOGIN", () => {
     const action = {
       type: TYPE.LOGIN,
-      payload: {name: `Jack`, email: `jack@test.com`},
+      payload: {name: "Jack", email: "jack@test.com"},
     };
 
     expect(reducer(initialState, action)).toEqual({
@@ -47,8 +47,8 @@ describe(`User reducer`, () => {
     });
   });
 
-  it(`should handle LOGOUT`, () => {
-    const state = {...initialState, user: {name: `Jack`}, isLoggedIn: true};
+  it("should handle LOGOUT", () => {
+    const state = {...initialState, user: {name: "Jack"}, isLoggedIn: true};
     const action = {type: TYPE.LOGOUT, payload: undefined};
 
     expect(reducer(initialState, action)).toEqual({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const OffersEmpty = () => (
   <div className="cities__places-container cities__places-container--empty container">

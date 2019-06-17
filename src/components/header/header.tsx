@@ -1,13 +1,13 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {BASE_URL} from '@/api/config';
-import HeaderLink from '@/components/header-link/header-link';
+import React from "react";
+import {Link} from "react-router-dom";
+import {BASE_URL} from "@/api/config";
+import HeaderLink from "@/components/header-link/header-link";
 
 interface Props {
   user: {
-    avatarUrl?: string,
-    email?: string
-  }
+    avatarUrl?: string;
+    email?: string;
+  };
 }
 
 const Header = ({user}: Props) => {

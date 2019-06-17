@@ -1,11 +1,11 @@
-import React from 'react';
-import {Redirect} from 'react-router-dom';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-import {checkAuthorization} from '@/reducer/user/selectors';
+import React from "react";
+import {Redirect} from "react-router-dom";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {checkAuthorization} from "@/reducer/user/selectors";
 
 interface Props {
-  isLoggedIn: boolean
+  isLoggedIn: boolean;
 }
 
 function withGuardRoute(WrappedComponent, flag: boolean, path: string) {
@@ -25,8 +25,8 @@ const mapStateToProps = (state: object) => ({
 });
 
 const composedComponentWrapper = compose(
-    connect(mapStateToProps),
-    withGuardRoute
+  connect(mapStateToProps),
+  withGuardRoute
 );
 
 export {withGuardRoute};

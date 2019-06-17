@@ -1,14 +1,14 @@
-import React, {ReactNode} from 'react';
+import React, {ReactNode} from "react";
 
 interface Props {
-  rating: number,
-  className: string,
-  children?: ReactNode
+  rating: number;
+  className: string;
+  children?: ReactNode;
 }
 
 const Rating = (props: Props) => {
   const {rating, className, children} = props;
-  const calculatedRating: string = `${rating ? rating * 2 * 10 : 0}%`;
+  const calculatedRating = `${rating ? rating * 2 * 10 : 0}%`;
 
   return (
     <div className={`${className}__rating rating`}>

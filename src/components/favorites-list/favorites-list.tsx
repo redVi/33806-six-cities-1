@@ -1,13 +1,13 @@
-import React from 'react';
-import {OfferType} from '@/types';
-import {redirectToId} from '@/helpers';
-import PlacesList from '@/components/places-list/places-list';
+import React from "react";
+import {OfferType} from "@/types";
+import {redirectToId} from "@/helpers";
+import PlacesList from "@/components/places-list/places-list";
 
 interface Props {
-  history?: any[],
+  history?: any[];
   items: {
-    [key: string]: OfferType[]
-  }
+    [key: string]: OfferType[];
+  };
 }
 
 const FavoritesList = (props: Props) => {

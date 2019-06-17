@@ -1,9 +1,9 @@
-import React from 'react';
-import {CommentType} from '@/types';
-import Rating from '@/components/rating/rating';
+import React from "react";
+import {CommentType} from "@/types";
+import Rating from "@/components/rating/rating";
 
 interface Props {
-  comment: CommentType
+  comment: CommentType;
 }
 
 const ReviewItem = (props: Props) => {
@@ -29,7 +29,7 @@ const ReviewItem = (props: Props) => {
           {comment.comment}
         </p>
         <time className="reviews__time" dateTime={comment.date}>
-          {new Date(comment.date).toLocaleDateString('en-US', {month: 'long', year: 'numeric'})}
+          {new Date(comment.date).toLocaleDateString("en-US", {month: "long", year: "numeric"})}
         </time>
       </div>
     </li>

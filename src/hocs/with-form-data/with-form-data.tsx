@@ -1,12 +1,12 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent} from "react";
 
 const initialState = {form: {}, errors: {}, disabled: true, key: Math.random()};
 
 interface State {
-  key: number,
-  form: object | {},
-  errors: object | {}
-  disabled: boolean
+  key: number;
+  form: object | {};
+  errors: object | {};
+  disabled: boolean;
 }
 
 function withFormData (WrappedComponent) {

@@ -1,19 +1,19 @@
-import React, {PureComponent} from 'react';
-import Select from '@/components/select/select';
+import React, {PureComponent} from "react";
+import Select from "@/components/select/select";
 
-type selectOption = {
-  text: string,
-  value: string
+interface selectOption {
+  text: string;
+  value: string;
 }
 
 interface Props {
-  filterOptions: selectOption[],
-  onChangeOffersFilter?: (option: selectOption) => void
+  filterOptions: selectOption[];
+  onChangeOffersFilter?: (option: selectOption) => void;
 }
 
 interface State {
-  isSelectOpened: boolean,
-  option: selectOption
+  isSelectOpened: boolean;
+  option: selectOption;
 }
 
 const ArrowIcon = () =>

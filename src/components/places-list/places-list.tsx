@@ -1,17 +1,17 @@
-import React from 'react';
-import {OfferType} from '@/types';
-import PlacesListItem from '@/components/places-list-item/places-list-item';
+import React from "react";
+import {OfferType} from "@/types";
+import PlacesListItem from "@/components/places-list-item/places-list-item";
 
 interface Props {
-  places: OfferType[],
-  current?: number,
-  onImageClick?: (item: object) => any,
-  className?: string
+  places: OfferType[];
+  current?: number;
+  onImageClick?: (item: object) => any;
+  className?: string;
 }
 
 const PlacesList = (props: Props) => {
   const {places, current, onImageClick}: Props = props;
-  const className = props.className || 'cities__places-list';
+  const className = props.className || "cities__places-list";
 
   return (
     <div className={`${className} places__list tabs__content`}>
