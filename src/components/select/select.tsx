@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Select = (props: Props) => {
-  const {options, opened, active, handleSelectOption} = props;
+  const { options, opened, active, handleSelectOption } = props;
   const isOpened = opened ? "places__options--opened" : "";
 
   return (

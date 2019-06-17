@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import Select from "@/components/select/select";
 
 interface selectOption {
@@ -33,7 +33,7 @@ export default class PlacesForm extends PureComponent<Props, State> {
   }
 
   private _chaneSelectVisibility(): void {
-    this.setState({isSelectOpened: !this.state.isSelectOpened});
+    this.setState({ isSelectOpened: !this.state.isSelectOpened });
   }
 
   private _handleSelectOption(selectedOption) {
@@ -46,7 +46,7 @@ export default class PlacesForm extends PureComponent<Props, State> {
   }
 
   render() {
-    const {option, isSelectOpened} = this.state;
+    const { option, isSelectOpened } = this.state;
 
     return (
       <form className="places__sorting" action="#" method="get">

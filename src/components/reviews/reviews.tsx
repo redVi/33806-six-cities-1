@@ -1,6 +1,6 @@
 import React from "react";
 
-import {CommentType} from "@/types";
+import { CommentType } from "@/types";
 import ReviewForm from "@/components/review-form/review-form";
 import withFormData from "@/hocs/with-form-data/with-form-data";
 import ReviewItem from "@/components/review-item/review-item";
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Reviews = (props: Props) => {
-  const {isLoggedIn, id, maxCount} = props;
+  const { isLoggedIn, id, maxCount } = props;
   const comments = props.comments.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, maxCount);
 
   return (

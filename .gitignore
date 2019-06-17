@@ -1,18 +1,13 @@
-# Файлы и папки операционной системы
+# OS
 .DS_Store
 Thumbs.db
 
-# Файлы редактора
+# Editor
 .idea
 *.sublime*
 .vscode
 
-# Вспомогательные файлы
+# Any
 *.log*
 node_modules/
-
-# Папка с собранными файлами проекта
-build/
-
-# Файлы сборки
 public/bundle.*

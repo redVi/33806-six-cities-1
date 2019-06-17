@@ -1,6 +1,6 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
-const initialState = {form: {}, errors: {}, disabled: true, key: Math.random()};
+const initialState = { form: {}, errors: {}, disabled: true, key: Math.random() };
 
 interface State {
   key: number;
@@ -34,7 +34,7 @@ function withFormData (WrappedComponent) {
     }
 
     handleFormSubmit() {
-      this.setState(Object.assign({}, initialState, {key: Math.random()}));
+      this.setState(Object.assign({}, initialState, { key: Math.random() }));
     }
 
     handleServerError(errors) {
@@ -45,7 +45,7 @@ function withFormData (WrappedComponent) {
     }
 
     render() {
-      const {form, disabled, errors, key} = this.state;
+      const { form, disabled, errors, key } = this.state;
 
       return (
         <WrappedComponent

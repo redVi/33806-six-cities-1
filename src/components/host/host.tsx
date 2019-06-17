@@ -1,5 +1,5 @@
 import React from "react";
-import {HostType} from "@/types";
+import { HostType } from "@/types";
 
 interface Props {
   host: HostType;
@@ -7,7 +7,7 @@ interface Props {
 
 const Host = (props: Props) => {
   const {
-    host: {isPro, name, description, avatarUrl}
+    host: { isPro, name, description, avatarUrl }
   } = props;
 
   const avatarClass = isPro ? "property__avatar-wrapper--pro" : "";

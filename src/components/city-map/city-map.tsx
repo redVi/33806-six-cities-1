@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import leaflet from "leaflet";
-import {LocationType, OfferType} from "@/types";
+import { LocationType, OfferType } from "@/types";
 
 const SETTINGS = {
   zoom: 12,
@@ -42,13 +42,13 @@ class CityMap extends Component<Props> {
   }
 
   componentDidUpdate(): void {
-    const {location, hasSelectedItem, canZoomChange} = this.props;
+    const { location, hasSelectedItem, canZoomChange } = this.props;
 
     if (!map) return;
     if (marker) map.removeLayer(marker);
 
     if (hasSelectedItem) {
-      marker = leaflet.marker([location.latitude, location.longitude], {icon: ACTIVE_ICON});
+      marker = leaflet.marker([location.latitude, location.longitude], { icon: ACTIVE_ICON });
       marker.addTo(map);
     }
 
@@ -63,7 +63,7 @@ class CityMap extends Component<Props> {
 
   _initMap() {
     const {
-      location: {latitude, longitude},
+      location: { latitude, longitude },
       items
     } = this.props;
 
@@ -75,11 +75,11 @@ class CityMap extends Component<Props> {
       .addTo(map);
 
     coordinates.forEach((city) => {
-      leaflet.marker([city.latitude, city.longitude], {icon: SETTINGS.icon}).addTo(map);
+      leaflet.marker([city.latitude, city.longitude], { icon: SETTINGS.icon }).addTo(map);
     });
 
     if (this.props.hasSelectedItem) {
-      marker = leaflet.marker([latitude, longitude], {icon: ACTIVE_ICON});
+      marker = leaflet.marker([latitude, longitude], { icon: ACTIVE_ICON });
       marker.addTo(map);
     }
   }

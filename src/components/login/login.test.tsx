@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {Login} from "@/components/login/login";
+import { Login } from "@/components/login/login";
 
 describe("SignIn", () => {
   it("renders correctly", () => {

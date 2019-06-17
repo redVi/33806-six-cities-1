@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {FILTER_OPTIONS} from "@/constants";
+import { FILTER_OPTIONS } from "@/constants";
 import Select from "@/components/select/select";
 
 describe("Select", () => {

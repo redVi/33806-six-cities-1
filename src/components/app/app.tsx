@@ -1,11 +1,11 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Auth from "@/api/auth";
 import Hotels from "@/api/hotels";
-import {getUserData} from "@/reducer/user/selectors";
-import {userActionCreator} from "@/reducer/user/user";
-import {dataActionCreator} from "@/reducer/data/data";
+import { getUserData } from "@/reducer/user/selectors";
+import { userActionCreator } from "@/reducer/user/user";
+import { dataActionCreator } from "@/reducer/data/data";
 import SvgSprite from "@/components/svg-sprite/svg-sprite";
 import Header from "@/components/header/header";
 
@@ -61,5 +61,5 @@ const mapDispatchToProps = (dispatch: Function) => ({
   }
 });
 
-export {App};
+export { App };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

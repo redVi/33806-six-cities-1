@@ -1,8 +1,8 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {OfferType} from "@/types";
-import {getFavorites} from "@/reducer/data/selectors";
+import { OfferType } from "@/types";
+import { getFavorites } from "@/reducer/data/selectors";
 import FavoritesEmpty from "@/components/favorites-empty/favorites-empty";
 import FavoritesList from "@/components/favorites-list/favorites-list";
 import Footer from "@/components/footer/footer";
@@ -31,7 +31,7 @@ interface Props {
 }
 
 const Favorites = (props: Props) => {
-  const {favorites} = props;
+  const { favorites } = props;
   const hasFavorites: boolean = favorites && favorites.length > 0;
   const pageClass: string = hasFavorites ? "" : "page--favorites-empty";
   const mainClass: string = hasFavorites ? "" : "page__main--favorites-empty";
@@ -58,5 +58,5 @@ const mapStateToProps = (state: object, ownProps: object | {}) => (
   })
 );
 
-export {Favorites};
+export { Favorites };
 export default connect(mapStateToProps)(Favorites);

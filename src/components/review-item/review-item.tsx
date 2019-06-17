@@ -1,5 +1,5 @@
 import React from "react";
-import {CommentType} from "@/types";
+import { CommentType } from "@/types";
 import Rating from "@/components/rating/rating";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ReviewItem = (props: Props) => {
-  const {comment} = props;
+  const { comment } = props;
 
   return (
     <li className="reviews__item">
@@ -29,7 +29,7 @@ const ReviewItem = (props: Props) => {
           {comment.comment}
         </p>
         <time className="reviews__time" dateTime={comment.date}>
-          {new Date(comment.date).toLocaleDateString("en-US", {month: "long", year: "numeric"})}
+          {new Date(comment.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
         </time>
       </div>
     </li>

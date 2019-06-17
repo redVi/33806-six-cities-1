@@ -1,5 +1,5 @@
-import {getRandomNumber, normalizeKeys} from "@/helpers";
-import {OfferType} from "@/types";
+import { getRandomNumber, normalizeKeys } from "@/helpers";
+import { OfferType } from "@/types";
 
 enum TYPE {
   CHANGE_CITY = "CHANGE_CITY",

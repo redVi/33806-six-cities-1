@@ -1,5 +1,5 @@
-import {normalizeKeys} from "@/helpers";
-import {OfferType} from "@/types";
+import { normalizeKeys } from "@/helpers";
+import { OfferType } from "@/types";
 
 enum TYPE {
   REQUIRED_AUTHORIZATION = "REQUIRED_AUTHORIZATION",

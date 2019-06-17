@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Features = (props: Props) => {
-  const {type, bedrooms, maxAdults} = props;
+  const { type, bedrooms, maxAdults } = props;
 
   return (
     <ul className="property__features">

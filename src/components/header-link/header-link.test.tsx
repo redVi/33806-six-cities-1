@@ -1,5 +1,5 @@
 import React from "react";
-import {MemoryRouter as Router} from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
 import renderer from "react-test-renderer";
 import HeaderLink from "@/components/header-link/header-link";
 
@@ -21,7 +21,7 @@ describe("HeaderLink", () => {
           link="/favorites"
           text="jack-sparrow@pirates.com"
           linkClass="user-name user__name"
-          bg={{backgroundImage: "url(\"https://pirates.com/uploads/avatar.jpg\")"}}
+          bg={{ backgroundImage: "url(\"https://pirates.com/uploads/avatar.jpg\")" }}
         />
       </Router>
     ).toJSON();

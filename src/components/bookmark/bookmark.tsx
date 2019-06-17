@@ -26,5 +26,5 @@ const Bookmark = (props: Props) => {
   );
 };
 
-export {Bookmark};
+export { Bookmark };
 export default withFavoriteAction(Bookmark);

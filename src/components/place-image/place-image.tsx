@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PlaceImage = (props: Props) => {
-  const {previewImage, onClick}: Props = props;
+  const { previewImage, onClick }: Props = props;
 
   const handleLinkClick = (event) => {
     event.preventDefault();

@@ -1,6 +1,6 @@
-import React, {PureComponent, ComponentType} from "react";
-import {Subtract} from "utility-types";
-import {sortByField} from "@/helpers";
+import React, { PureComponent, ComponentType } from "react";
+import { Subtract } from "utility-types";
+import { sortByField } from "@/helpers";
 
 interface State {
   list: any[];
@@ -22,11 +22,11 @@ function withSorting <T extends InjectedProps>(WrappedComponent: ComponentType<T
       this._sortOffersByField = this._sortOffersByField.bind(this);
     }
 
-    private _sortOffersByField({value, field}) {
+    private _sortOffersByField({ value, field }) {
       if (!field) {
-        this.setState({list: [...items], filter: "popular"});
+        this.setState({ list: [...items], filter: "popular" });
       } else {
-        this.setState({list: [...sortByField(this.state.list, value, field)], filter: field});
+        this.setState({ list: [...sortByField(this.state.list, value, field)], filter: field });
       }
     }
 

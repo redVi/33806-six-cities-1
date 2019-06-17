@@ -1,5 +1,5 @@
-import React, {PureComponent, ReactElement} from "react";
-import {AxiosInstance, AxiosError} from "axios";
+import React, { PureComponent, ReactElement } from "react";
+import { AxiosInstance, AxiosError } from "axios";
 
 interface Props {
   api: AxiosInstance;
@@ -15,10 +15,10 @@ export default class ErrorHandler extends PureComponent<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.state = {error: null};
+    this.state = { error: null };
 
     this.requestInterceptor = props.api.interceptors.request.use((req) => {
-      this.setState({error: null});
+      this.setState({ error: null });
       return req;
     });
 
@@ -29,7 +29,7 @@ export default class ErrorHandler extends PureComponent<Props, State> {
 
         // 5xx errors
         if (status.includes(50)) {
-          this.setState({error});
+          this.setState({ error });
           return;
         }
 
@@ -45,7 +45,7 @@ export default class ErrorHandler extends PureComponent<Props, State> {
 
   render() {
     const children = React.Children.map(this.props.children, (child: ReactElement) => {
-      return React.cloneElement(child, {...this.props});
+      return React.cloneElement(child, { ...this.props });
     });
 
     return this.state.error ? <div className="error-page">Error {this.state.error.response.status}</div> : children;

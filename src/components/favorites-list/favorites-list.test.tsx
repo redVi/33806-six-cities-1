@@ -6,11 +6,11 @@ const renderer = new ShallowRenderer();
 
 const items = {
   Amsterdam: [
-    {id: 1, title: "Amster Hotel", rating: 3.5, price: 250}
+    { id: 1, title: "Amster Hotel", rating: 3.5, price: 250 }
   ],
   Paris: [
-    {id: 2, title: "Paris Hotel", rating: 4.2, price: 98},
-    {id: 3, title: "Paris Hotel 1", rating: 2.3, price: 100}
+    { id: 2, title: "Paris Hotel", rating: 4.2, price: 98 },
+    { id: 3, title: "Paris Hotel 1", rating: 2.3, price: 100 }
   ],
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {FILTER_OPTIONS} from "@/constants";
+import { FILTER_OPTIONS } from "@/constants";
 import PlacesForm from "@/components/places-form/places-form";
 
 describe("PlacesForm", () => {

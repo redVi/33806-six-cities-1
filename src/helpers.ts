@@ -1,4 +1,4 @@
-import {OfferType} from "@/types";
+import { OfferType } from "@/types";
 
 const snakeToCamel = (word: string): string => word.replace(
   /(_\w)/g,

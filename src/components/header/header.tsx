@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {BASE_URL} from "@/api/config";
+import { Link } from "react-router-dom";
+import { BASE_URL } from "@/api/config";
 import HeaderLink from "@/components/header-link/header-link";
 
 interface Props {
@@ -10,9 +10,9 @@ interface Props {
   };
 }
 
-const Header = ({user}: Props) => {
+const Header = ({ user }: Props) => {
   const isNotEmpty = user && Object.keys(user).length;
-  const userBgImage = isNotEmpty ? {backgroundImage: `url(${BASE_URL}${user.avatarUrl})`} : {};
+  const userBgImage = isNotEmpty ? { backgroundImage: `url(${BASE_URL}${user.avatarUrl})` } : {};
   const headerLink = isNotEmpty
     ? <HeaderLink
       text={user.email}

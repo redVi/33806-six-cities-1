@@ -1,9 +1,9 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {STARS} from "@/constants";
+import { STARS } from "@/constants";
 import Comments from "@/api/comments";
-import {dataActionCreator} from "@/reducer/data/data";
+import { dataActionCreator } from "@/reducer/data/data";
 import Input from "@/components/input/input";
 import ErrorMessage from "@/components/error-message/error-message";
 
@@ -26,7 +26,7 @@ interface Props {
 }
 
 const ReviewForm = (props: Props) => {
-  const {onSendForm, onChange, id, form, errors, disabled} = props;
+  const { onSendForm, onChange, id, form, errors, disabled } = props;
 
   const submitForm = (evt) => {
     evt.preventDefault();
@@ -103,5 +103,5 @@ const mapDispatchToProps = (dispatch: Function, ownProps) => ({
   }
 });
 
-export {ReviewForm};
+export { ReviewForm };
 export default connect(null, mapDispatchToProps)(ReviewForm);

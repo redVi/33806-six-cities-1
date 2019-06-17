@@ -7,7 +7,7 @@ interface Props {
 }
 
 const CitiesList = (props: Props) => {
-  const {items, current, onClick} = props;
+  const { items, current, onClick } = props;
   const preventEvent = (evt, it: string) => {
     evt.preventDefault();
     onClick(it);

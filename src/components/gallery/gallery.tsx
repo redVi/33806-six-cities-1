@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Gallery = (props: Props) => {
-  const {images, maxCount} = props;
+  const { images, maxCount } = props;
 
   return (
     <div className="property__gallery-container container">

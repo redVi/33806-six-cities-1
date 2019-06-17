@@ -1,8 +1,8 @@
 import React from "react";
-import {connect} from "react-redux";
-import {OfferType, CityType} from "@/types";
-import {dataActionCreator} from "@/reducer/data/data";
-import {getCities, getCity, getCityOffers} from "@/reducer/data/selectors";
+import { connect } from "react-redux";
+import { OfferType, CityType } from "@/types";
+import { dataActionCreator } from "@/reducer/data/data";
+import { getCities, getCity, getCityOffers } from "@/reducer/data/selectors";
 
 import CitiesList from "@/components/cities-list/cities-list";
 import OffersEmpty from "@/components/offers-empty/offers-empty";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Home  = (props: Props) => {
-  const {offers, cities, city, changeCity}: Props = props;
+  const { offers, cities, city, changeCity }: Props = props;
 
   const hasOffers = offers && offers.length;
   const Places = withActiveItem(withSorting(Offers, offers));
@@ -58,5 +58,5 @@ const mapDispatchToProps = (dispatch: Function) => ({
   }
 });
 
-export {Home};
+export { Home };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

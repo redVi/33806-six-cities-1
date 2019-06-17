@@ -1,11 +1,11 @@
 import React from "react";
-import {withRouter} from "react-router-dom";
-import {compose} from "redux";
-import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
 
 import Favorites from "@/api/favorites";
-import {checkAuthorization} from "@/reducer/user/selectors";
-import {dataActionCreator} from "@/reducer/data/data";
+import { checkAuthorization } from "@/reducer/user/selectors";
+import { dataActionCreator } from "@/reducer/data/data";
 
 interface Props {
   id: number;
@@ -17,7 +17,7 @@ interface Props {
 
 function withFavoriteAction (WrappedComponent) {
   return function withProps(props: Props) {
-    const {id, changeFavorite, isFavorite, isLoggedIn} = props;
+    const { id, changeFavorite, isFavorite, isLoggedIn } = props;
     const handleFavoriteClick = () => !isLoggedIn ? props.history.push("/login") : changeFavorite(id, isFavorite ? 0 : 1);
 
     return (
@@ -46,5 +46,5 @@ const composedComponentWrapper: any = compose(
   withFavoriteAction
 );
 
-export {withFavoriteAction}
+export { withFavoriteAction }
 export default composedComponentWrapper

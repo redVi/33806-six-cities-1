@@ -1,7 +1,7 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Auth from "@/api/auth";
-import {userActionCreator} from "@/reducer/user/user";
+import { userActionCreator } from "@/reducer/user/user";
 import Input from "@/components/input/input";
 import ErrorMessage from "@/components/error-message/error-message";
 
@@ -19,7 +19,7 @@ interface Form {
 }
 
 const Login = (props: Props) => {
-  const {errors, disabled, onChange, form} = props;
+  const { errors, disabled, onChange, form } = props;
 
   const submitForm = (evt) => {
     evt.preventDefault();
@@ -93,5 +93,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-export {Login};
+export { Login };
 export default connect(null, mapDispatchToProps)(Login);

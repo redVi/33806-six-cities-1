@@ -1,6 +1,6 @@
 import React from "react";
-import {OfferType} from "@/types";
-import {redirectToId} from "@/helpers";
+import { OfferType } from "@/types";
+import { redirectToId } from "@/helpers";
 import PlacesList from "@/components/places-list/places-list";
 
 interface Props {

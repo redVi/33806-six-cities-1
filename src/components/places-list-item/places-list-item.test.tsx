@@ -1,5 +1,5 @@
 import React from "react";
-import {MemoryRouter as Router} from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
 import renderer from "react-test-renderer";
 import PlacesListItem from "@/components/places-list-item/places-list-item";
 

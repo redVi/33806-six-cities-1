@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Input = (props: Props) => {
-  const {label, error, tag, ...rest} = props;
+  const { label, error, tag, ...rest } = props;
   const TagName = Tag[tag || "input"];
 
   return (

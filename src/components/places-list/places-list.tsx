@@ -1,5 +1,5 @@
 import React from "react";
-import {OfferType} from "@/types";
+import { OfferType } from "@/types";
 import PlacesListItem from "@/components/places-list-item/places-list-item";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const PlacesList = (props: Props) => {
-  const {places, current, onImageClick}: Props = props;
+  const { places, current, onImageClick }: Props = props;
   const className = props.className || "cities__places-list";
 
   return (

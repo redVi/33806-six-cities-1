@@ -1,5 +1,5 @@
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 import withActiveItem from "@/hocs/with-active-item/with-active-item";
 
 const MockComponentWrapped = withActiveItem(() => <div />);

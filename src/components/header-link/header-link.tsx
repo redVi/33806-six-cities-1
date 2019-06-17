@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Props {
   text: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const HeaderLink = (props: Props) => {
-  const {text, link, bg, linkClass}: Props = props;
+  const { text, link, bg, linkClass }: Props = props;
   const loginClass = linkClass ? `header__${linkClass}` : "header__login";
 
   return (

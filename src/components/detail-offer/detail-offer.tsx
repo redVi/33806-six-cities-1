@@ -1,12 +1,12 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import {OfferType, CommentType} from "@/types";
-import {redirectToId} from "@/helpers";
+import { OfferType, CommentType } from "@/types";
+import { redirectToId } from "@/helpers";
 import Comments from "@/api/comments";
-import {dataActionCreator} from "@/reducer/data/data";
-import {checkAuthorization} from "@/reducer/user/selectors";
-import {getComments, getOfferById, getSimilarOffers} from "@/reducer/data/selectors";
+import { dataActionCreator } from "@/reducer/data/data";
+import { checkAuthorization } from "@/reducer/user/selectors";
+import { getComments, getOfferById, getSimilarOffers } from "@/reducer/data/selectors";
 
 import Mark from "@/components/mark/mark";
 import Bookmark from "@/components/bookmark/bookmark";
@@ -43,7 +43,7 @@ class DetailOffer extends Component<Props> {
   }
 
   render() {
-    const {offer, offers, comments, isLoggedIn} = this.props;
+    const { offer, offers, comments, isLoggedIn } = this.props;
     const redirect = (item) => redirectToId(`/offer/${item.id}`, this.props.history);
 
     if (!offer) return null;
@@ -136,5 +136,5 @@ const mapDispatchToProps = (dispatch: Function, ownProps) => ({
   }
 });
 
-export {DetailOffer};
+export { DetailOffer };
 export default connect(mapStateToProps, mapDispatchToProps)(DetailOffer);

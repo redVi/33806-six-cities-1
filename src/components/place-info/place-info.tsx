@@ -1,12 +1,12 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {OfferType} from "@/types";
+import { Link } from "react-router-dom";
+import { OfferType } from "@/types";
 import Bookmark from "@/components/bookmark/bookmark";
 import Rating from "@/components/rating/rating";
 import Price from "@/components/price/price";
 
 const PlaceInfo = (props: OfferType) => {
-  const {id, title, type, price, rating, isFavorite}: OfferType = props;
+  const { id, title, type, price, rating, isFavorite }: OfferType = props;
 
   return (
     <div className="place-card__info">

@@ -1,5 +1,5 @@
-import {createSelector} from "reselect";
-import {OfferType} from "@/types";
+import { createSelector } from "reselect";
+import { OfferType } from "@/types";
 import NameSpace from "@/reducer/namespaces";
 
 const NAME_SPACE = NameSpace.DATA;
