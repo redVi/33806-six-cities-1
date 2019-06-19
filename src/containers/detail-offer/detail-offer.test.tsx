@@ -1,6 +1,6 @@
 import React from "react";
 import ShallowRenderer from "react-test-renderer/shallow";
-import { DetailOffer } from "@/components/detail-offer/detail-offer";
+import { DetailOffer } from "@/containers/detail-offer/detail-offer";
 
 const renderer = new ShallowRenderer();
 

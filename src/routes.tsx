@@ -2,11 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import api from "@/api/config";
-import App from "@/components/app/app";
-import Home from "@/components/home/home";
-import Favorites from "@/components/favorites/favorites";
-import Login from "@/components/login/login";
-import DetailOffer from "@/components/detail-offer/detail-offer";
+
+import App from "@/containers/app/app";
+import Home from "@/containers/home/home";
+import Favorites from "@/containers/favorites/favorites";
+import Login from "@/containers/login/login";
+import DetailOffer from "@/containers/detail-offer/detail-offer";
+
 import ErrorHandler from "@/components/error-handler/error-handler";
 import withGuardRoute from "@/hocs/with-guard-route/with-guard-route";
 import withFormData from "@/hocs/with-form-data/with-form-data";

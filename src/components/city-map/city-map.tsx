@@ -70,6 +70,7 @@ class CityMap extends Component<Props> {
     const coordinates: LocationType[] = items.map((item) => item.location);
 
     map = leaflet.map("map", SETTINGS).setView([latitude, longitude], SETTINGS.zoom);
+
     leaflet
       .tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png")
       .addTo(map);
@@ -86,6 +87,7 @@ class CityMap extends Component<Props> {
 
   render() {
     const className = this.props.className || "cities__map map";
+
     return (
       <section className={className} id="map" />
     );

@@ -5,6 +5,7 @@ import PlacesListItem from "@/components/places-list-item/places-list-item";
 interface Props {
   places: OfferType[];
   current?: number;
+  hasBookmark?: boolean;
   onImageClick?: (item: object) => any;
   className?: string;
 }

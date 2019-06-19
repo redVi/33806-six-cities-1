@@ -1,17 +1,16 @@
 import React from "react";
+import { OfferType, CityType } from "@/types";
 import { FILTER_OPTIONS } from "@/constants";
-
 import PlacesList from "@/components/places-list/places-list";
 import CityMap from "@/components/city-map/city-map";
 import PlacesForm from "@/components/places-form/places-form";
-import { OfferType, CityType } from "@/types";
 
 interface Props {
   items: OfferType[];
   city: CityType;
-  activeItem;
-  onChangeOffersFilter: () => void;
-  onSetActiveItem: () => void;
+  activeItem?: any;
+  onChangeOffersFilter?: () => void;
+  onSetActiveItem?: () => void;
 }
 
 const Offers = (props: Props) => {

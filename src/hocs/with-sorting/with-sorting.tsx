@@ -7,24 +7,13 @@ interface State {
   filter: string;
 }
 
-interface InjectedProps {
-  items: object | string | number;
-}
+const withSorting = WrappedComponent => {
+  return class WithSorting extends PureComponent<any, State> {
+    state = { filter: "popular", list: [...this.props.items] }
 
-function withSorting <T extends InjectedProps>(WrappedComponent: ComponentType<T>, items) {
-  return class WithSorting extends PureComponent<Subtract<T, InjectedProps>, State> {
-    constructor(props) {
-      super(props);
-      this.state = {
-        filter: "popular",
-        list: [...items]
-      };
-      this._sortOffersByField = this._sortOffersByField.bind(this);
-    }
-
-    private _sortOffersByField({ value, field }) {
+    private sortOffersByField = ({ value, field }) => {
       if (!field) {
-        this.setState({ list: [...items], filter: "popular" });
+        this.setState({ list: [...this.props.items], filter: "popular" });
       } else {
         this.setState({ list: [...sortByField(this.state.list, value, field)], filter: field });
       }
@@ -33,9 +22,9 @@ function withSorting <T extends InjectedProps>(WrappedComponent: ComponentType<T
     render() {
       return (
         <WrappedComponent
-          {...this.props as T}
+          {...this.props}
           items={this.state.list}
-          onChangeOffersFilter={this._sortOffersByField} />
+          onChangeOffersFilter={this.sortOffersByField} />
       );
     }
   };

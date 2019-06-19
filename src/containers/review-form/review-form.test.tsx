@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { ReviewForm } from "@/components/review-form/review-form";
+import { ReviewForm } from "@/containers/review-form/review-form";
 
 const form = {
   rating: 5,

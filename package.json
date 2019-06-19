@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
     "@types/enzyme": "3.9.3",
@@ -49,6 +50,13 @@
   },
   "engines": {
     "node": "10"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": ["@babel/plugin-proposal-class-properties"]
   },
   "jest": {
     "moduleNameMapper": {

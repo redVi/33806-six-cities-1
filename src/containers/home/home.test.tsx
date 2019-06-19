@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter as Router } from "react-router-dom";
 import renderer from "react-test-renderer";
-import { Home } from "@/components/home/home";
+import { Home } from "@/containers/home/home";
 
 const cities = ["Berlin", "Amsterdam", "Dusseldorf"];
 

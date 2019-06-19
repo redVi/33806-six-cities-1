@@ -6,9 +6,9 @@ import PlaceInfo from "@/components/place-info/place-info";
 
 interface Props {
   offer: OfferType;
-  onImageClick?: () => void;
   current?: number;
   className?: string;
+  onImageClick?: () => void;
 }
 
 const PlacesListItem = (props: Props) => {
