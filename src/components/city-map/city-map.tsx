@@ -16,7 +16,7 @@ let map = null;
 let marker = null;
 
 const ACTIVE_ICON = leaflet.icon({
-  iconUrl: "/img/pin-active.svg",
+  iconUrl: "img/pin-active.svg",
   iconSize: [27, 39]
 });
 
