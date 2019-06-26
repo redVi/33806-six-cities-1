@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import mockAxios from "axios";
-import ErrorHandler from "@/components/error-handler/error-handler";
+import ErrorHandler from "@/containers/error-handler/error-handler";
 
 describe("ErrorHandler", () => {
   it("renders correctly", () => {

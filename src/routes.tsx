@@ -8,8 +8,8 @@ import Home from "@/containers/home/home";
 import Favorites from "@/containers/favorites/favorites";
 import Login from "@/containers/login/login";
 import DetailOffer from "@/containers/detail-offer/detail-offer";
+import ErrorHandler from "@/containers/error-handler/error-handler";
 
-import ErrorHandler from "@/components/error-handler/error-handler";
 import withGuardRoute from "@/hocs/with-guard-route/with-guard-route";
 import withFormData from "@/hocs/with-form-data/with-form-data";
 
