@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import api from "@/api/config";
 
@@ -15,7 +15,7 @@ import withFormData from "@/hocs/with-form-data/with-form-data";
 
 export default (
   <ErrorHandler api={api}>
-    <Router>
+    <Router basename='/'>
       <Route path="/" component={App} />
       <Switch>
         <Route path="/" exact component={Home} />
