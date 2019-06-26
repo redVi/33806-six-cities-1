@@ -11,15 +11,9 @@ interface State {
 
 function withFormData (WrappedComponent) {
   return class FormDataComponent extends PureComponent<any, State> {
-    constructor(props) {
-      super(props);
-      this.state = initialState;
-      this.handleChange = this.handleChange.bind(this);
-      this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.handleServerError = this.handleServerError.bind(this);
-    }
+    state = initialState;
 
-    handleChange(evt) {
+    handleChange = (evt) => {
       evt.persist();
 
       this.setState(oldState => ({
@@ -31,18 +25,18 @@ function withFormData (WrappedComponent) {
         }),
         disabled: !evt.target.form.checkValidity()
       }));
-    }
+    };
 
-    handleFormSubmit() {
+    handleFormSubmit = () => {
       this.setState(Object.assign({}, initialState, { key: Math.random() }));
-    }
+    };
 
-    handleServerError(errors) {
+    handleServerError = (errors) => {
       this.setState(oldState => ({
         errors: Object.assign({}, oldState.errors, errors),
         disabled: false
       }));
-    }
+    };
 
     render() {
       const { form, disabled, errors, key } = this.state;

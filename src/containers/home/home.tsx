@@ -7,8 +7,8 @@ import { getCities, getCity, getCityOffers } from "@/reducer/data/selectors";
 import CitiesList from "@/components/cities-list/cities-list";
 import OffersEmpty from "@/components/offers-empty/offers-empty";
 import Offers from "@/components/offers/offers";
-import withSorting from "@/hocs/with-sorting/with-sorting";
-import withActiveItem from "@/hocs/with-active-item/with-active-item";
+import Sorting from "@/containers/sorting/sorting";
+import ActiveItem from "@/containers/active-item/active-item";
 
 interface Props {
   offers: OfferType[];
@@ -20,9 +20,6 @@ interface Props {
 const Home = (props: Props) => {
   const { offers, cities, city, changeCity }: Props = props;
   const hasOffers = offers && offers.length;
-  const Places = withActiveItem(withSorting(Offers));
-  const content = hasOffers ? <Places items={offers} city={city} /> : <OffersEmpty />;
-
   const mainClass = hasOffers
     ? "page page--gray page--main"
     : "page__main page__main--index page__main--index-empty";
@@ -38,7 +35,19 @@ const Home = (props: Props) => {
           onClick={changeCity} />
 
         <div className="cities__places-wrapper">
-          {content}
+          {hasOffers
+            ? <ActiveItem key={`offers-${city.name}`} render={(activeItem: OfferType, onSetActiveItem) =>
+                <Sorting items={props.offers} render={(list: OfferType[], sortOffersByField) =>
+                  <Offers
+                    items={list}
+                    city={city}
+                    activeItem={activeItem}
+                    onChangeOffersFilter={sortOffersByField}
+                    onSetActiveItem={onSetActiveItem} />
+                } />
+              } />
+            : <OffersEmpty />
+          }
         </div>
       </main>
     </div>
