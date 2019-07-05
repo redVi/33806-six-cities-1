@@ -2,7 +2,7 @@
   "name": "six-cities",
   "version": "1.0.0",
   "private": true,
-  "homepage": "http://redvi.github.io/33806-six-cities-1",
+  "homepage": "https://redvi.github.io/six-cities",
   "description": "Select best offers from sities",
   "scripts": {
     "build": "webpack --mode production",
